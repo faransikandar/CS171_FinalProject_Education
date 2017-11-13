@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Education In Another's Shoes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Education in Another's Shoes</title>
+
+  <link rel="stylesheet" href="css/bootstrap.slate.min.css">
+  <link rel="stylesheet" href="css/slider/nouislider.min.css">
+  <link rel="stylesheet" href="css/slider/nouislider.pips.css">
+  <link rel="stylesheet" href="css/slider/nouislider.tooltips.css">
+  <link rel="stylesheet" href="css/jquery.fullPage.css" />
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+<body>
+
+  <div id="fullpage">
+
+    <section class="section" id="section-intro">
+      <div class="container" id="cover-container">
+        <h1 class="mega-header">Education In Another's Shoes</h1>
+        <h2>Understanding educational attainment globally</h2>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <div class="container">
+        <h2>Educational attainment varies drastically around the world.</h2>
+        <p class="lead">
+          This is a multi-layered problem of access, quality, and incentives to attain education.<sup class="citation">3</sup>
+        </p>
+        <div class="container">
+          <div class="row row-eq-height">
+
+            <div class="col-sm-9">
+              <div id="campus-map"></div>
+            </div>
+
+            <div class="col-sm-3 well well-white" id="campus-info-holder">
+              <div id="campus-info">
+                <img id="country-image">
+                <div id="country-quick-info">
+                  <h4 id="country-name"></h4>
+                  <h5 id="country-location"></h5>
+                </div>
+              </div>
+
+              <p>Average level of education in this country:</p>
+              <div class="progress">
+                <div id="progress-move" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
+              <p>Average level of education globally:</p>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;">
+                  23%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <div class="container">
+        <h1>Meet Student X.</h1>
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="lead">Student X was born into a family with XYZ characteristics in the United States. She attended grade school in City A, received good grades and test scores, and participated in XYZ extracurricular activities.</p>
+            <p class="lead">She's a student at American University in Washington, D.C. She's a real person. She's just like any of us.</p>
+          </div>
+          <div class="col-sm-6">
+            <div id="american-scene">
+              <img class="img-rounded" id="american-bg" src="images/american-university.jpg">
+              <img src="images/woman-white.png" id="american-woman">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h1>Now, meet Student Y.</h1>
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="lead">Student Y was born into a family with XYZ characteristics in Uganda, located in East Africa. She attended grade school in City A, received good grades and test scores, and participated in XYZ extracurricular activities.</p>
+            <p class="lead">...Until age 12. At that age, her family needed her to go work on their farm and Student Y had to stop going to school.</p>
+            <p class="lead">She's currently working on her farm still - and married with two children. She's a real person. She's just like any of us.</p>
+            <p></p>
+            <p class="lead"><strong>What makes someone like Student X make it to university, while someone just like her - Student Y - in another part of the world, never gets the opportunity?<sup class="citation">1</sup></strong></p>
+          </div>
+          <div class="col-sm-6">
+            <div id="american-scene">
+              <img class="img-rounded" id="american-bg" src="images/american-university.jpg">
+              <img src="images/woman-white.png" id="american-woman">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <section class="section">
+      <div class="container">
+        <h2>There are a variety of factors that affect educational attainment globally.</h2>
+        <p class="lead">Compare educational attainment between countries below by selecting a country and indicator.<sup class="citation">5</sup></p>
+
+        <p>Notice that the same indicator shifts drastically between countries, even when holding other variables constant.<sup class="citation">6</sup></p>
+
+        <div class="container">
+          <div class="row">
+            <div id="comparison">
+              <img class="img-rounded" id="cross-country-viz" src="images/CS171_Final_Comparison.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <div class="container">
+        <h2>But there is substantial variation within countries as well with regard to educational attainment.</h2>
+        <p class="lead">Use the chart below to explore educational attainment within countries.<sup class="citation">5</sup></p>
+
+        <p>Notice that in many countries, there is a steep dropoff in enrollment after X.<sup class="citation">6</sup></p>
+
+        <div class="container">
+          <div class="row">
+            <div id="within-countries">
+              <img class="img-rounded" id="within-countries-viz" src="images/CS171_Final_WithinCountries.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Using XYZ factors, we can predict educational attainment for any given individual.</h2>
+        <p class="lead">For example, use your own characteristics to test what your educational attainment would be in another country. Or, test what your educational attainment would be in your own country, if you changed your family's income level.<sup class="citation">5</sup></p>
+
+        <p>Notice the factors that have the greatest effects within country and between countries...<sup class="citation">6</sup></p>
+
+        <div class="container">
+          <div class="row">
+            <div id="prediction">
+              <img class="img-rounded" id="prediction-viz" src="images/CS171_Final_Prediction.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <div class="container">
+        <h2>There are plenty of initiatives to improve educational outcomes for Student Y and people like her.<sup class="citation">10</sup></h2>
+
+        <div class="row">
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>And there's plenty we can do to help.</h2>
+
+        <div class="row">
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>About this project</h2>
+
+        <div class="row">
+          <div class="col-md-6">
+
+            <p class="lead">This was a final project for Harvard's <a href="http://cs171.org">Data Visualization course, CS 171</a>. By <a href="link">Lydia Kim</a>, <a href="link">Gaew Lertsuridej</a>, and <a href="link">Faran Sikandar</a>. <strong class="text-success">The instructors awarded this project ? place out of over 20 projects.</strong></p>
+
+            <p class="lead">With special thanks to our advisor, <a href="link">Fritz</a>; our professor, <a href="link">Johanna Beyer</a>; and the rest of the CS 171 staff.</p>
+
+            <ul>
+              <li>
+                <a href="link">View this project on GitHub</a>
+              </li>
+              <li>
+                <a href="link">Process doc</a>
+              </li>
+            </ul>
+
+            <!-- 16:9 aspect ratio -->
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="youtube link"></iframe>
+            </div>
+
+
+          </div>
+
+          <div class="col-md-6 ">
+            <h3>References</h3>
+
+            <ol>
+              <li>
+                Student X and Y's story comes from <a href="link">TEXT FOR SOURCE</a>.
+              </li>
+              <li>
+                The facts in this visualization come from <a href="link">TEXT FOR SOURCE</a>.
+              </li>
+                Resources from <a href="link">TEXT FOR SOURCE</a>.
+              </li>
+            </ol>
+          </div>
+        </div>
+    </section>
+
+    </div>
+
+    <!-- Load JS libraries: jQuery, bootstrap, D3 -->
+    <script src="js/lib/jquery.min.js "></script>
+    <script src="js/lib/bootstrap.min.js "></script>
+    <script src="js/lib/d3.min.js "></script>
+    <script src="js/lib/d3.grid.min.js "></script>
+    <script src="js/lib/malarkey.min.js "></script>
+    <script src="js/lib/d3-ease.v1.min.js "></script>
+    <script src="js/lib/d3.legend.js "></script>
+    <script src="js/lib/jquery.fullPage.min.js "></script>
+
+    <!-- Your implementation -->
+    <script src="js/campusmap.js "></script>
+    <script src="js/barchart.js "></script>
+    <script src="js/survivors.js "></script>
+    <script src="js/linechart.js "></script>
+    <script src="js/comparative-rates.js "></script>
+    <script src="js/people-display.js "></script>
+    <script src="js/arrest-wheel.js "></script>
+    <script src="js/quiz.js "></script>
+    <script src="js/rate-report.js "></script>
+    <script src="js/main.js "></script>
+
+</body>
+
+</html>
