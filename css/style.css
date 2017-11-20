@@ -1,340 +1,53 @@
-.img-rounded {
-    width: 100%;
+body {
+    font-family: Avenir;
+    font-size: 11px;
 }
+.bigger { font-size:130%; }
 
-.well-white {
-  background-color: white;
-  color: black;
-}
-#american-bg {
-  width: 500px;
-}
-
-#american-scene {
-  position: relative;
-  margin: auto;
-}
-
-#american-woman {
-  position: absolute;
-  top: 180px;
-  /*left: 250px;*/
-  left: 0;
-  width: 75px;
-
-  opacity: 0;
-}
-
-#cover-container {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-}
-
-#fact{
-  font-size: 20px;
-}
-
-#fullpage {
-  padding-top: 80px;
-}
-
-#quotes {
-  font-size: 20px;
-}
-
-#section-intro {
-  background-image: url(https://s-i.huffpost.com/gen/1398550/images/o-GIRLS-EDUCATION-facebook.jpg);
-  background-size: cover;
-  padding: 0;
-}
-
-.navbar {
-  z-index: 10000;
-}
-
-.mega-header {
-  font-size: 80px !important;
-}
-
-#party-scene {
-    /* TODO: factor out to .scene */
-    position: relative;
-    margin: auto;
-}
-
-#party-bg {
-    width: 500px;
-}
-
-#party-woman {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 150px;
-    opacity: 0;
-}
-
-/***************/
-
-
-/*  BAR CHART  */
-
-
-/***************/
-
-.bar {
-  fill: #c8c8c8;
-}
-
-.bar:hover, .bar.sexual-assault:hover {
-  fill: steelblue;
-}
-
-.bar.sexual-assault {
-  fill: firebrick;
-}
-
-.axis {
-  font: 10px;
-  fill: #c8c8c8;
-}
-
-.axis-title {
-  fill: #c8c8c8;
-  font-size: 16px;
-  text-anchor: middle;
-  font-weight: bold;
-}
-
-.chart-title {
-    fill: #c8c8c8;
-    font-size: 18px;
-    text-anchor: middle;
+#intropage-container h1 {
+    letter-spacing: 10px;
+    font-size: 80px;
     font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-top: 20%;
+}
+#intropage-container h2 {
+    letter-spacing: 4px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-bottom: 20%;
 }
 
-.axis path, .axis line {
-  fill: none;
-  stroke: #c8c8c8;
-  shape-rendering: crispEdges;
+img{
+    height:650px;
+    margin-left: 30px;
 }
 
-.x-axis {
-  font-size: 12px;
+.placeholder-text {
+    font-size: 20px;
 }
-
-path.line {
-  stroke-width: 4;
-  fill: none;
-}
-
-path.line.gray {
-    stroke: #c8c8c8;
-}
-
-path.line.Sexual_assault, path.line.rape_sexual_assault {
-  stroke: firebrick;
-}
-
-path.line:hover {
-  stroke: steelblue;
-}
-
-path.line.Rape {
-  stroke: firebrick;
-}
-
-#bar-title{
-  text-align: center;
-  position:relative;
-  left: 30px;
-  top:70px;
-
-}
-
-#crime-type{
-  position:relative;
-  text-align: center;
-  bottom:85px;
-}
-
-#police-year{
-  text-align: center;
-  position:relative;
-  bottom:40px;
-}
-
-#text {
-  font-size: 20px;
-  font-weight: bold;
-  color: blue;
-}
-
-
-/* ARREST WHEEL */
-
-
-/* Colors from http://codepen.io/zadvorsky/pen/xzhBw */
-
-.slice {
-  stroke: #DB9E36;
-}
-
-.pointer {
-  fill: #401911;
-  stroke: #401911;
-}
-
-.slice.win {
-  fill: #BD4932;
-}
-
-.slice.lose {
-  fill: #FFFAD5;
-}
-
-.ring {
-  fill: none;
-  stroke: #DB9E36;
-  stroke-width: 10px;
-}
-
-.wheel-button {
-  fill: #401911;
-  cursor: pointer;
-}
-
-.wheel-holder {
-  cursor: pointer;
-}
-
-/* map */
-
-.map-state {
-    fill: #AAA;
-    stroke: white;
-}
-
-.map-college-dot {
-    stroke: black;
-    /*fill: crimson;*/
-    opacity: 0.6;
-}
-
-.map-college-dot:hover {
-    fill: steelblue;
-}
-
-.fp-controlArrow.fp-prev {
-  border-color: transparent #777 transparent transparent !important;
-}
-
-.fp-controlArrow.fp-next {
-  border-color: transparent transparent transparent #777 !important;
-}
-
-.row.padded {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-
 
 /* FULLPAGE */
 
 #fp-nav ul li a span {
-  background: whitesmoke;
+    background: whitesmoke;
 }
 
 #prevention {
-  font-size: 25px;
+    font-size: 25px;
 }
 
 #link {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #question {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .quiz-reason {
     text-align: right;
-}
-
-
-
-/* brush */
-.brush {
-	fill: #eee;
-	fill-opacity: .5;
-	pointer-events: none;
-}
-
-#rate-report-chart .y-axis path, #rate-report-chart .y-axis line {
-  fill: none;
-  stroke: none;
-  shape-rendering: crispEdges;
-}
-
-.bar-label {
-    stroke: #c8c8c8;
-    fill: #c8c8c8;
-}
-
-text.centered {
-    text-anchor: middle;
-}
-
-.center-line {
-    stroke: white;
-    shape-rendering: crispEdges;
-}
-
-.axis.crime-type {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* legend */
-.legend-box {
-    fill: transparent;
-}
-
-.legend-items text {
-    fill: #c8c8c8;
-    stroke: #c8c8c8;
-}
-
-.top-padding {
-    padding-top: 20px;
-}
-
-
-sup.citation {
-    cursor: pointer;
-}
-
-.block-center {
-    display: block;
-    margin: auto;
-}
-
-
-#campus-info {
-    text-align: center;
-}
-
-#campus-info h4, #campus-info h5 {
-    text-shadow: none;
-}
-
-#college-quick-info {
-    height: 5.5em;
-}
-
-#college-image {
-    width: 128px;
-    height: 128px;
 }
