@@ -4367,7 +4367,7 @@
         ],
         "id" : 138,
         "properties" : {
-          "name" : "Moldova, Republic of",
+          "name" : "Moldova",
           "countryCode" : "MD",
           "capital" : "Chisinau",
           "lat" : "47",
@@ -4496,7 +4496,7 @@
         ],
         "id" : 143,
         "properties" : {
-          "name" : "Macedonia, the former Yugoslav Republic of",
+          "name" : "Macedonia, FYR",
           "countryCode" : "MD",
           "capital" : "Skopje",
           "lat" : "42",

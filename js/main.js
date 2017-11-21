@@ -1,6 +1,6 @@
 // MAIN JS
 
-var choropleth, ranking, distribution, attainment, prediction;
+var choropleth, ranking;
 
 
 // CHOROPLETH + RANKING DATA
@@ -40,4 +40,7 @@ function createVis(error, map, data){
     // creating new instances for the other js vis files
     choropleth = new choroplethMap("#map", geoJSON, eduData);
     ranking = new rankingVis('#ranking', eduData);
+
 }
+
+

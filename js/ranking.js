@@ -24,13 +24,14 @@ rankingVis.prototype.initVis = function() {
 
     // * Creating svg
     vis.width = 1150;
-    vis.height = 125;
+    vis.height = 140;
 
     vis.svgRanking = d3.select("#ranking")
         .append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height)
-        .attr("align", "center");
+        .attr("align", "center")
+        .attr('id', 'ranking-svg');
 
     vis.addTopTitle = vis.svgRanking.append("text")
         .attr("x", 10)
@@ -44,13 +45,15 @@ rankingVis.prototype.initVis = function() {
         .attr("class", "rank-title")
         .text("Bottom 5 countries");
 
-    vis.addTop5 = vis.svgRanking
+    vis.addTop5 = d3.select("#ranking-svg")
         .append('text')
-        .attr('class', 'rank-text');
+        // .attr('class', 'rank-text')
+        .attr('id', 'top5-text');
 
-    vis.addBottom5 = vis.svgRanking
+    vis.addBottom5 = d3.select('#ranking-svg')
         .append('text')
-        .attr('class', 'rank-text');
+        // .attr('class', 'rank-text')
+        .attr('id', 'bottom5-text');
 
 
     vis.wrangleData();
@@ -101,6 +104,7 @@ rankingVis.prototype.wrangleData = function() {
 
 
     vis.updateVis();
+
 }
 
 
@@ -115,37 +119,73 @@ rankingVis.prototype.updateVis = function() {
     console.log(vis.filteredTop[0].countryname);
     console.log(vis.filteredBottom[4].countryname);
 
-    vis.addTop5.data(vis.filteredTop)
-        .enter()
-        .text(function(d){ return "1. " + d[0].countryname +
-                "</br>2. " + d[1].countryname +
-                "</br>3. " + d[2].countryname +
-                "</br>4. " + d[3].countryname +
-                "</br>5. " + d[4].countryname ;
+
+    vis.addTop5
+            // .data(vis.filteredTop).enter()
+            // .merge(vis.addTop5)
+            // .transition()
+            // .duration(1000)
+            .text(function(){
+                return "1. " + vis.filteredTop[0].countryname;
+            })
+            .attr("class", 'rank-text')
+            .attr("x", 20)
+            .attr("y", 50)
+        .append('tspan')
+            .text(function(){
+                return "2. " + vis.filteredTop[1].countryname;
+            }).attr('x', 20).attr("y", 70)
+        .append('tspan')
+            .text(function(){ return "3. " + vis.filteredTop[2].countryname; })
+            .attr('x', 20).attr("y", 90)
+        .append('tspan')
+            .text(function(){ return "4. " + vis.filteredTop[3].countryname; })
+            .attr('x', 20).attr("y", 110)
+        .append('tspan')
+            .text(function(){ return "5. " + vis.filteredTop[4].countryname; })
+            .attr('x', 20).attr("y", 130);
+
+
+    vis.addBottom5
+        // .data(vis.filteredBottom).enter()
+        // .merge(vis.addBottom5)
+        // .transition()
+        // .duration(1500)
+        .text(function(){
+            return "1. " + vis.filteredBottom[0].countryname;
         })
         .attr("class", 'rank-text')
-        .attr("x", 10)
-        .attr("y", vis.height/2);
+        .attr("x", vis.width/2 +10)
+        .attr("y", 50)
+        .append('tspan')
+        .text(function(){
+            return "2. " + vis.filteredBottom[1].countryname; })
+        .attr('x', vis.width/2 +10).attr("y", 70)
+        .append('tspan')
+        .text(function(){ return "3. " + vis.filteredBottom[2].countryname; })
+        .attr('x', vis.width/2 +10).attr("y", 90)
+        .append('tspan')
+        .text(function(){ return "4. " + vis.filteredBottom[3].countryname; })
+        .attr('x', vis.width/2 +10).attr("y", 110)
+        .append('tspan')
+        .text(function(){ return "5. " + vis.filteredBottom[4].countryname; })
+        .attr('x', vis.width/2 +10).attr("y", 130);
 
 
-    // vis.addTop5.merge(vis.addTop5)
-    //     .transition().duration(1500);
-    // vis.addTop5.exit().remove();
+}
 
-    vis.addBottom5.data(vis.filteredBottom).enter()
-        .merge(vis.addBottom5)
-        .transition().duration(1500)
-        .attr("class", 'rank-text')
-        .text(function(d){
-            return d.countryname;
-        })
-        .attr("x", vis.width/2)
-        .attr("y", function(d, i){
-            return 100;
-        });
+rankingVis.prototype.textRemove = function(){
+    var vis = this;
 
-    vis.addBottom5.exit().remove();
+    d3.select('.rank-text').remove();
 
+    // d3.select('#top5-text').remove();
+    // d3.select('#bottom5-text').remove();
+
+    // vis.addTop5.remove();
+    // vis.addBottom5.remove();
+
+    vis.wrangleData();
 }
 
 
