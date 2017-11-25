@@ -2,7 +2,10 @@ body {
     font-family: Avenir;
     font-size: 11px;
 }
-.bigger { font-size:130%; }
+
+.bigger {
+    font-size:130%;
+}
 
 #intropage-container h1 {
     letter-spacing: 10px;
@@ -12,6 +15,7 @@ body {
     text-align: center;
     padding-top: 20%;
 }
+
 #intropage-container h2 {
     letter-spacing: 4px;
     font-size: 30px;
@@ -52,6 +56,15 @@ img{
     text-align: right;
 }
 
+img.icon {
+    width: auto;
+    height: 150px;
+}
+
+section {
+    margin-bottom: 25px;
+}
+
 /*********************/
 /*     CHOROPLETH   */
 /*********************/
@@ -62,10 +75,9 @@ img{
     stroke-width: 0.1px;
 }
 
-/*.map:hover{*/
-    /*fill: #f7fcf0;*/
-    /*fill-opacity: 0.5;*/
-/*}*/
+.map:hover{
+    fill: #f7fcf0;
+}
 
 #map {
     width: 100%;
@@ -99,6 +111,199 @@ div {
     fill: dimgrey;
     font-size: 14px;
 }
+
+/***********************/
+/* ATTAINMEENT PROFILE */
+/***********************/
+
+/* default figure (no filter) */
+
+.line {
+    stroke: #307680;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.line-15 {
+    opacity: 0.7;
+}
+
+.line-20 {
+    opacity: 0.8;
+}
+
+.line-30 {
+    opacity: 0.9;
+}
+
+.line-40 {
+    opacity: 1;
+}
+
+
+li {
+    font-size: 15px;
+}
+
+.points {
+    fill: #307680;
+    stroke: #307680;
+    stroke-width: 0.1 px;
+}
+
+.y-label {
+    font-size: 13px;
+    fill: grey;
+    transform: rotate(-90deg);
+    text-anchor: end;
+    opacity: 0.5;
+}
+
+.x-label {
+    font-size: 13px;
+    fill: grey;
+    text-anchor: end;
+    opacity: 0.5;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    height: 20px;
+    padding: 2px;
+    font-size: 10px;
+    background: grey;
+    border: none;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+.legend-text {
+    font-size: 12px;
+    fill: grey;
+}
+
+/* gender filter line */
+
+.line-male {
+    stroke: #1d65af;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-male {
+    fill: #1d65af;
+    stroke: #1d65af;
+    stroke-width: 0.1 px;
+}
+
+.line-female {
+    stroke: #a52731;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-female {
+    fill: #a52731;
+    stroke: #a52731;
+    stroke-width: 0.1 px;
+}
+
+
+/* rural/urban filter line */
+
+.line-urban {
+    stroke: #656565;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-urban {
+    fill: #656565;
+    stroke: #656565;
+    stroke-width: 0.1 px;
+}
+
+.line-rural {
+    stroke: #147f27;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-rural {
+    fill: #147f27;
+    stroke: #147f27;
+    stroke-width: 0.1 px;
+}
+
+/* income filter line */
+
+.line-q1 {
+    stroke: #08589e;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-q1 {
+    fill: #08589e;
+    /*fill: none;*/
+    stroke: #08589e;
+    stroke-width: 0.1 px;
+}
+
+.line-q2 {
+    stroke: #2b8cbe;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-q2 {
+    fill: #2b8cbe;
+    /*fill: none;*/
+    stroke: #2b8cbe;
+    stroke-width: 0.1 px;
+}
+
+.line-q3 {
+    stroke: #4eb3d3;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-q3 {
+    fill: #4eb3d3;
+    /*fill: none;*/
+    stroke: #4eb3d3;
+    stroke-width: 0.1 px;
+}
+
+.line-q4 {
+    stroke: #7bccc4;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-q4 {
+    fill: #7bccc4;
+    /*fill: none;*/
+    stroke: #7bccc4;
+    stroke-width: 0.1 px;
+}
+
+.line-q5 {
+    stroke: #a8ddb5;
+    stroke-width: 1.5px;
+    fill: none;
+}
+
+.points-q5 {
+    fill: #a8ddb5;
+    /*fill: none;*/
+    stroke: #a8ddb5;
+    stroke-width: 0.1 px;
+}
+
 
 /*********************/
 /*  TOOLTIP OVERLAY  */

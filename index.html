@@ -91,7 +91,60 @@
 				looking at attainment profiles by age group, gender, rural/urban, wealth within a country to
 				reveal patterns in who is attending/dropping out of school. There will also be annotations
 				that give contextual information on why some countries see certain trends/dropoffs.</p>
-			<img class="storyboard" src="img/Storyboard3.jpg">
+			<!--<img class="storyboard" src="img/Storyboard3.jpg">-->
+			<div class="row">
+				<div class="col-sm-8">
+					<h2>Attainment Profile</h2>
+
+					<!-- select the country-->
+					<h4>Select a country</h4>
+					<select class="form-control" id="line-select-country" onChange="attainment.wrangleData();">
+						<option selected value="default">Please select a country</option>
+					</select>
+
+					<!--filter for gender, income level or rural/urban divide -->
+					<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>
+					<!-- maybe add the onclick color change to indicate that you have selected this one and unless you change this filter, it should stay filtered-->
+					<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.removeAll();attainment.wrangleData();">No filter</span>
+					<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.filterGender();">Gender</span>
+					<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.filterRural();">Rural/Urban</span>
+					<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.filterIncome();">Income</span>
+					<span id="clear-btn" class="btn btn-default" onclick="attainment.removeAll();">Clear all</span>
+
+					<!-- bottons for filtering age groups-->
+					<h4 class="btn-age">Select Age Group</h4>
+					<!-- how to make this one only show up after you filter? -->
+					<span id="age15-19" class="btn btn-primary btn-age" onclick="attainment.select15();">Age 15-19</span>
+					<span id="age20-29" class="btn btn-primary btn-age" onclick="attainment.select20();">Age 20-29 (default)</span>
+					<span id="age30-39" class="btn btn-primary btn-age" onclick="attainment.select30();">Age 30-39</span>
+					<span id="age40-49" class="btn btn-primary btn-age" onclick="attainment.select40();">Age 40-49</span>
+					<span id="clear-age-btn" class="btn btn-default" onclick="attainment.hideAllAge();">Clear all</span>
+
+
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8" id="line-area"></div>
+				<div class="col-sm-4" id="dropout-info">
+					<h3> Why are students dropping out from schools?</h3>
+					<li>Credits Constraints</li>
+					<li>High Cost of Going to Schools</li>
+					<li>Distance to Schools</li>
+					<li>Household's preferences (gender-based, talent-based, etc.)</li>
+					<li>...</li>
+					</br>
+					</br>
+					<img class="icon" src="img/female_student.png">
+					<span><img class="icon" src="img/male_student.png"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8" id="filter-btn">
+
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
 		</div>
 	</section>
 
@@ -129,10 +182,11 @@
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
 	<script src="js/ranking.js"></script>
+	<script src="js/attainment.js"></script>
 	<script src="js/main.js"></script>
 
-	</body>
-	</html>
+</body>
+</html>
 
 
 

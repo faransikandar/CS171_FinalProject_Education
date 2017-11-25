@@ -1,6 +1,6 @@
 // MAIN JS
 
-var choropleth, ranking;
+var choropleth, ranking, attainment;
 
 
 // CHOROPLETH + RANKING DATA
@@ -42,5 +42,78 @@ function createVis(error, map, data){
     ranking = new rankingVis('#ranking', eduData);
 
 }
+
+// LINE GRAPH
+d3.csv('data/cleaned/DHS_all.csv', function(data){
+
+    // destringing data
+    data.forEach(function(d){
+        d.edyears = +d.edyears;
+        d.pct15_19 = +d.pct15_19;
+        d.pct15_19_female = +d.pct15_19_female;
+        d.pct15_19_male = +d.pct15_19_male;
+        d.pct15_19_urban = +d.pct15_19_urban;
+        d.pct15_19_rural = +d.pct15_19_rural;
+        d.pct15_19_q1 = +d.pct15_19_q1;
+        d.pct15_19_q2 = +d.pct15_19_q2;
+        d.pct15_19_q3 = +d.pct15_19_q3;
+        d.pct15_19_q4 = +d.pct15_19_q4;
+        d.pct15_19_q5 = +d.pct15_19_q5;
+        d.pct20_29 = +d.pct20_29;
+        d.pct20_29_male = +d.pct20_29_male;
+        d.pct20_29_female = +d.pct20_29_female;
+        d.pct20_29_urban = +d.pct20_29_urban;
+        d.pct20_29_rural = +d.pct20_29_rural;
+        d.pct20_29_q1 = +d.pct20_29_q1;
+        d.pct20_29_q2 = +d.pct20_29_q2;
+        d.pct20_29_q3 = +d.pct20_29_q3;
+        d.pct20_29_q4 = +d.pct20_29_q4;
+        d.pct20_29_q5 = +d.pct20_29_q5;
+        d.pct30_39 = +d.pct30_39;
+        d.pct30_39_male = +d.pct30_39_male;
+        d.pct30_39_female = +d.pct30_39_female;
+        d.pct30_39_urban = +d.pct30_39_urban;
+        d.pct30_39_rural = +d.pct30_39_rural;
+        d.pct30_39_q1 = +d.pct30_39_q1;
+        d.pct30_39_q2 = +d.pct30_39_q2;
+        d.pct30_39_q3 = +d.pct30_39_q3;
+        d.pct30_39_q4 = +d.pct30_39_q4;
+        d.pct30_39_q5 = +d.pct30_39_q5;
+        d.pct40_49 = +d.pct40_49;
+        d.pct40_49_male = +d.pct40_49_male;
+        d.pct40_49_female = +d.pct40_49_female;
+        d.pct40_49_urban = +d.pct40_49_urban;
+        d.pct40_49_rural = +d.pct40_49_rural;
+        d.pct40_49_q1 = +d.pct40_49_q1;
+        d.pct40_49_q2 = +d.pct40_49_q2;
+        d.pct40_49_q3 = +d.pct40_49_q3;
+        d.pct40_49_q4 = +d.pct40_49_q4;
+        d.pct40_49_q5 = +d.pct40_49_q5;
+    });
+
+    allDHS = data;
+
+    // creating new instance for the attainment profile vis
+    attainment = new attainmentVis("#line-area", allDHS);
+
+
+    // selectedCountry = d3.select("#line-select-country").property("value");
+    //
+    // // reshaping the data by country
+    // dataByCountry = d3.nest()
+    //     .key(function(d){ return d.country; })
+    //     .entries(allDHS);
+    //
+    // console.log(dataByCountry); // reshaping the data by country
+    //
+    // // creating the dropdown menu
+    // $.each(dataByCountry, function(key, value) {
+    //     $('#line-select-country')
+    //         .append($("<option>")
+    //             .attr("value", value.key)
+    //             .text(value.key));
+    // });
+
+});
 
 
