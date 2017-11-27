@@ -29,11 +29,11 @@
 	<section class="section" id="mappage">
 		<div class="container">
 			<h1>Educational outcomes vary drastically around the world. </h1>
-			<h4>This is a multi-layered problem of access, quality, and incentives to attain education</h4>
-			<p class="placeholder-text">Visualization 1: General education statistics around the world -- Choropleth map with linked ranking of top 5 and bottom 5 countries by indicator (unfinished version below) </p>
+			<h4>This is a multi-layered problem of access, quality, and incentives to attain education.</h4>
+			<!--<p class="placeholder-text">Visualization 1: General education statistics around the world &#45;&#45; Choropleth map with linked ranking of top 5 and bottom 5 countries by indicator (unfinished version below) </p>-->
 			<!--<img class="storyboard" src="img/Storyboard1.jpg">-->
 			<div class="row">
-				<h3><strong>Select a variable:</strong></h3>
+				<h4>Select a variable:</h4>
 				<div class="col-sm-5">
 					<form action="/action_page.php">
                             <span>
@@ -45,7 +45,7 @@
                                     <option value="avg13_sec_up_attain">Attainment Rate (at least Upper Secondary School) (%)</option>
                                     <option value="avg13_bac_attain">Attainment Rate (at least Bachelor's Degree) (%)</option>
                                     <option value="avg13_mas_attain">Attainment Rate (at least Masters's Degree) (%)</option>
-                                    <option value="avg13_doc_attain">Attainment Rate (at least Doctorate's Degree) (%)</option>
+                                    <!--<option value="avg13_doc_attain">Attainment Rate (at least Doctorate's Degree) (%)</option>-->
                                     <option value="avg13_pri_enroll">Enrollment Rate (Primary School) (%)</option>
                                     <option value="avg13_sec_enroll">Enrollment Rate (Secondary School) (%)</option>
                                     <option value="avg13_ter_enroll">Enrollment Rate (Tertiary School) (%)</option>
@@ -87,16 +87,16 @@
 		<div class="container">
 			<h1>There is also substantial variation in educational attainment within countries. </h1>
 			<h4>Use the chart below to explore educational attainment within countries. Notice that in many countries, there is a steep dropoff in enrollment after X</h4>
-			<p class="placeholder-text">Visualization 3 (within-country comparisons):
-				looking at attainment profiles by age group, gender, rural/urban, wealth within a country to
-				reveal patterns in who is attending/dropping out of school. There will also be annotations
-				that give contextual information on why some countries see certain trends/dropoffs.</p>
+			<!--<p class="placeholder-text">Visualization 3 (within-country comparisons):-->
+				<!--looking at attainment profiles by age group, gender, rural/urban, wealth within a country to-->
+				<!--reveal patterns in who is attending/dropping out of school. There will also be annotations-->
+				<!--that give contextual information on why some countries see certain trends/dropoffs.</p>-->
 			<!--<img class="storyboard" src="img/Storyboard3.jpg">-->
 			<div class="row">
 				<div class="col-sm-8">
 					<h2>Attainment Profile</h2>
 
-					<!-- select the country-->
+					<!-- select the country (note: options added in attainment.js)-->
 					<h4>Select a country</h4>
 					<select class="form-control" id="line-select-country" onChange="attainment.wrangleData();">
 						<option selected value="default">Please select a country</option>
@@ -105,7 +105,7 @@
 					<!--filter for gender, income level or rural/urban divide -->
 					<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>
 					<!-- maybe add the onclick color change to indicate that you have selected this one and unless you change this filter, it should stay filtered-->
-					<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.removeAll();attainment.wrangleData();">No filter</span>
+					<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.removeAll();attainment.wrangleData();">All Population</span>
 					<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.filterGender();">Gender</span>
 					<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.filterRural();">Rural/Urban</span>
 					<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.filterIncome();">Income</span>
@@ -174,6 +174,7 @@
 	<script src="js/lib/bootstrap.min.js"></script>
 	<script src="js/lib/queue.min.js"></script>
 	<script src="js/lib/topojson.min.js"></script>
+	<script src="js/lib/tooltipsy.source.js "></script>
 	<script src="js/lib/colorbrewer.js"></script>
 	<script src="js/lib/d3.js"></script>
 	<script src="js/lib/d3-tip.js"></script>

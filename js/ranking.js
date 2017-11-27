@@ -45,17 +45,6 @@ rankingVis.prototype.initVis = function() {
         .attr("class", "rank-title")
         .text("Bottom 5 countries");
 
-    vis.addTop5 = d3.select("#ranking-svg")
-        .append('text')
-        // .attr('class', 'rank-text')
-        .attr('id', 'top5-text');
-
-    vis.addBottom5 = d3.select('#ranking-svg')
-        .append('text')
-        // .attr('class', 'rank-text')
-        .attr('id', 'bottom5-text');
-
-
     vis.wrangleData();
 }
 
@@ -120,21 +109,27 @@ rankingVis.prototype.updateVis = function() {
     console.log(vis.filteredBottom[4].countryname);
 
 
+    vis.addTop5 = d3.select("#ranking-svg")
+        .append('text')
+        .attr("class", 'rank-text')
+        .attr('id', 'top5-text');
+
+    vis.addBottom5 = d3.select('#ranking-svg')
+        .append('text')
+        .attr("class", 'rank-text')
+        .attr('id', 'bottom5-text');
+
+
     vis.addTop5
             // .data(vis.filteredTop).enter()
             // .merge(vis.addTop5)
             // .transition()
             // .duration(1000)
-            .text(function(){
-                return "1. " + vis.filteredTop[0].countryname;
-            })
-            .attr("class", 'rank-text')
-            .attr("x", 20)
-            .attr("y", 50)
+            .text(function(){ return "1. " + vis.filteredTop[0].countryname; })
+            .attr("x", 20).attr("y", 50)
         .append('tspan')
-            .text(function(){
-                return "2. " + vis.filteredTop[1].countryname;
-            }).attr('x', 20).attr("y", 70)
+            .text(function(){ return "2. " + vis.filteredTop[1].countryname; })
+            .attr('x', 20).attr("y", 70)
         .append('tspan')
             .text(function(){ return "3. " + vis.filteredTop[2].countryname; })
             .attr('x', 20).attr("y", 90)
@@ -145,31 +140,25 @@ rankingVis.prototype.updateVis = function() {
             .text(function(){ return "5. " + vis.filteredTop[4].countryname; })
             .attr('x', 20).attr("y", 130);
 
-
     vis.addBottom5
         // .data(vis.filteredBottom).enter()
         // .merge(vis.addBottom5)
         // .transition()
         // .duration(1500)
-        .text(function(){
-            return "1. " + vis.filteredBottom[0].countryname;
-        })
-        .attr("class", 'rank-text')
-        .attr("x", vis.width/2 +10)
-        .attr("y", 50)
+            .text(function(){ return "1. " + vis.filteredBottom[0].countryname; })
+            .attr("x", vis.width/2 +10).attr("y", 50)
         .append('tspan')
-        .text(function(){
-            return "2. " + vis.filteredBottom[1].countryname; })
-        .attr('x', vis.width/2 +10).attr("y", 70)
+            .text(function(){ return "2. " + vis.filteredBottom[1].countryname; })
+            .attr('x', vis.width/2 +10).attr("y", 70)
         .append('tspan')
-        .text(function(){ return "3. " + vis.filteredBottom[2].countryname; })
-        .attr('x', vis.width/2 +10).attr("y", 90)
+            .text(function(){ return "3. " + vis.filteredBottom[2].countryname; })
+            .attr('x', vis.width/2 +10).attr("y", 90)
         .append('tspan')
-        .text(function(){ return "4. " + vis.filteredBottom[3].countryname; })
-        .attr('x', vis.width/2 +10).attr("y", 110)
+            .text(function(){ return "4. " + vis.filteredBottom[3].countryname; })
+            .attr('x', vis.width/2 +10).attr("y", 110)
         .append('tspan')
-        .text(function(){ return "5. " + vis.filteredBottom[4].countryname; })
-        .attr('x', vis.width/2 +10).attr("y", 130);
+            .text(function(){ return "5. " + vis.filteredBottom[4].countryname; })
+            .attr('x', vis.width/2 +10).attr("y", 130);
 
 
 }
@@ -177,13 +166,15 @@ rankingVis.prototype.updateVis = function() {
 rankingVis.prototype.textRemove = function(){
     var vis = this;
 
-    d3.select('.rank-text').remove();
+    // $('#top5-text').remove();
+    // $('#bottom5-text').remove();
+
 
     // d3.select('#top5-text').remove();
     // d3.select('#bottom5-text').remove();
 
-    // vis.addTop5.remove();
-    // vis.addBottom5.remove();
+    vis.addTop5.remove();
+    vis.addBottom5.remove();
 
     vis.wrangleData();
 }

@@ -81,8 +81,8 @@ attainmentVis.prototype.initVis = function() {
 
 
     // lines
-    // vis.selectedAge = "pct20_29";
-    // vis.ageLabel = "20-29";
+        // vis.selectedAge = "pct20_29";
+        // vis.ageLabel = "20-29";
 
     vis.addLine15 = vis.svgLine.append('path')
         .attr("class", "line line-15");
@@ -97,16 +97,15 @@ attainmentVis.prototype.initVis = function() {
         .attr("class", "line line-40");
 
     var gap = 20;
+    var group = 10;
 
     // legends / rect
     vis.legend = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
         .attr('cy', 0)
         .attr('r', 7)
-        // .attr('width', 10)
-        // .attr('height', 10)
         .attr('class', 'legend')
-        .style('fill', '#307680');
+        .style('fill', '#663399');
 
     vis.legendText = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
@@ -116,137 +115,119 @@ attainmentVis.prototype.initVis = function() {
 
     vis.legendMale = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 5+gap)
+        .attr('cy', group+gap)
         .attr('r', 7)
-        // .attr('width', 10)
-        // .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-gender')
         .style('fill', '#1d65af');
 
     vis.legendMale = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4+ 5 + gap)
-        .attr('class', 'legend-text')
+        .attr('y', 4+ group + gap)
+        .attr('class', 'legend-text legend-gender')
         .text('Male Population');
 
     vis.legendFemale = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 5+gap*2)
+        .attr('cy', group +gap*2)
         .attr('r', 7)
-        // .attr('width', 10)
-        // .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-gender')
         .style('fill', '#a52731');
 
     vis.legendFemale = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4+ 5 +gap*2)
-        .attr('class', 'legend-text')
+        .attr('y', 4+ group +gap*2)
+        .attr('class', 'legend-text legend-gender')
         .text('Female Population');
 
     vis.legendUrban = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 10+gap*3)
+        .attr('cy', group*2+gap*3)
         .attr('r', 7)
-        .attr('width', 10)
-        .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-urban')
         .style('fill', '#656565');
 
     vis.legendUrban = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4+ 10 +gap*3)
-        .attr('class', 'legend-text')
+        .attr('y', 4+ group*2 +gap*3)
+        .attr('class', 'legend-text legend-urban')
         .text('Urban Population');
 
     vis.legendRural = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 10+ gap*4)
+        .attr('cy', group*2 + gap*4)
         .attr('r', 7)
-        .attr('width', 10)
-        .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-urban')
         .style('fill', '#147f27');
 
     vis.legendRural = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4 +10 +gap*4)
-        .attr('class', 'legend-text')
+        .attr('y', 4 +group*2 +gap*4)
+        .attr('class', 'legend-text legend-urban')
         .text('Rural Population');
 
     vis.legendQ1 = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 15+ gap*5)
+        .attr('cy', group*3+ gap*5)
         .attr('r', 7)
-        .attr('width', 10)
-        .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-income')
         .style('fill', '#08589e');
 
     vis.legendQ1 = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4 +15+gap*5)
-        .attr('class', 'legend-text')
+        .attr('y', 4 +group*3+gap*5)
+        .attr('class', 'legend-text legend-income')
         .text('First income quintile');
 
     vis.legendQ2 = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 15+gap*6)
+        .attr('cy', group*3+gap*6)
         .attr('r', 7)
-        .attr('width', 10)
-        .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-income')
         .style('fill', '#2b8cbe');
 
     vis.legendQ2 = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4 +15+gap*6)
-        .attr('class', 'legend-text')
+        .attr('y', 4 +group*3+gap*6)
+        .attr('class', 'legend-text legend-income')
         .text('Second income quintile');
 
     vis.legendQ3 = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 20+gap*7)
+        .attr('cy', group*3+gap*7)
         .attr('r', 7)
-        .attr('width', 10)
-        .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-income')
         .style('fill', '#4eb3d3');
 
     vis.legendQ3 = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4+20 +gap*7)
-        .attr('class', 'legend-text')
+        .attr('y', 4+group*3 +gap*7)
+        .attr('class', 'legend-text legend-income')
         .text('Third Income Quintile');
 
     vis.legendQ4 = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 20+gap*8)
+        .attr('cy', group*3+gap*8)
         .attr('r', 7)
-        .attr('width', 10)
-        .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-income')
         .style('fill', '#7bccc4');
 
     vis.legendQ4 = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4+20 +gap*8)
-        .attr('class', 'legend-text')
+        .attr('y', 4+group*3 +gap*8)
+        .attr('class', 'legend-text legend-income')
         .text('Forth Income Quintile');
 
     vis.legendQ5 = vis.svgLine.append('circle')
         .attr('cx', vis.width*0.8)
-        .attr('cy', 20+gap*9)
+        .attr('cy', group*3+gap*9)
         .attr('r', 7)
-        .attr('width', 10)
-        .attr('height', 10)
-        .attr('class', 'legend')
+        .attr('class', 'legend legend-income')
         .style('fill', '#a8ddb5');
 
     vis.legendQ5 = vis.svgLine.append('text')
         .attr('x', vis.width*0.8 + 15)
-        .attr('y', 4 +20+gap*9)
-        .attr('class', 'legend-text')
+        .attr('y', 4 +group*3+gap*9)
+        .attr('class', 'legend-text legend-income')
         .text('Fifth Income Quintile');
 
 
@@ -276,20 +257,17 @@ attainmentVis.prototype.wrangleData = function() {
     console.log(vis.selectedCountry);
 
     // NOTE: Not doing average anymore but doing comparison with average of the developed countries
+        // creating the var for world average for each age group
+        // vis.dataByEdyears = d3.nest()
+        //     .key(function(d) { return d.edyears; })
+        //     .entries(vis.data);
+        // console.log(vis.dataByEdyears);
 
-    // creating the var for world average for each age group
-    // vis.dataByEdyears = d3.nest()
-    //     .key(function(d) { return d.edyears; })
-    //     .entries(vis.data);
-    // console.log(vis.dataByEdyears);
-
-    // vis.worldAverage = d3.mean(vis.data, function(d){
-    //     for(i=0; i < d.edyears.length; i++){
-    //         return d.pct15_19;
-    //     }
-    // });
-    // console.log(vis.worldAverage);
-
+        // vis.worldAverage = d3.mean(vis.data, function(d){
+        //     for(i=0; i < d.edyears.length; i++){
+        //         return d.pct15_19;
+        //     }
+        // });
 
     // selecting the data to be used for the line graph
     if(vis.selectedCountry == "default") {
@@ -307,7 +285,6 @@ attainmentVis.prototype.wrangleData = function() {
 }
 
 
-
 /*
  *  UpdateVis
  */
@@ -316,8 +293,8 @@ attainmentVis.prototype.updateLineVis = function() {
     var vis = this;
 
     // testing variable for selection of age:
-    // console.log(vis.ageLabel);
-    // console.log(vis.selectedAge);
+        // console.log(vis.ageLabel);
+        // console.log(vis.selectedAge);
 
 
     // update domain for axis
@@ -330,9 +307,6 @@ attainmentVis.prototype.updateLineVis = function() {
     // adding Axes
     vis.addX.transition().duration(1500).call(vis.xAxis);
     vis.addY.transition().duration(1500).call(vis.yAxis);
-
-
-    // legends
 
 
     // adding lines
@@ -401,16 +375,16 @@ attainmentVis.prototype.updateLineVis = function() {
 
     // Tooltips
 
-    // var tip = d3.tip()
-    //     .attr("class", "d3-tip")
-    //     .offset([-10, 0])
-    //     .html(function(d){
-    //         return "<b>" + d.country +"</b>" +
-    //             "</br> Age: 20-29 </br> Share of the Population: " +
-    //             d.pct20_29*100;
-    //     });
-    //
-    // vis.svgLine.call(tip);
+        // var tip = d3.tip()
+        //     .attr("class", "d3-tip")
+        //     .offset([-10, 0])
+        //     .html(function(d){
+        //         return "<b>" + d.country +"</b>" +
+        //             "</br> Age: 20-29 </br> Share of the Population: " +
+        //             d.pct20_29*100;
+        //     });
+        //
+        // vis.svgLine.call(tip);
 
 
     // dots
@@ -600,14 +574,14 @@ attainmentVis.prototype.filterGender = function() {
         .attr('d', vis.lineMale15(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.addFemale15.transition().duration(1500)
         .attr('d', vis.lineFemale15(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.addMale20 = vis.svgLine.append('path')
@@ -640,14 +614,14 @@ attainmentVis.prototype.filterGender = function() {
         .attr('d', vis.lineMale30(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.addFemale30.transition().duration(1500)
         .attr('d', vis.lineFemale30(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.addMale40 = vis.svgLine.append('path')
@@ -660,14 +634,14 @@ attainmentVis.prototype.filterGender = function() {
         .attr('d', vis.lineMale40(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.addFemale40.transition().duration(1500)
         .attr('d', vis.lineFemale40(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
 
@@ -688,7 +662,7 @@ attainmentVis.prototype.filterGender = function() {
         })
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.circlesFemale15 = vis.svgLine.selectAll('circle.points-female15')
@@ -707,7 +681,7 @@ attainmentVis.prototype.filterGender = function() {
         })
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.circlesMale20 = vis.svgLine.selectAll('circle.points-male20')
@@ -764,7 +738,7 @@ attainmentVis.prototype.filterGender = function() {
         })
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.circlesFemale30 = vis.svgLine.selectAll('circle.points-female30')
@@ -783,7 +757,7 @@ attainmentVis.prototype.filterGender = function() {
         })
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.circlesMale40 = vis.svgLine.selectAll('circle.points-male40')
@@ -802,7 +776,7 @@ attainmentVis.prototype.filterGender = function() {
         })
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
     vis.circlesFemale40 = vis.svgLine.selectAll('circle.points-female40')
@@ -821,7 +795,7 @@ attainmentVis.prototype.filterGender = function() {
         })
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
-            else { return 1; }
+            else { return 0; }
         });
 
 
@@ -1190,8 +1164,7 @@ attainmentVis.prototype.select15 = function() {
     // vis.selectedAge = "pct15_19";
     // vis.ageLabel = "15-19";
     //
-    vis.addLine15
-        .style('opacity', function() {
+    vis.addLine15.style('opacity', function() {
         if (vis.selectedCountry == "default") {
             return 0;
         }
@@ -1209,15 +1182,35 @@ attainmentVis.prototype.select15 = function() {
         }
     });
 
-    // $('.line-15').toggle();
-    $('.line-20').toggle();
-    $('.line-30').hide();
-    $('.line-40').hide();
+    // vis.addMale15.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
     //
-    // $('.points15').toggle();
-    $('.points20').toggle();
-    $('.points30').hide();
-    $('.points40').hide();
+    // vis.addFemale15.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
+    //
+    // vis.circlesFemale15.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
+    //
+    // vis.circlesMale15.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
+
+    $('.line-15').toggle();
+    // $('.line-20').toggle();
+    // $('.line-30').hide();
+    // $('.line-40').hide();
+
+    $('.points15').toggle();
+    // $('.points20').toggle();
+    // $('.points30').hide();
+    // $('.points40').hide();
 }
 
 attainmentVis.prototype.select20 = function() {
@@ -1244,15 +1237,35 @@ attainmentVis.prototype.select20 = function() {
         }
     });
 
-    $('.line-15').toggle();
-    // $('.line-20').toggle();
-    $('.line-30').toggle();
-    $('.line-40').toggle();
+    // vis.addMale20.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
     //
-    $('.points15').toggle();
-    // $('.points20').toggle();
-    $('.points30').toggle();
-    $('.points40').toggle();
+    // vis.addFemale20.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
+    //
+    // vis.circlesFemale20.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
+    //
+    // vis.circlesMale20.style('opacity', function(){
+    //     if(vis.selectedCountry=="default") { return 0; }
+    //     else { return 1; }
+    // });
+
+    // $('.line-15').toggle();
+    $('.line-20').toggle();
+    // $('.line-30').toggle();
+    // $('.line-40').toggle();
+    // //
+    // $('.points15').toggle();
+    $('.points20').toggle();
+    // $('.points30').toggle();
+    // $('.points40').toggle();
 
 }
 

@@ -7,10 +7,10 @@ var choropleth, ranking, attainment;
 queue()
     .defer(d3.json, 'data/worldmap.json')
     .defer(d3.csv, 'data/mapeducation.csv')
-    .await(createVis);
+    .await(createMap);
 
 
-function createVis(error, map, data){
+function createMap(error, map, data){
 
     // projecting the maps
     geoJSON = topojson.feature(map, map.objects.countries).features;
@@ -29,7 +29,7 @@ function createVis(error, map, data){
         d.avg13_sec_teacher = +d.avg13_sec_teacher;
         d.avg13_bac_attain = +d.avg13_bac_attain;
         d.avg13_mas_attain = +d.avg13_mas_attain;
-        d.avg13_doc_attain = +d.avg13_doc_attain;
+        // d.avg13_doc_attain = +d.avg13_doc_attain;
         d.avg13_ter_enroll = +d.avg13_ter_enroll;
         d.avg13_gov_edu = +d.avg13_gov_edu;
     });
@@ -97,22 +97,6 @@ d3.csv('data/cleaned/DHS_all.csv', function(data){
     attainment = new attainmentVis("#line-area", allDHS);
 
 
-    // selectedCountry = d3.select("#line-select-country").property("value");
-    //
-    // // reshaping the data by country
-    // dataByCountry = d3.nest()
-    //     .key(function(d){ return d.country; })
-    //     .entries(allDHS);
-    //
-    // console.log(dataByCountry); // reshaping the data by country
-    //
-    // // creating the dropdown menu
-    // $.each(dataByCountry, function(key, value) {
-    //     $('#line-select-country')
-    //         .append($("<option>")
-    //             .attr("value", value.key)
-    //             .text(value.key));
-    // });
 
 });
 

@@ -110,27 +110,57 @@ choroplethMap.prototype.updateChoropleth = function() {
 
     // appending map
     vis.mapPath.enter()
-            .append("path")
-                .attr("d", vis.path)
-                .attr("class", "map")
-                .style("fill", function(d){
-                    return vis.colorScale(vis.varByCountry[d.properties.name]);
-                });
+        .append("path")
+            .attr("d", vis.path)
+            .attr("class", "map")
+            .style("fill", function(d){
+                return vis.colorScale(vis.varByCountry[d.properties.name]);
+            })
+        .attr('title', function(d){
+            return "<b>" + d.properties.name + "</b>"+ "</br>" + showData(d) ;
+        });
+
+    function showData(d){
+        if(vis.varByCountry[d.properties.name]==0){
+            return "Data Not Available" ;
+        } else {
+            return vis.varByCountry[d.properties.name] + " %";
+        }
+    };
 
     // adding tooltip to the maps
 
+        // try with tooltipsy
+        $('.map').tooltipsy({
+            alignTo: 'cursor',
+            offset: [10, 10],
+            css: {
+                'padding': '10px',
+                'max-width': '200px',
+                'color': '#dadada',
+                'background-color': 'rgba(101, 101, 101, .75)',
+                'border': '0.1px solid #656565',
+                'border-radius': '10px',
+                '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                'text-shadow': 'none'
+            }
+        });
+
+
         // trying yourself (from hw5)
-        var tip = d3.tip()
-            .attr("class", "d3-tip")
-            .offset([-10, 0])
-            .html(function(d){
-                return "<b>" + d.name + "</b>"+ "</br>" + selectedVar+ ": " + d[selectedVar];
-            });
-
-    vis.svgMap.call(tip);
-
-    vis.mapPath.on("mouseover", tip.show)
-            .on("mouseout", tip.hide);
+        //     var tip = d3.tip()
+        //         .attr("class", "d3-tip")
+        //         .offset([-10, 0])
+        //         .html(function(d){
+        //             return "<b>" + d.name + "</b>"+ "</br>" + selectedVar+ ": " + d[selectedVar];
+        //         });
+        //
+        // vis.svgMap.call(tip);
+        //
+        // vis.mapPath.on("mouseover", tip.show)
+        //         .on("mouseout", tip.hide);
 
 
         // // lydia's version
