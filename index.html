@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" href="css/style_matrix.css">
 
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -152,16 +153,20 @@
 	<!------ PREDICTION PAGE ------->
 	<section class="section" id="predictionpage">
 		<div class="container">
-			<h1>Which factors predict attainment outcomes for an individual in different countries?</h1>
-			<h4>Use your own characteristics to test what your educational attainment would be in another country. Or, test what your educational attainment would be in your own country, if you changed your family's income level.</h4>
-			<p class="placeholder-text">Visualization 4 (within-country predictions):
-				Will run probit/logit regressions for each country to predict outcomes such as graduating from college.
-				Each square will represent a covariate in a single regression and hovering over it
-				will show the coefficient (weight). We will also use saturation to highlight the predictors
-				with greater importance in different countries. Users will be able to enter their own
-				characteristics into the regression model for a country to see what their predicted outcome
-				would be.</p>
-			<img class="storyboard" src="img/Storyboard4.jpg">
+			<h1>Which factors predict educational outcomes for individuals in different countries?</h1>
+			<p class="placeholder-text">Each column represents a probit regression for a country. Select an educational outcome to see how different
+				factors compare in terms of their influence on the outcome. [Note: in the process of running regressions, so the
+				data below is fake data. Also, will add tooltip that shows the specific coefficients]</p>
+			<form class="form-inline">
+				<div class="form-group">
+					<label id="selected-var-label" for="selectedY">Outcome variable:</label>
+					<select class="form-control" id="selectedY" onChange="matrix.updateVis()">
+						<option value="value">Enrollment in secondary school</option>
+						<option value="value2">Enrollment in higher education</option>
+					</select>
+				</div>
+			</form>
+			<div id="chart"></div>
 		</div>
 	</section>
 
@@ -216,6 +221,7 @@
 	<script src="js/discrete-scatterplot.js"></script>
 	<script src="js/discrete-jitter.js"></script>
 	<script src="js/attainment_v2.js"></script>
+	<script src="js/matrix-viz.js"></script>
 	<script src="js/main.js"></script>
 
 </body>

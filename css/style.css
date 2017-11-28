@@ -1,3 +1,12 @@
+
+/* FULLPAGE */
+
+#fp-nav ul li a span {
+    background: #4c4c4c;
+}
+
+
+
 body {
     font-family: Avenir;
     font-size: 11px;
