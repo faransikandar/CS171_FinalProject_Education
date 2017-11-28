@@ -43,12 +43,12 @@ controls.append("span")
 
 d3.csv("data/cleaned/avg_edyears25_35.csv", function(error, data) {
     var xVar = "edyears_MF",
-        yVar = d3.randomUniform(-height/2, height/2);
-    //yVar = "year"
+        //yVar = d3.randomUniform(-height/2, height/2);
+        yVar = "year";
 
     data.forEach(function(d) {
         d[xVar] = +d[xVar];
-//        d[yVar] = d[yVar];
+        d[yVar] = d[yVar];
     });
 
     var force = d3.forceSimulation()
@@ -62,10 +62,12 @@ d3.csv("data/cleaned/avg_edyears25_35.csv", function(error, data) {
     x.domain(d3.extent(data, function(d) { return d[xVar]; })).nice();
     y.domain(d3.extent(data, function(d) { return d[yVar]; })).nice();
 
+//    x.range([height, margin.top]
+
     // Set initial positions
     data.forEach(function(d) {
         d.x = x(d[xVar]);
-//        d.y = y(d[yVar]);
+        d.y = y(d[yVar]);
         d.color = color(d.region);
         d.radius = radius;
     });
@@ -74,24 +76,25 @@ d3.csv("data/cleaned/avg_edyears25_35.csv", function(error, data) {
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
-        .append("text")
+
+    svg.append("text")
         .attr("class", "label")
         .attr("x", width)
-        .attr("y", -6)
+        .attr("y", height - 10)
         .style("text-anchor", "end")
         .text("Years of Educational Attainment");
 
+    svg.append("text")
+        .attr("class", "label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "1em")
+        .style("text-anchor", "end")
+        .text("Year");
 
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
-        .append("text")
-        .attr("class", "label")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Year");
 
     var node = svg.selectAll(".dot")
         .data(data)
