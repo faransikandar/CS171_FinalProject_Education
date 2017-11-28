@@ -73,11 +73,11 @@
 		<div class="container">
 			<h1>There are a variety of factors that affect educational attainment globally.</h1>
 			<h4>Where do you think your country lies in the global distribution?</h4>
-			<p class="placeholder-text">Visualization 2 (cross-country comparisons): looking at global distribution in educational
-				indicators (plus comparisons by gender and wealth).The user will be able to guess based on their priors
-				where their selected country might be in the distribution. Then, we will show them
-				the true position</p>
-			<img class="storyboard" src="img/Storyboard2.jpg">
+			<!--<p class="placeholder-text">Visualization 2 (cross-country comparisons): looking at global distribution in educational-->
+				<!--indicators (plus comparisons by gender and wealth).The user will be able to guess based on their priors-->
+				<!--where their selected country might be in the distribution. Then, we will show them-->
+				<!--the true position</p>-->
+			<!--<img class="storyboard" src="img/Storyboard2.jpg">-->
 		</div>
 		<div class="row">
 			<div class="row">
@@ -145,12 +145,6 @@
 					<span><img class="icon" src="img/male_student.png"></span>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-8" id="filter-btn">
-
-				</div>
-				<div class="col-sm-4"></div>
-			</div>
 		</div>
 	</section>
 
@@ -174,11 +168,29 @@
 	<!-- Sources-->
 	<section class="section" id="endpage">
 		<div class="container">
-			<h3>Sources:</h3>
-			<li>Visualization 1: World Bank's World Development Indicators (WDI)</li>
-			<li>Visualization 2: Barro-Lee Education Data</li>
-			<li>Visualization 3: Demographic and Health Survey (DHS)</li>
-			<!--Note: can fix this to sort of an end note later-->
+			<div class="row">
+				<div class="col-sm-2">
+					<img class="icon-ref" href="img/data_laptop.png">
+				</div>
+				<div class="col-sm-10">
+					<h3>Data Sources:</h3>
+					<li>Visualization 1: <a href="https://data.worldbank.org/data-catalog/world-development-indicators">World Bank's World Development Indicators (WDI)</a></li>
+					<li>Visualization 2: <a href="http://www.barrolee.com/">Barro-Lee Education Data</a></li>
+					<li>Visualization 3: <a href="https://dhsprogram.com/">Demographic and Health Survey (DHS)</a></li>
+					<li>Visualization 4: ...</li>
+					<!--Note: can fix this to sort of an end note later-->
+				</div>
+			</div>
+		</br>
+			<div class="row">
+				<div class="col-sm-2">
+				</div>
+				<div class="col-sm-10">
+					<h3>References:</h3>
+					<li><a href="http://tooltipsy.com/">Tooltipsy</a></li>
+					<li>Icons/Images: <a href="https://thenounproject.com/">The Noun Project</a></li>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -187,7 +199,6 @@
 </div>
 
 	<!-- Load JS libraries -->
-<<<<<<< Updated upstream
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/bootstrap.min.js"></script>
 	<script src="js/lib/queue.min.js"></script>
@@ -197,25 +208,13 @@
 	<script src="js/lib/d3.js"></script>
 	<script src="js/lib/d3-tip.js"></script>
 	<script src="js/lib/jquery.fullPage.js "></script>
-=======
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/queue.min.js"></script>
-	<script src="js/topojson.min.js"></script>
-	<script src="js/colorbrewer.js"></script>
-	<script src="js/lodash.min.js"></script>
-	<script src="js/d3.js"></script>
-	<script src="js/d3-tip.js"></script>
-	<script src="js/jquery.fullPage.js "></script>
->>>>>>> Stashed changes
+	<script src="js/lib/lodash.min.js"></script>
 
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
 	<script src="js/ranking.js"></script>
-=======
 	<script src="js/discrete-scatterplot.js"></script>
 	<script src="js/discrete-jitter.js"></script>
->>>>>>> Stashed changes
 	<script src="js/attainment_v2.js"></script>
 	<script src="js/main.js"></script>
 

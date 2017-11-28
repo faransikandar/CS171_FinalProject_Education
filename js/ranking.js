@@ -169,7 +169,6 @@ rankingVis.prototype.textRemove = function(){
     // $('#top5-text').remove();
     // $('#bottom5-text').remove();
 
-
     // d3.select('#top5-text').remove();
     // d3.select('#bottom5-text').remove();
 
