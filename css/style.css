@@ -94,6 +94,7 @@ section {
     font-size: 14px;
 }
 
+
 /*********************/
 /*     RANKING       */
 /*********************/
@@ -109,6 +110,7 @@ section {
     font-size: 14px;
 }
 
+
 /***********************/
 /* ATTAINMEENT PROFILE */
 /***********************/
@@ -121,21 +123,21 @@ section {
     fill: none;
 }
 
-.line-40 {
-    opacity: 1;
-}
+/*.line-40 {*/
+    /*opacity: 1;*/
+/*}*/
 
-.line-30 {
-    opacity: 0.85;
-}
+/*.line-30 {*/
+    /*opacity: 0.85;*/
+/*}*/
 
-.line-20 {
-    opacity: 0.70;
-}
+/*.line-20 {*/
+    /*opacity: 0.70;*/
+/*}*/
 
-.line-15 {
-    opacity: 0.55;
-}
+/*.line-15 {*/
+    /*opacity: 0.55;*/
+/*}*/
 
 li {
     font-size: 15px;
@@ -243,7 +245,6 @@ li {
 
 .points-q1 {
     fill: #08589e;
-    /*fill: none;*/
     stroke: #08589e;
     stroke-width: 0.1 px;
 }
@@ -256,7 +257,6 @@ li {
 
 .points-q2 {
     fill: #2b8cbe;
-    /*fill: none;*/
     stroke: #2b8cbe;
     stroke-width: 0.1 px;
 }
@@ -269,7 +269,6 @@ li {
 
 .points-q3 {
     fill: #4eb3d3;
-    /*fill: none;*/
     stroke: #4eb3d3;
     stroke-width: 0.1 px;
 }
@@ -282,7 +281,6 @@ li {
 
 .points-q4 {
     fill: #7bccc4;
-    /*fill: none;*/
     stroke: #7bccc4;
     stroke-width: 0.1 px;
 }
@@ -295,7 +293,6 @@ li {
 
 .points-q5 {
     fill: #a8ddb5;
-    /*fill: none;*/
     stroke: #a8ddb5;
     stroke-width: 0.1 px;
 }

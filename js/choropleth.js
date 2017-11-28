@@ -117,8 +117,22 @@ choroplethMap.prototype.updateChoropleth = function() {
                 return vis.colorScale(vis.varByCountry[d.properties.name]);
             })
         .attr('title', function(d){
-            return "<b>" + d.properties.name + "</b>"+ "</br>" + showData(d) ;
+            return "<b>" + d.properties.name + "</b>"+ "</br>" + showVariable(d)+ "</br>" + showData(d) ;
         });
+
+    function showVariable(){
+        if(vis.selectedVar=="avg13_literacy1524") { return 'Literacy Rate (Age 15-24)';}
+        if(vis.selectedVar=="avg13_pri_compt") { return "Primary School Completion Rate (%)" ;}
+        if(vis.selectedVar=="avg13_pri_attain") { return 'Attainment Rate (at least Primary School) (%)' ;}
+        if(vis.selectedVar=="avg13_sec_low_attain") { return 'Attainment Rate (at least Lower Secondary School) (%)'; }
+        if(vis.selectedVar=="avg13_sec_up_attain") { return 'Attainment Rate (at least Upper Secondary School) (%)'; }
+        if(vis.selectedVar=="avg13_bac_attain") { return "Attainment Rate (at least Bachelor's Degree) (%)"; }
+        if(vis.selectedVar=="avg13_mas_attain") { return "Attainment Rate (at least Masters's Degree) (%)" ;}
+        if(vis.selectedVar=="avg13_pri_enroll") { return "Enrollment Rate (Primary School) (%)" ;}
+        if(vis.selectedVar=="avg13_sec_enroll") { return "Enrollment Rate (Secondary School) (%)" ;}
+        if(vis.selectedVar=="avg13_ter_enroll") { return "Enrollment Rate (Tertiary School) (%)" ;}
+        if(vis.selectedVar=="avg13_gov_edu") { return "Government Expenditure on education (% of GDP)" ;}
+    }
 
     function showData(d){
         if(vis.varByCountry[d.properties.name]==0){
@@ -127,6 +141,10 @@ choroplethMap.prototype.updateChoropleth = function() {
             return vis.varByCountry[d.properties.name] + " %";
         }
     };
+
+    function roundData(data){
+        return data.toFixed(2);
+    }
 
     // adding tooltip to the maps
 

@@ -29,7 +29,7 @@
 	<section class="section" id="mappage">
 		<div class="container">
 			<h1>Educational outcomes vary drastically around the world. </h1>
-			<h4>This is a multi-layered problem of access, quality, and incentives to attain education.</h4>
+			<!--<h4>This is a multi-layered problem of access, quality, and incentives to attain education.</h4>-->
 			<!--<p class="placeholder-text">Visualization 1: General education statistics around the world &#45;&#45; Choropleth map with linked ranking of top 5 and bottom 5 countries by indicator (unfinished version below) </p>-->
 			<!--<img class="storyboard" src="img/Storyboard1.jpg">-->
 			<div class="row">
@@ -86,7 +86,7 @@
 	<section class="section" id="profilepage">
 		<div class="container">
 			<h1>There is also substantial variation in educational attainment within countries. </h1>
-			<h4>Use the chart below to explore educational attainment within countries. Notice that in many countries, there is a steep dropoff in enrollment after X</h4>
+			<h4>Use the chart below to explore educational attainment within countries. Notice that in many countries, there is a steep dropoff in enrollment after 5 or 6 years of education.</h4>
 			<!--<p class="placeholder-text">Visualization 3 (within-country comparisons):-->
 				<!--looking at attainment profiles by age group, gender, rural/urban, wealth within a country to-->
 				<!--reveal patterns in who is attending/dropping out of school. There will also be annotations-->
@@ -94,7 +94,7 @@
 			<!--<img class="storyboard" src="img/Storyboard3.jpg">-->
 			<div class="row">
 				<div class="col-sm-8">
-					<h2>Attainment Profile</h2>
+					<!--<h2>Attainment Profile</h2>-->
 
 					<!-- select the country (note: options added in attainment.js)-->
 					<h4>Select a country</h4>
@@ -105,20 +105,20 @@
 					<!--filter for gender, income level or rural/urban divide -->
 					<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>
 					<!-- maybe add the onclick color change to indicate that you have selected this one and unless you change this filter, it should stay filtered-->
-					<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.removeAll();attainment.wrangleData();">All Population</span>
-					<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.filterGender();">Gender</span>
-					<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.filterRural();">Rural/Urban</span>
-					<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.filterIncome();">Income</span>
+					<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.hideFilter();attainment.showOriginal();">All Population</span>
+					<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.hideFilter();attainment.filterGender();">Gender</span>
+					<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.hideFilter();attainment.filterRural();">Rural/Urban</span>
+					<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.hideFilter();attainment.filterIncome();">Income</span>
 					<span id="clear-btn" class="btn btn-default" onclick="attainment.removeAll();">Clear all</span>
 
 					<!-- bottons for filtering age groups-->
-					<h4 class="btn-age">Select Age Group</h4>
+					<!--<h4 class="btn-age">Select Age Group</h4>-->
 					<!-- how to make this one only show up after you filter? -->
-					<span id="age15-19" class="btn btn-primary btn-age" onclick="attainment.select15();">Age 15-19</span>
-					<span id="age20-29" class="btn btn-primary btn-age" onclick="attainment.select20();">Age 20-29 (default)</span>
-					<span id="age30-39" class="btn btn-primary btn-age" onclick="attainment.select30();">Age 30-39</span>
-					<span id="age40-49" class="btn btn-primary btn-age" onclick="attainment.select40();">Age 40-49</span>
-					<span id="clear-age-btn" class="btn btn-default" onclick="attainment.hideAllAge();">Clear all</span>
+					<!--<span id="age15-19" class="btn btn-primary btn-age" onclick="attainment.select15();">Age 15-19</span>-->
+					<!--<span id="age20-29" class="btn btn-primary btn-age" onclick="attainment.select20();">Age 20-29 (default)</span>-->
+					<!--<span id="age30-39" class="btn btn-primary btn-age" onclick="attainment.select30();">Age 30-39</span>-->
+					<!--<span id="age40-49" class="btn btn-primary btn-age" onclick="attainment.select40();">Age 40-49</span>-->
+					<!--<span id="clear-age-btn" class="btn btn-default" onclick="attainment.hideAllAge();">Clear all</span>-->
 
 
 				</div>
@@ -128,11 +128,9 @@
 				<div class="col-sm-8" id="line-area"></div>
 				<div class="col-sm-4" id="dropout-info">
 					<h3> Why are students dropping out from schools?</h3>
-					<li>Credits Constraints</li>
-					<li>High Cost of Going to Schools</li>
-					<li>Distance to Schools</li>
-					<li>Household's preferences (gender-based, talent-based, etc.)</li>
-					<li>...</li>
+					<li><strong>Financial Constraints:</strong> <p>Sending the children to school might be too expensive.</p></li>
+					<li><strong>Distance to Schools: </strong><p>Traveling to school might take up too much time. Sometimes it could be dangerous for children, especially girls to walk to a faraway school alone.</p></li>
+					<li><strong>Household's preferences: </strong><p>Parents might have preference for boys to attend schools over girls. Or they could prefer to send kids that they percieved to be smarter and more talented to attend schools.</p></li>
 					</br>
 					</br>
 					<img class="icon" src="img/female_student.png">
@@ -165,6 +163,17 @@
 		</div>
 	</section>
 
+	<!-- Sources-->
+	<section class="section" id="endpage">
+		<div class="container">
+			<h3>Sources:</h3>
+			<li>Visualization 1: World Bank's World Development Indicators (WDI)</li>
+			<li>Visualization 2: Barro-Lee Education Data</li>
+			<li>Visualization 3: Demographic and Health Survey (DHS)</li>
+			<!--Note: can fix this to sort of an end note later-->
+		</div>
+	</section>
+
 
 
 </div>
@@ -183,7 +192,7 @@
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
 	<script src="js/ranking.js"></script>
-	<script src="js/attainment.js"></script>
+	<script src="js/attainment_v2.js"></script>
 	<script src="js/main.js"></script>
 
 </body>

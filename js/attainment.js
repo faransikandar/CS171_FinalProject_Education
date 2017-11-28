@@ -10,8 +10,8 @@ attainmentVis = function(_parentElement, _data) {
     this.parentElement = _parentElement;
     this.data = _data;
 
-    this.initVis();
     this.addDropdown();
+    this.initVis();
 }
 
 /*
@@ -233,9 +233,9 @@ attainmentVis.prototype.initVis = function() {
 
 
     // initializing tool tips
-    vis.tooltip = d3.select('#profilepage').append('div')
-        .attr('class', 'tooltip')
-        .style('opacity', 0);
+    // vis.tooltip = d3.select('#profilepage').append('div')
+    //     .attr('class', 'tooltip')
+    //     .style('opacity', 0);
 
 
     vis.wrangleData();
@@ -375,6 +375,24 @@ attainmentVis.prototype.updateLineVis = function() {
 
     // Tooltips
 
+    // try with tooltipsy
+    $('.points').tooltipsy({
+        alignTo: 'cursor',
+        // offset: [10, 0],
+        css: {
+            'padding': '10px',
+            'max-width': '200px',
+            'color': '#dadada',
+            'background-color': 'rgba(101, 101, 101, .75)',
+            'border': '0.1px solid #656565',
+            'border-radius': '10px',
+            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            'text-shadow': 'none'
+        }
+    });
+
         // var tip = d3.tip()
         //     .attr("class", "d3-tip")
         //     .offset([-10, 0])
@@ -405,7 +423,19 @@ attainmentVis.prototype.updateLineVis = function() {
         .style('opacity', function(){
            if(vis.selectedCountry=="default") { return 0; }
            else { return 0; }
+        })
+        .attr('title', function(d){
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + show15(d) + "</br>" + showShare(d) ;
+
         });
+
+    function showShare(d){
+        return d.pct15_19;
+    }
+    function show15(){
+        return "Age Group: 15-19";
+    }
+
 
     vis.circles20 = vis.svgLine.selectAll('circle.points20')
         .data(vis.filteredData);
@@ -424,6 +454,10 @@ attainmentVis.prototype.updateLineVis = function() {
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
+        })
+        .attr('title', function(d){
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + show15(d) + "</br>" + showShare(d) ;
+
         });
 
     vis.circles30 = vis.svgLine.selectAll('circle.points30')
