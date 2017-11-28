@@ -40,14 +40,6 @@ choroplethMap.prototype.initVis = function() {
             .range(colorbrewer.GnBu[9]);
 
 
-    // *  Tooltips
-    // lydia's version
-    // var tooltip = d3.select("body")
-    //     .append("div")
-    //     .attr("class", "tooltip")
-    //     .style("opacity", 0);
-
-
     // * Generate maps and project it on to svg
         // initiating map projection
         vis.projection = d3.geoMercator()
@@ -60,8 +52,6 @@ choroplethMap.prototype.initVis = function() {
 
         vis.mapPath = vis.svgMap.selectAll(".map")
             .data(vis.geoJSON);
-
-
 
     // run updateChoropleth() function
     vis.updateChoropleth();
@@ -155,7 +145,7 @@ choroplethMap.prototype.updateChoropleth = function() {
             css: {
                 'padding': '10px',
                 'max-width': '200px',
-                'color': '#dadada',
+                'color': '#fafafa',
                 'background-color': 'rgba(101, 101, 101, .75)',
                 'border': '0.1px solid #656565',
                 'border-radius': '10px',
@@ -165,47 +155,6 @@ choroplethMap.prototype.updateChoropleth = function() {
                 'text-shadow': 'none'
             }
         });
-
-
-        // trying yourself (from hw5)
-        //     var tip = d3.tip()
-        //         .attr("class", "d3-tip")
-        //         .offset([-10, 0])
-        //         .html(function(d){
-        //             return "<b>" + d.name + "</b>"+ "</br>" + selectedVar+ ": " + d[selectedVar];
-        //         });
-        //
-        // vis.svgMap.call(tip);
-        //
-        // vis.mapPath.on("mouseover", tip.show)
-        //         .on("mouseout", tip.hide);
-
-
-        // // lydia's version
-        // mapPath.on("mouseover", function(d) {
-        //     d3.select(this)
-        //         .transition().duration(300)
-        //         .style("opacity", 1);
-        //     tooltip.transition().duration(300)
-        //         .style("opacity", 1);
-        //     tooltip.html(function (d) {
-        //         if (varByCountry == 0) {
-        //             return d.properties.name + " <br> " + "No available data"
-        //         } else {
-        //             return d.properties.name + " <br> " + varByCountry[d.properties.name] + "%";
-        //         }
-        //     })
-        //         .style("left", (d3.event.pageX) + "px")
-        //         .style("top", (d3.event.pageY - 30) + "px")
-        //     })
-        //     .on("mouseout", function () {
-        //         d3.select(this)
-        //             .transition().duration(100)
-        //             .style("opacity", 1);
-        //         tooltip.transition().duration(300)
-        //             .style("opacity", 0);
-        //     });
-
 
 
     // appending legend

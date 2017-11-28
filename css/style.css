@@ -1,3 +1,7 @@
+
+
+
+
 body {
     font-family: Avenir;
     font-size: 11px;
@@ -56,10 +60,14 @@ img{
     text-align: right;
 }
 
-<<<<<<< Updated upstream
 img.icon {
     width: auto;
     height: 150px;
+}
+
+img.icon-ref {
+    width: auto;
+    height: 100px;
 }
 
 section {
@@ -298,9 +306,8 @@ li {
     stroke-width: 0.1 px;
 }
 
+/* distribution vis */
 
-
-=======
 .axis path,
 .axis line {
     fill: none;
@@ -324,4 +331,11 @@ li {
 input {
     margin: 4px 4px 0;
 }
->>>>>>> Stashed changes
+
+
+/* FULLPAGE */
+
+
+#fp-nav ul li a span {
+    background: black;
+}

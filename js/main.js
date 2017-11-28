@@ -1,5 +1,18 @@
 // MAIN JS
 
+// FULLPAGE parameters
+$(document).ready(function() {
+    $('#fullpage').fullpage({
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'],
+        sectionsColor: ['whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
+        navigation: true,
+        navigationPosition: 'right',
+        navigationTooltips: ['1', '2', '3', '4', '5']
+    });
+});
+
+
+
 var choropleth, ranking, attainment;
 
 
@@ -100,4 +113,15 @@ d3.csv('data/cleaned/DHS_all.csv', function(data){
 
 });
 
+// MATRIX
+var matrix;
+
+// load data
+queue()
+    .defer(d3.csv, "data/data_coeffs.csv")
+    .await(function(error, reg1Data) {
+        console.log(reg1Data);
+
+        matrix = new Matrix("matrix-viz", reg1Data);
+    });
 

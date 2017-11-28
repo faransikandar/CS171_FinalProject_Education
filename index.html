@@ -5,10 +5,12 @@
 	<meta name="description" content="Education in Another's Shoes">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Education in Another's Shoes</title>
+	<script type="text/javascript" src="js/lib/scrolloverflow.js"></script>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" href="css/style_matrix.css">
 
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -73,11 +75,11 @@
 		<div class="container">
 			<h1>There are a variety of factors that affect educational attainment globally.</h1>
 			<h4>Where do you think your country lies in the global distribution?</h4>
-			<p class="placeholder-text">Visualization 2 (cross-country comparisons): looking at global distribution in educational
-				indicators (plus comparisons by gender and wealth).The user will be able to guess based on their priors
-				where their selected country might be in the distribution. Then, we will show them
-				the true position</p>
-			<img class="storyboard" src="img/Storyboard2.jpg">
+			<!--<p class="placeholder-text">Visualization 2 (cross-country comparisons): looking at global distribution in educational-->
+				<!--indicators (plus comparisons by gender and wealth).The user will be able to guess based on their priors-->
+				<!--where their selected country might be in the distribution. Then, we will show them-->
+				<!--the true position</p>-->
+			<!--<img class="storyboard" src="img/Storyboard2.jpg">-->
 		</div>
 		<div class="row">
 			<div class="row">
@@ -145,12 +147,6 @@
 					<span><img class="icon" src="img/male_student.png"></span>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-8" id="filter-btn">
-
-				</div>
-				<div class="col-sm-4"></div>
-			</div>
 		</div>
 	</section>
 
@@ -158,27 +154,49 @@
 	<!------ PREDICTION PAGE ------->
 	<section class="section" id="predictionpage">
 		<div class="container">
-			<h1>Which factors predict attainment outcomes for an individual in different countries?</h1>
-			<h4>Use your own characteristics to test what your educational attainment would be in another country. Or, test what your educational attainment would be in your own country, if you changed your family's income level.</h4>
-			<p class="placeholder-text">Visualization 4 (within-country predictions):
-				Will run probit/logit regressions for each country to predict outcomes such as graduating from college.
-				Each square will represent a covariate in a single regression and hovering over it
-				will show the coefficient (weight). We will also use saturation to highlight the predictors
-				with greater importance in different countries. Users will be able to enter their own
-				characteristics into the regression model for a country to see what their predicted outcome
-				would be.</p>
-			<img class="storyboard" src="img/Storyboard4.jpg">
+			<h1>Which factors predict educational outcomes for individuals in different countries?</h1>
+			<p class="placeholder-text">Each column represents a probit regression for a country. Select an educational outcome to see how different
+				factors compare in terms of their influence on the outcome. [Note: in the process of running regressions, so the
+				data below is fake data. Also, will add tooltip that shows the specific coefficients]</p>
+			<form class="form-inline">
+				<div class="form-group">
+					<label id="selected-var-label" for="selectedY">Outcome variable:</label>
+					<select class="form-control" id="selectedY" onChange="matrix.updateVis()">
+						<option value="value">Enrollment in secondary school</option>
+						<option value="value2">Enrollment in higher education</option>
+					</select>
+				</div>
+			</form>
+			<div id="chart"></div>
 		</div>
 	</section>
 
 	<!-- Sources-->
 	<section class="section" id="endpage">
 		<div class="container">
-			<h3>Sources:</h3>
-			<li>Visualization 1: World Bank's World Development Indicators (WDI)</li>
-			<li>Visualization 2: Barro-Lee Education Data</li>
-			<li>Visualization 3: Demographic and Health Survey (DHS)</li>
-			<!--Note: can fix this to sort of an end note later-->
+			<div class="row">
+				<div class="col-sm-2">
+					<img class="icon-ref" href="img/data_laptop.png">
+				</div>
+				<div class="col-sm-10">
+					<h3>Data Sources:</h3>
+					<li>Visualization 1: <a href="https://data.worldbank.org/data-catalog/world-development-indicators">World Bank's World Development Indicators (WDI)</a></li>
+					<li>Visualization 2: <a href="http://www.barrolee.com/">Barro-Lee Education Data</a></li>
+					<li>Visualization 3: <a href="https://dhsprogram.com/">Demographic and Health Survey (DHS)</a></li>
+					<li>Visualization 4: ...</li>
+					<!--Note: can fix this to sort of an end note later-->
+				</div>
+			</div>
+		</br>
+			<div class="row">
+				<div class="col-sm-2">
+				</div>
+				<div class="col-sm-10">
+					<h3>References:</h3>
+					<li><a href="http://tooltipsy.com/">Tooltipsy</a></li>
+					<li>Icons/Images: <a href="https://thenounproject.com/">The Noun Project</a></li>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -187,7 +205,6 @@
 </div>
 
 	<!-- Load JS libraries -->
-<<<<<<< Updated upstream
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/bootstrap.min.js"></script>
 	<script src="js/lib/queue.min.js"></script>
@@ -197,26 +214,15 @@
 	<script src="js/lib/d3.js"></script>
 	<script src="js/lib/d3-tip.js"></script>
 	<script src="js/lib/jquery.fullPage.js "></script>
-=======
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/queue.min.js"></script>
-	<script src="js/topojson.min.js"></script>
-	<script src="js/colorbrewer.js"></script>
-	<script src="js/lodash.min.js"></script>
-	<script src="js/d3.js"></script>
-	<script src="js/d3-tip.js"></script>
-	<script src="js/jquery.fullPage.js "></script>
->>>>>>> Stashed changes
+	<script src="js/lib/lodash.min.js"></script>
 
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
 	<script src="js/ranking.js"></script>
-=======
 	<script src="js/discrete-scatterplot.js"></script>
 	<script src="js/discrete-jitter.js"></script>
->>>>>>> Stashed changes
 	<script src="js/attainment_v2.js"></script>
+	<script src="js/matrix-viz.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
