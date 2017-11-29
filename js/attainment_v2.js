@@ -49,7 +49,7 @@ attainmentVis.prototype.initVis = function() {
     vis.margin = { bottom: 50, top:60, left:50, right:55 };
 
     vis.width = 700 - vis.margin.left - vis.margin.right;
-    vis.height = 550 - vis.margin.top - vis.margin.bottom;
+    vis.height = 450 - vis.margin.top - vis.margin.bottom;
 
     vis.svgLine = d3.select('#line-area')
         .append('svg')
