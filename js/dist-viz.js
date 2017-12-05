@@ -107,5 +107,5 @@ DistViz.prototype.updateVis = function() {
             .transition().duration(600)
             .style("opacity", 0.3);
     }
-}
+};
 
