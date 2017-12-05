@@ -4,7 +4,7 @@
 $(document).ready(function() {
     $('#fullpage').fullpage({
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'],
-        sectionsColor: ['whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
+        sectionsColor: ['whitesmoke', 'white', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
         navigation: true,
         navigationPosition: 'right',
         navigationTooltips: ['1', '2', '3', '4', '5']
@@ -21,7 +21,6 @@ queue()
     .defer(d3.json, 'data/worldmap.json')
     .defer(d3.csv, 'data/mapeducation.csv')
     .await(createMap);
-
 
 function createMap(error, map, data){
 
@@ -52,7 +51,7 @@ function createMap(error, map, data){
 
     // creating new instances for the other js vis files
     choropleth = new choroplethMap("#map", geoJSON, eduData);
-    ranking = new rankingVis('#ranking', eduData);
+    // ranking = new rankingVis('#ranking', eduData);
 
 }
 

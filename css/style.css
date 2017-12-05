@@ -5,6 +5,7 @@
 body {
     font-family: Avenir;
     font-size: 11px;
+    background: white;
 }
 
 .bigger {
@@ -67,7 +68,10 @@ img.icon {
 
 img.icon-ref {
     width: auto;
-    height: 100px;
+    height: 120px;
+    position: absolute;
+    right: 5px;
+    padding:5px;
 }
 
 section {
@@ -91,7 +95,8 @@ section {
 
 #map {
     width: 100%;
-    height: 650px;
+    height: auto;
+    margin-top: 10px;
 }
 
 .legendLabel {
@@ -103,21 +108,50 @@ section {
     font-size: 14px;
 }
 
+.map-instruction {
+    fill: #b0b0b0;
+    text-anchor:middle;
+}
+
+.map-dropdown {
+    font-size: 15px;
+}
 
 /*********************/
 /*     RANKING       */
 /*********************/
 
 .rank-title {
-    fill: #4c4c4c;
-    font-size: 15px;
+    /*font-family: 'Poiret One', cursive;*/
+    fill: #053b68;
+    font-size: 22px;
     font-weight: bold;
+    /*text-anchor: middle;*/
 }
 
 .rank-text{
-    fill: dimgrey;
-    font-size: 14px;
+    fill: black;
+    font-size: 16px;
 }
+
+#ranking-svg {
+    margin-top: 10px;
+}
+
+.rank-note {
+    fill: #a5a5a5;
+    font-size: 10px;
+}
+
+.background-box {
+    /*fill: rgba(78, 179, 211, 0.1);*/
+    fill: #f7f7f7;
+    stroke: #f7f7f7;
+    stroke-width: 1px;
+    rx: 10px;
+    ry: 10px;
+}
+
 
 
 /***********************/
