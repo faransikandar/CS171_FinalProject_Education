@@ -2,6 +2,10 @@ DistViz = function(_parentElement, _data) {
     this.parentElement = _parentElement;
     this.data = _data;
     this.filteredData = [];
+    this.dataAfrica = [];
+    this.dataAsia = [];
+    this.dataAmericas = [];
+    this.dataEurope = [];
     this.initVis();
 };
 
@@ -10,6 +14,24 @@ DistViz.prototype.initVis = function() {
     var vis = this;
 
     console.log(vis.data);
+
+    vis.dataAfrica = vis.data.filter(function(d){
+        return (d.region=="Africa");
+    });
+
+    vis.dataAmericas = vis.data.filter(function(d){
+        return (d.region=="Americas");
+    });
+
+    vis.dataAsia = vis.data.filter(function(d){
+        return (d.region=="Asia");
+    });
+
+    vis.dataEurope = vis.data.filter(function(d){
+        return (d.region=="Europe");
+    });
+
+    console.log(vis.dataAsia);
 
     // specify globals
     vis.margin = {top: 70, right: 20, bottom: 30, left: 300};
@@ -29,6 +51,7 @@ DistViz.prototype.initVis = function() {
 DistViz.prototype.wrangleData = function() {
     var vis = this;
 
+    /*
     vis.data.forEach(function(d) {
         d.BLcode = +d.BLcode;
         // d.country = d.country;
@@ -38,6 +61,7 @@ DistViz.prototype.wrangleData = function() {
         d.edyears_MF = +d.edyears_MF;
         // d.region = d.region;
     });
+    */
 
     vis.updateVis();
 };
@@ -56,6 +80,14 @@ DistViz.prototype.updateVis = function() {
         .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
         .append("g")
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
+
+    var controls = d3.select("scatterplot-controls").append("label")
+        .attr("id", "controls");
+    var checkbox = controls.append("input")
+        .attr("id", "collisiondetection")
+        .attr("type", "checkbox");
+    controls.append("span")
+        .text("Collision Detection");
 
     vis.color = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -85,7 +117,7 @@ DistViz.prototype.updateVis = function() {
 //    vis.rects = vis.discrete_scatterplot.append("g");
     vis.rectWidth = 10;
 
-    vis.data.forEach(function(d) {
+    vis.data.forEach(function (d) {
         d[vis.xVar] = +d[vis.xVar];
         d[vis.yVar] = d[vis.yVar];
         d.BLcode = parseInt(d.BLcode);
@@ -97,17 +129,21 @@ DistViz.prototype.updateVis = function() {
 
     var force = d3.forceSimulation()
         .nodes(vis.data)
-//        .size([width, height])
+        //        .size([width, height])
         .on("tick", tick);
 //        .charge(-1)
 //        .gravity(0)
 //        .chargeDistance(20);
 
-    vis.x.domain(d3.extent(vis.data, function(d) { return d[vis.xVar]; })).nice();
-    vis.y.domain(d3.extent(vis.data, function(d) { return d[vis.yVar]; })).nice();
+    vis.x.domain(d3.extent(vis.data, function (d) {
+        return d[vis.xVar];
+    })).nice();
+    vis.y.domain(d3.extent(vis.data, function (d) {
+        return d[vis.yVar];
+    })).nice();
 
     // Set initial positions
-    vis.data.forEach(function(d) {
+    vis.data.forEach(function (d) {
         d[vis.x] = vis.x(d[vis.xVar]);
         d[vis.y] = vis.y(d[vis.yVar]);
         d[vis.color] = vis.color(d[vis.region]);
@@ -138,24 +174,96 @@ DistViz.prototype.updateVis = function() {
         .attr("class", "y axis")
         .call(vis.yAxis)
 
-    var node = vis.discrete_scatterplot.selectAll(".rect")
-        .data(vis.data)
+    nodeAfrica = vis.discrete_scatterplot.selectAll(".rect")
+        .data(vis.dataAfrica)
         .enter().append("rect")
         .attr("class", "rect")
-        .attr("x", function(d) { return vis.x(d[vis.xVar]); })
-        .attr("y", function(d) { return vis.y(d[vis.yVar]) - 30; })
-        .attr("height", 30)
+        .attr("x", function (d) {
+            return vis.x(d[vis.xVar])
+        })
+        .attr("y", function (d) {
+            return vis.y(d[vis.yVar]) - 30/4*4;
+        })
+        .attr("height", 5)
         .attr("width", 10)
         .attr("opacity", 0.3)
-        .style("fill", function(d) { return d[vis.color]; })
+        .style("fill", function (d) {
+            return d[vis.color];
+        })
         .on('mouseenter', MouseEnter)
         .on('mouseout', MouseOut);
+
+    nodeAmericas = vis.discrete_scatterplot.selectAll(".rect")
+        .data(vis.dataAmericas)
+        .enter().append("rect")
+        .attr("class", "rect")
+        .attr("x", function (d) {
+            return vis.x(d[vis.xVar])
+        })
+        .attr("y", function (d) {
+            return vis.y(d[vis.yVar]) - 30/4*3;
+        })
+        .attr("height",5)
+        .attr("width", 10)
+        .attr("opacity", 0.3)
+        .style("fill", function (d) {
+            return d[vis.color];
+        })
+        .on('mouseenter', MouseEnter)
+        .on('mouseout', MouseOut);
+
+    nodeAsia = vis.discrete_scatterplot.selectAll(".rect")
+        .data(vis.dataAsia)
+        .enter().append("rect")
+        .attr("class", "rect")
+        .attr("x", function (d) {
+            return vis.x(d[vis.xVar])
+        })
+        .attr("y", function (d) {
+            return vis.y(d[vis.yVar]) - 30/4*2;
+        })
+        .attr("height", 5)
+        .attr("width", 10)
+        .attr("opacity", 0.3)
+        .style("fill", function (d) {
+            return d[vis.color];
+        })
+        .on('mouseenter', MouseEnter)
+        .on('mouseout', MouseOut);
+
+    nodeEurope = vis.discrete_scatterplot.selectAll(".rect")
+        .data(vis.dataEurope)
+        .enter().append("rect")
+        .attr("class", "rect")
+        .attr("x", function (d) {
+            return vis.x(d[vis.xVar])
+        })
+        .attr("y", function (d) {
+            return vis.y(d[vis.yVar]) - 30/4*1;
+        })
+        .attr("height", 5)
+        .attr("width", 10)
+        .attr("opacity", 0.3)
+        .style("fill", function (d) {
+            return d[vis.color];
+        })
+        .on('mouseenter', MouseEnter)
+        .on('mouseout', MouseOut);
+
+
+    // vis.filteredData = vis.data.filter(function(d){
+    //     return (d.region=="Asia");
+    // });
+    //
+    // console.log(vis.filteredData);
 
     var legend = vis.discrete_scatterplot.selectAll(".legend")
         .data(vis.color.domain())
         .enter().append("g")
         .attr("class", "legend")
-        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+        .attr("transform", function (d, i) {
+            return "translate(0," + i * 20 + ")";
+        });
 
     legend.append("rect")
         .attr("x", vis.width - 18)
@@ -168,7 +276,9 @@ DistViz.prototype.updateVis = function() {
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
-        .text(function(d) { return d; });
+        .text(function (d) {
+            return d;
+        });
 
     function MouseEnter(d) {
         d3.select(this)
@@ -176,47 +286,100 @@ DistViz.prototype.updateVis = function() {
             .style("opacity", 1);
         vis.tooltip.transition().duration(300)
             .style("opacity", 1);
-        vis.tooltip.html(function() {
+        vis.tooltip.html(function () {
             return d.country + " [" + d.region + "]: " + d3.format(".2f")(d.edyears_MF) + " years";
         })
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 5) + "px");
     }
+
     function MouseOut(d) {
         d3.select(this)
             .transition().duration(600)
             .style("opacity", 0.3);
     }
 
-    d3.select("#collisiondetection").on("change", function() {
+    d3.select("#collisiondetection").on("change", function () {
         force.resume();
     });
 
-//    force.start();
-
+    // force.start();
 
     function tick(e) {
-//        node.each(moveTowardDataPosition(e.alpha));
+        // node.each(moveTowardDataPosition(e.alpha));
+        //
+        // if (checkbox.node().checked) node.each(collide(e.alpha));
 
-//        if (checkbox.node().checked) node.each(collide(e.alpha));
+        nodeAfrica.attr("x", function (d) {
+            return vis.x(d[vis.xVar]);
+        })
+            .attr("y", function (d) {
+                return vis.y(d[vis.yVar]) - 30/4*4;
+            });
 
-        node.attr("x", function(d) { return vis.x(d[vis.xVar]); })
-            .attr("y", function(d) { return vis.y(d[vis.yVar]) - 30; });
+        nodeAmericas.attr("x", function (d) {
+            return vis.x(d[vis.xVar]);
+        })
+            .attr("y", function (d) {
+                return vis.y(d[vis.yVar]) - 30/4*3;
+            });
+
+        nodeAsia.attr("x", function (d) {
+            return vis.x(d[vis.xVar]);
+        })
+            .attr("y", function (d) {
+                return vis.y(d[vis.yVar]) - 30/4*2;
+            });
+
+        nodeEurope.attr("x", function (d) {
+            return vis.x(d[vis.xVar]);
+        })
+            .attr("y", function (d) {
+                return vis.y(d[vis.yVar]) - 30/4*1;
+            });
     }
-/*
-    vis.data.forEach(function(d) {
-        d[vis.x] = vis.x(d[vis.xVar]);
-        d[vis.y] = vis.y(d[vis.yVar]);
-        d[vis.color] = vis.color(d[vis.region]);
-        d[vis.radius] = vis.radius;
-    });
-*/
+
+    /*
+        vis.data.forEach(function(d) {
+            d[vis.x] = vis.x(d[vis.xVar]);
+            d[vis.y] = vis.y(d[vis.yVar]);
+            d[vis.color] = vis.color(d[vis.region]);
+            d[vis.radius] = vis.radius;
+        });
+    */
 
     function moveTowardDataPosition(alpha) {
-        return function(d) {
+        return function (d) {
             d[vis.x] += (vis.x(d[vis.xVar]) - d[vis.x]) * 0.1 * alpha;
             d[vis.y] += (vis.y(d[vis.yVar]) - d[vis.y]) * 0.1 * alpha;
         };
     }
 
+    // Resolve collisions between nodes
+    function collide(alpha) {
+        var quadtree = d3.quadtree(vis.data);
+        return function (d) {
+            var r = d[vis.radius] + vis.radius + vis.padding,
+                nx1 = d[vis.x] - r,
+                nx2 = d[vis.x] + r,
+                ny1 = d[vis.y] - r,
+                ny2 = d[vis.y] + r;
+            quadtree.visit(function (quad, x1, y1, x2, y2) {
+                if (quad.point && (quant.point !== d)) {
+                    var x = d.x - quad.point.x,
+                        y = d.y - quad.point.y,
+                        l = Math.sqrt(vis.x * vis.x + vis.y * vis.y),
+                        r = vis.radius + quad.point.radius + (d[vis.color] !== quad.point.color) * vis.padding;
+                    if (l < r) {
+                        l = (l - r) / l * alpha;
+                        d[vis.x] -= vis.x *= l;
+                        d[vis.y] -= vis.y *= l;
+                        quad.point.x += vis.x;
+                        quad.point.y += vis.y;
+                    }
+                }
+                return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+            });
+        };
+    }
 };
