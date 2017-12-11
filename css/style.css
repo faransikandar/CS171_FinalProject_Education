@@ -1,43 +1,3 @@
-.y_axis_scatter line {
-    stroke: transparent;
-}
-
-.y_axis_scatter path {
-    stroke: transparent;
-}
-
-.y_axis_scatter text {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.y_axis_scatter label {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.x_axis_scatter line {
-    stroke: gray;
-}
-
-.x_axis_scatter path {
-    stroke: gray;
-}
-
-.x_axis_scatter text {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.x_axis_scatter label {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
 body {
     font-family: Avenir;
     font-size: 11px;
@@ -98,6 +58,8 @@ img {
 }
 
 /* FULLPAGE */
+
+
 
 #fp-nav ul li a span {
     background: whitesmoke;
@@ -418,6 +380,47 @@ img.icon {
 
 /* distribution vis */
 
+.y_axis_scatter line {
+    stroke: transparent;
+}
+
+.y_axis_scatter path {
+    stroke: transparent;
+}
+
+.y_axis_scatter text {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+.y_axis_scatter label {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+.x_axis_scatter line {
+    stroke: gray;
+}
+
+.x_axis_scatter path {
+    stroke: gray;
+}
+
+.x_axis_scatter text {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+.x_axis_scatter label {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+
 .axis path,
 .axis line {
     fill: none;
@@ -445,6 +448,11 @@ input {
 
 /* FULLPAGE */
 
+#intropage {
+    background-image: url(../img/student_standing_30.png);
+    background-size: cover;
+    padding: 0;
+}
 
 #fp-nav ul li a span {
     background: black;
