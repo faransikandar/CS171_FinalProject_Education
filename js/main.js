@@ -3,11 +3,11 @@
 // FULLPAGE parameters
 $(document).ready(function() {
     $('#fullpage').fullpage({
-        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage', '7thPage'],
-        sectionsColor: ['whitesmoke', 'whitesmoke', 'white', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage', '7thPage', '8thPage'],
+        sectionsColor: ['whitesmoke', 'whitesmoke', 'white', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
         navigation: true,
         navigationPosition: 'right',
-        navigationTooltips: ['1', '2', '3', '4', '5', '6', '7']
+        navigationTooltips: ['1', '2', '3', '4', '5', '6', '7', '8']
     });
 });
 
