@@ -217,9 +217,9 @@ DistViz.prototype.updateVis = function() {
             return vis.x(d[vis.xVar])
         })
         .attr("y", function (d) {
-            return vis.y(d[vis.yVar]) - 50/6*4;
+            return vis.y(d[vis.yVar]) - 35;
         })
-        .attr("height", 5)
+        .attr("height", 30)
         .attr("width", 10)
         .attr("opacity", 0.3)
         .style("fill", function (d) {
@@ -236,9 +236,9 @@ DistViz.prototype.updateVis = function() {
             return vis.x(d[vis.xVar])
         })
         .attr("y", function (d) {
-            return vis.y(d[vis.yVar]) - 50/6*3;
+            return vis.y(d[vis.yVar]) - 35;
         })
-        .attr("height",5)
+        .attr("height", 30)
         .attr("width", 10)
         .attr("opacity", 0.3)
         .style("fill", function (d) {
@@ -255,9 +255,9 @@ DistViz.prototype.updateVis = function() {
             return vis.x(d[vis.xVar])
         })
         .attr("y", function (d) {
-            return vis.y(d[vis.yVar]) - 50/6*2;
+            return vis.y(d[vis.yVar]) - 35;
         })
-        .attr("height", 5)
+        .attr("height", 30)
         .attr("width", 10)
         .attr("opacity", 0.3)
         .style("fill", function (d) {
@@ -274,9 +274,9 @@ DistViz.prototype.updateVis = function() {
             return vis.x(d[vis.xVar])
         })
         .attr("y", function (d) {
-            return vis.y(d[vis.yVar]) - 50/6*1;
+            return vis.y(d[vis.yVar]) - 35;
         })
-        .attr("height", 5)
+        .attr("height", 30)
         .attr("width", 10)
         .attr("opacity", 0.3)
         .style("fill", function (d) {
@@ -341,38 +341,36 @@ DistViz.prototype.updateVis = function() {
     // force.start();
 
     function tick(e) {
-        /*
-        vis.node.each(moveTowardDataPosition(e.alpha));
+        node.each(moveTowardDataPosition(e.alpha));
 
-        if (checkbox.node().checked) vis.node.each(collide(e.alpha));
-        */
+        if (checkbox.node().checked) node.each(collide(e.alpha));
 
         nodeAfrica.attr("x", function (d) {
             return vis.x(d[vis.xVar]);
         })
             .attr("y", function (d) {
-                return vis.y(d[vis.yVar]) - 50/6*4;
+                return vis.y(d[vis.yVar]) - 50/4*4;
             });
 
         nodeAmericas.attr("x", function (d) {
             return vis.x(d[vis.xVar]);
         })
             .attr("y", function (d) {
-                return vis.y(d[vis.yVar]) - 50/6*3;
+                return vis.y(d[vis.yVar]) - 50/4*3;
             });
 
         nodeAsia.attr("x", function (d) {
             return vis.x(d[vis.xVar]);
         })
             .attr("y", function (d) {
-                return vis.y(d[vis.yVar]) - 50/6*2;
+                return vis.y(d[vis.yVar]) - 50/4*2;
             });
 
         nodeEurope.attr("x", function (d) {
             return vis.x(d[vis.xVar]);
         })
             .attr("y", function (d) {
-                return vis.y(d[vis.yVar]) - 50/6*1;
+                return vis.y(d[vis.yVar]) - 50/4*1;
             });
     }
 

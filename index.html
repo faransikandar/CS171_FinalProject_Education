@@ -93,6 +93,23 @@
 				<div id="discrete-scatterplot-controls"></div>
 				<div class="col-sm-2"></div>
 				<div class="col-sm-5">
+					<form class="form-inline">
+						<div class="form-group">
+							<div id="col-sm-2"></div>
+							<label for="rankingType">Display Regions:</label>
+							<select class="form-control" id="ranking-type">
+								<option value="Africa">Africa</option>
+								<option value="Americas">Americas</option>
+								<option value="Asia">Asia</option>
+								<option value="Europe">Europe</option>
+								<option value="revenue">All Regions</option>
+								<option value="revenue">Overall Saturation</option>
+							</select>
+
+							<!-- Activity IV -->
+							<!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
+						</div>
+					</form>
 					<div class = "scatterplot-controls"></div>
 					<!--<form class="scatterplot-controls">-->
 						<!--<label><input type="checkbox" name="mode" value="collisiondetection">Collision Detection</label>-->
@@ -276,14 +293,15 @@
 
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
-	<script src="js/discrete-scatterplot.js"></script>
-	<!--<script src="js/discrete-scatterplot-v0.js"></script>-->
+	<!--<script src="js/discrete-scatterplot.js"></script>-->
+	<!--<script src="js/discrete-scatterplot-all.js"></script>-->
+	<script src="js/discrete-scatterplot-v0.js"></script>
 	<script src="js/discrete-jitter.js"></script>
 	<!--<script src="js/dist-viz.js"></script>-->
 	<script src="js/attainment_v2.js"></script>
 	<!--<script src="js/attainment_v3.js"></script>-->
 	<script src="js/matrix-viz.js"></script>
-	<script src="js/main_dist.js"></script>
+	<!--<script src="js/main_dist.js"></script>-->
 	<script src="js/main.js"></script>
 
 </body>

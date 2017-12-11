@@ -1,6 +1,42 @@
+.y_axis_scatter line {
+    stroke: transparent;
+}
 
+.y_axis_scatter path {
+    stroke: transparent;
+}
 
+.y_axis_scatter text {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
 
+.y_axis_scatter label {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+.x_axis_scatter line {
+    stroke: gray;
+}
+
+.x_axis_scatter path {
+    stroke: gray;
+}
+
+.x_axis_scatter text {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+.x_axis_scatter label {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
 
 body {
     font-family: Avenir;
