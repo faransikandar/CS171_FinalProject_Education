@@ -121,7 +121,7 @@ function updateVis() {
         });
 
         svg.append("g")
-            .attr("class", "x axis")
+            .attr("class", "x_axis_scatter")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis)
 
@@ -130,18 +130,21 @@ function updateVis() {
             .attr("x", width)
             .attr("y", height - 10)
             .style("text-anchor", "end")
+            .style("font-size", 14)
             .text("Years of Educational Attainment");
 
         svg.append("text")
             .attr("class", "label")
             .attr("transform", "rotate(-90)")
-            .attr("y", 6)
+            .attr("x", 0)
+            .attr("y", -80)
             .attr("dy", "1em")
-            .style("text-anchor", "end")
+            //.style("text-anchor", "end")
             .text("Year");
 
         svg.append("g")
-            .attr("class", "y axis")
+            .attr("class", "y_axis_scatter")
+            .style("font-size", 14)
             .call(yAxis)
 
         var node = svg.selectAll(".rect")
