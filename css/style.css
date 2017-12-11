@@ -33,7 +33,9 @@ body {
     color: black;
     text-align: center;
     padding-bottom: 20%;
+    line-height: 180%;
 }
+
 
 #story2 h2 {
     letter-spacing: 4px;
@@ -134,6 +136,10 @@ section {
     font-weight: lighter;
 }
 
+#mappage row {
+    margin-left: 10px;
+}
+
 /*********************/
 /*     RANKING       */
 /*********************/
@@ -141,14 +147,15 @@ section {
 .rank-title {
     /*font-family: 'Poiret One', cursive;*/
     fill: #053b68;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 18px;
+    /*letter-spacing: 0.5px;*/
+    /*font-weight: bold;*/
     /*text-anchor: middle;*/
 }
 
 .rank-text{
     fill: black;
-    font-size: 16px;
+    font-size: 13.5px;
 }
 
 #ranking-svg {
@@ -161,12 +168,13 @@ section {
 }
 
 .background-box {
-    /*fill: rgba(78, 179, 211, 0.1);*/
-    fill: #f7f7f7;
-    stroke: #f7f7f7;
+    fill: rgba(247, 247, 247, 0.8);
+    stroke: rgba(247, 247, 247, 0.8);
+    /*fill: #f7f7f7;*/
+    /*stroke: #f7f7f7;*/
     stroke-width: 1px;
-    rx: 20px;
-    ry: 20px;
+    rx: 17px;
+    ry: 17px;
 }
 
 
