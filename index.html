@@ -213,22 +213,40 @@
 
 	<!------ PREDICTION PAGE ------->
 	<section class="section" id="predictionpage">
-		<div class="container">
-			<h1>Which factors predict educational outcomes for individuals in different countries?</h1>
-			<p class="placeholder-text">Each column represents a probit regression for a country. Select an educational outcome to see how different
-				factors compare in terms of their influence on the outcome. [Note: in the process of running regressions, so the
-				data below is fake data. Also, will add tooltip that shows the specific coefficients]</p>
-			<form class="form-inline">
-				<div class="form-group">
-					<label id="selected-var-label" for="selectedY">Outcome variable:</label>
-					<select class="form-control" id="selectedY" onChange="matrix.updateVis()">
-						<option value="value">Enrollment in secondary school</option>
-						<option value="value2">Enrollment in higher education</option>
-					</select>
-				</div>
-			</form>
-			<div id="chart"></div>
+		<div class="container-fluid">
+		<h3 class="matrix-title">WHAT DETERMINES WHETHER A CHILD GOES TO SCHOOL IN A COUNTRY?</h3>
+		<div class="matrix-subtext col-xs-24 col-sm-6"> There may be many factors that influence whether a child in a given country
+			attends school or not. The matrix below looks at the relative effect of 11 such factors on enrollment in secondary
+			and higher education using nationally representative survey data in each country. Hover over the cells for more detail. <br><br>
 		</div>
+		<div class="col-xs-20 col-sm-5 float-right">
+			<div class="filterType">Outcome variable:</div>
+			<div class="btn-group" role="group" >
+				<a class="btn btn-secondary wide active" id="value">Enrollment in secondary school</a>
+				<a class="btn btn-secondary wide" id="value2">Enrollment in higher education</a>
+			</div>
+		</div>
+		<form class="form-inline">
+			<select class="form-control" id="order" style="visibility: hidden">
+				<option value="value">Secondary</option>
+				<option value="value2">Tertiary</option>
+			</select>
+		</form>
+		<div id="chart"></div>
+		<div id="dataset-picker"></div>
+		<div class="matrix-explain col-xs-20 col-sm-5">
+			In many developing countries,
+			costs -- either direct educational costs or opportunity costs from foregone earnings -- are often issues that prevent
+			children from attending school. The matrix shows that being poor (being in the bottom 40% of the country's wealth distribution)
+			is the single most defining factor in whether a child is enrolled or not. <br>
+		</div>
+		<div class="matrix-explain col-xs-20 col-sm-5">
+			In addition, parent and community education seem to play an important role in influencing enrollment in many
+			countries in the sample. Higher educational attainment may reflect greater value placed on education within the
+			household or community, which is likely to be affect whether or not a child attends school.
+			 <br>
+		</div>
+	</div>
 	</section>
 
 	<!-- Sources-->

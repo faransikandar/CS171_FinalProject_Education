@@ -195,10 +195,36 @@ var matrix;
 
 // load data
 queue()
-    .defer(d3.csv, "data/data_coeffs.csv")
+    .defer(d3.csv, "data/ref_coeffs.csv")
     .await(function(error, reg1Data) {
         console.log(reg1Data);
 
         matrix = new Matrix("matrix-viz", reg1Data);
     });
 
+
+var value1 = $("#value");
+var value2 = $("#value2");
+
+var age_triggers = [value1, value2];
+
+age_triggers.forEach(function(age_trigger) {
+    age_trigger.click(function() {
+        console.log(age_trigger);
+        var yvar = age_trigger.text();
+        if (yvar=="Enrollment in secondary school") { yvar = "value";}
+        if (yvar=="Enrollment in higher education") { yvar = "value2";}
+        if (matrix != null) {
+            matrix.yvar = yvar;
+            matrix.updateVis();
+        }
+        return false;
+    });
+});
+
+
+$(".btn-group > a").click(function(){
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+    //$(this).parent().parent().siblings().children().children().not(this).removeClass("active");
+});

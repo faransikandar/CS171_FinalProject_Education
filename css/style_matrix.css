@@ -1,16 +1,19 @@
 rect.bordered {
-  stroke: #E6E6E6;
+  stroke: white;
   stroke-width:2px;
 }
 
+h3.matrix-title {
+  letter-spacing: 4px;
+}
 text.mono {
   font-size: 8pt;
   font-family: Avenir;
   fill: #aaa;
 }
 
-.countryLabel, .varLabel {
-  font-size: 9pt;
+text.mono {
+  font-size: 8pt;
   font-family: Avenir;
 }
 
@@ -27,4 +30,79 @@ text.mono {
 #selected-var-label {
   font-family: Avenir;
   margin-left: 20px;
+}
+.btn-group>a {
+  font-size: 12px;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--colorMedium);
+  border-color: #ddd;
+  border-width: 1px;
+  background-color: #f0f0f0;
+  padding: 3px 10px;
+  margin: 0 4px 4px 4px;
+  border-radius: 12px !important;
+}
+.btn-group>a:hover {
+  color: var(--colorDark);
+}
+a.active, a:active {
+  background-color: #cdcdcd;
+  box-shadow: none;
+  color: var(--colorDark);
+  outline: none;
+}
+*:focus {
+  outline: none !important;
+  outline: 0  !important;
+}
+div.btn-group {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.selectSection {
+  margin: 20px 0;
+}
+.filterType {
+  color: #999;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-left: 40px;
+}
+.matrix-subtext {
+  color: #999;
+  font-size: 13px;
+}
+.matrix-explain{
+  color: #999;
+  font-size: 13px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+text.text-highlight {
+  fill: #4C4545;
+  font-weight: bold;
+}
+div.tooltip {
+  width: 110px;
+  height: 45px;
+  padding: 5px;
+  position: absolute;
+  text-align: left;
+  color: white;
+  font-size: 11px;
+  font-family: Avenir;
+  background-color: #34495E;
+  border: 1px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+body {
+  font-family: Avenir;
+}
+
+.tooltip-matrix {
+  font-size: 9pt;
+  fill: #4C4545;
 }
