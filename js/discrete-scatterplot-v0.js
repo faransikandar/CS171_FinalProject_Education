@@ -1,4 +1,4 @@
-var margin = {top: 70, right: 20, bottom: 30, left: 300},
+var margin = {top: 70, right: 20, bottom: 80, left: 300},
     width = 1300 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom,
     padding = 1, // separation between nodes
@@ -13,7 +13,7 @@ var svg = d3.select("#discrete-scatterplot").append("svg")
 
 var formatNumber = d3.format("d");
 
-tooltip = d3.select("body")
+tooltip = d3.select("#discrete-scatterplot")
     .append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
@@ -89,7 +89,7 @@ function updateVis() {
 
     var selection = d3.select("#ranking-type").property("value");
 
-    // NEED TO INCORPORATE SELECTION SOMEHOW
+    // NEED TO INCORPORATE SELECTION SOMEHOW IN ORDER TO GET BUTTONS/DROPDOWN WORKING
 
     var xVar = "edyears_MF",
         //yVar = d3.randomUniform(-height/2, height/2);
@@ -122,7 +122,7 @@ function updateVis() {
 
         svg.append("g")
             .attr("class", "x_axis_scatter")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(0," + (height + 5) + ")")
             .call(xAxis)
 
         svg.append("text")
@@ -140,10 +140,11 @@ function updateVis() {
             .attr("y", -80)
             .attr("dy", "1em")
             //.style("text-anchor", "end")
-            .text("Year");
+            .style("font-size", 14)
 
         svg.append("g")
             .attr("class", "y_axis_scatter")
+            .attr("transform", "translate(0," + (-17.5) + ")")
             .style("font-size", 14)
             .call(yAxis)
 
@@ -163,8 +164,28 @@ function updateVis() {
             .style("fill", function (d) {
                 return d.color;
             })
-            .on('mouseenter', MouseEnter)
-            .on('mouseout', MouseOut);
+            .attr('title', function(d){
+                return "<b>" + d.country + "</b>"+ "</br>" + d.region + "</br><b>Average Years of Education<b><br><b>" + d.edyears_MF +"</b>"
+            })
+            // .on('mouseenter', MouseEnter)
+            // .on('mouseout', MouseOut);
+
+            $('.rect').tooltipsy({
+                alignTo: 'cursor',
+                offset: [10, 10],
+                css: {
+                    'padding': '10px',
+                    'max-width': '200px',
+                    'color': '#fafafa',
+                    'background-color': 'rgba(101, 101, 101, .7)',
+                    'border': '0.1px solid #656565',
+                    'border-radius': '10px',
+                    '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                    '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                    'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                    'text-shadow': 'none'
+                }
+            });
 
         var legend = svg.selectAll(".legend")
             .data(color.domain())
@@ -189,6 +210,16 @@ function updateVis() {
                 return d;
             });
 
+        var addInstruction = svg.selectAll(".text")
+            .data(data)
+            .enter().append("g")
+            .attr("class", "text");
+
+        addInstruction.append('text')
+            .attr('x', width/3)
+            .attr('y', height + 50)
+            .text("HOVER OVER EACH BAR FOR MORE INFORMATION");
+
         function MouseEnter(d) {
             d3.select(this)
                 .transition().duration(100)
@@ -206,6 +237,9 @@ function updateVis() {
             d3.select(this)
                 .transition().duration(600)
                 .style("opacity", 0.3);
+
+            //vis.tooltip.transition().duration(2000).style("opacity", 0.1);
+
         }
 
         d3.select("#collisiondetection").on("change", function () {

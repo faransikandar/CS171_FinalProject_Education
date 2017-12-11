@@ -40,7 +40,7 @@ DistViz.prototype.initVis = function() {
     console.log(vis.dataAsia);
 
     // specify globals
-    vis.margin = {top: 70, right: 20, bottom: 30, left: 300};
+    vis.margin = {top: 70, right: 20, bottom: 80, left: 300};
     vis.width = 1300 - vis.margin.left - vis.margin.right;
     vis.height = 500 - vis.margin.top - vis.margin.bottom;
     vis.padding = 0; // separation b/w nodes
@@ -49,7 +49,7 @@ DistViz.prototype.initVis = function() {
     vis.tooltip = d3.select("#discrete-scatterplot")
         .append("div")
         .attr("class", "tooltip")
-        .style("opacity", 0);
+        .style("opacity", 0.3);
 
     vis.wrangleData();
 };
@@ -89,6 +89,8 @@ DistViz.prototype.updateVis = function() {
         .append("g")
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
+
+    /*
     var controls = d3.select("scatterplot-controls").append("label")
         .attr("id", "controls");
     var checkbox = controls.append("input")
@@ -96,6 +98,7 @@ DistViz.prototype.updateVis = function() {
         .attr("type", "checkbox");
     controls.append("span")
         .text("Collision Detection");
+        */
 
     vis.color = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -314,6 +317,14 @@ DistViz.prototype.updateVis = function() {
         .text(function (d) {
             return d;
         });
+
+    var instruction = vis.discrete_scatterplot.selectAll(".addInstruction")
+        .enter().append("g")
+        .attr("class", "addInstruction")
+        .append('text')
+        .attr('x', vis.width/2)
+        .attr('y', vis.height - 30)
+        .text("HOVER OVER EACH BAR FOR MORE INFORMATION");
 
     function MouseEnter(d) {
         d3.select(this)
