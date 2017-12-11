@@ -30,7 +30,29 @@ body {
     padding-bottom: 20%;
 }
 
-img{
+#story1 h2 {
+    letter-spacing: 4px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-bottom: 20%;
+}
+
+#story2 h2 {
+    letter-spacing: 4px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-bottom: 20%;
+}
+
+#mappage h1 {
+    padding: 5px;
+}
+
+img {
     height:650px;
     margin-left: 30px;
 }
@@ -61,10 +83,6 @@ img{
     text-align: right;
 }
 
-img.icon {
-    width: auto;
-    height: 150px;
-}
 
 img.icon-ref {
     width: auto;
@@ -78,19 +96,19 @@ section {
     margin-bottom: 25px;
 }
 
+
 /*********************/
 /*     CHOROPLETH   */
 /*********************/
 
 .map {
-    fill: none;
+    fill: #ededed;
     stroke: #cecece;
     stroke-width: 0.1px;
 }
 
 .map:hover{
-    fill: #123f6e;
-    opacity: 0.8;
+    opacity: 0.65;
 }
 
 #map {
@@ -115,6 +133,7 @@ section {
 
 .map-dropdown {
     font-size: 15px;
+    font-weight: lighter;
 }
 
 /*********************/
@@ -148,8 +167,8 @@ section {
     fill: #f7f7f7;
     stroke: #f7f7f7;
     stroke-width: 1px;
-    rx: 10px;
-    ry: 10px;
+    rx: 20px;
+    ry: 20px;
 }
 
 
@@ -160,35 +179,50 @@ section {
 
 /* default figure (no filter) */
 
+.attain-instruct {
+    font-size: 18px;
+    /*text-align: center;*/
+    line-height: 130%;
+}
+
 .line {
     stroke: #663399;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.line-US {
+    stroke: #a5a5a5;
     stroke-width: 1.5px;
     fill: none;
 }
 
-/*.line-40 {*/
-    /*opacity: 1;*/
-/*}*/
+#dropout-text {
+    text-align: center;
+}
 
-/*.line-30 {*/
-    /*opacity: 0.85;*/
-/*}*/
-
-/*.line-20 {*/
-    /*opacity: 0.70;*/
-/*}*/
-
-/*.line-15 {*/
-    /*opacity: 0.55;*/
-/*}*/
+#attain-btn {
+    align: middle;
+}
 
 li {
     font-size: 15px;
 }
 
+img.icon {
+    width: auto;
+    height: 100px;
+}
+
 .points {
     fill: #663399;
     stroke: #663399;
+    stroke-width: 0.1 px;
+}
+
+.points-US{
+    fill: #a5a5a5;
+    stroke: #a5a5a5;
     stroke-width: 0.1 px;
 }
 
@@ -338,6 +372,12 @@ li {
     fill: #a8ddb5;
     stroke: #a8ddb5;
     stroke-width: 0.1 px;
+}
+
+.note-hover {
+    fill: gray;
+    opacity: 0.7;
+    font-size: 10px;
 }
 
 /* distribution vis */

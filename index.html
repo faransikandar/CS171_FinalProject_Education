@@ -9,13 +9,11 @@
 
 	<link rel=icon href="img/favicon-graduation-cap.ico">
 
-
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/jquery.fullPage.css">
 	<link rel="stylesheet" href="css/style_matrix.css">
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-
 
 	<!-- should combine the stylesheets -->
 	<link rel="stylesheet" href="css/style_dist.css">
@@ -36,48 +34,39 @@
 	</section>
 
 
+	<!-- adding story -->
+	<section class="section" id="story1">
+		<div class="container" id="story1-container">
+			<h2>Have you ever wonder how long will you be in school if you were born in another country?</h2>
+		</div>
+	</section>
+
+
 	<!------ CHOROPLETH PAGE ------->
 	<section class="section" id="mappage">
 		<div class="container">
 			<h1>Educational outcomes vary drastically around the world. </h1>
 			<!--<h4>This is a multi-layered problem of access, quality, and incentives to attain education.</h4>-->
-			<!--<p class="placeholder-text">Visualization 1: General education statistics around the world &#45;&#45; Choropleth map with linked ranking of top 5 and bottom 5 countries by indicator (unfinished version below) </p>-->
-			<!--<img class="storyboard" src="img/Storyboard1.jpg">-->
 			<div class="row">
-				<div class="col-sm-5">
-					<p class="map-dropdown">Select Educational Outcome:</p>
-					<span>
-						<form action="/action_page.php">
-                                <select class="form-control" id="map-select-var" onChange="choropleth.updateChoropleth();choropleth.textRemove();">
-                                    <option value="avg13_literacy1524">Literacy Rate (Age 15-24) </option>
-                                    <option value="avg13_pri_compt">Primary School Completion Rate (%)</option>
-                                    <option value="avg13_pri_attain">Attainment Rate (at least Primary School) (%)</option>
-                                    <option value="avg13_sec_low_attain">Attainment Rate (at least Lower Secondary School) (%)</option>
-                                    <option value="avg13_sec_up_attain">Attainment Rate (at least Upper Secondary School) (%)</option>
-                                    <option value="avg13_bac_attain">Attainment Rate (at least Bachelor's Degree) (%)</option>
-                                    <option value="avg13_mas_attain">Attainment Rate (at least Masters's Degree) (%)</option>
-                                    <!--<option value="avg13_doc_attain">Attainment Rate (at least Doctorate's Degree) (%)</option>-->
-                                    <option value="avg13_pri_enroll">Enrollment Rate (Primary School) (%)</option>
-                                    <option value="avg13_sec_enroll">Enrollment Rate (Secondary School) (%)</option>
-                                    <option value="avg13_ter_enroll">Enrollment Rate (Tertiary School) (%)</option>
-                                    <option value="avg13_gov_edu">Government Expenditure on education (% of GDP)</option>
-                                </select>
-						</form>
-					</span>
-				</div>
-				<div class="col-sm-2">
-				</div>
+				<form class="form-inline">
+					<div class="form-group">
+						<label class="map-dropdown" for="map-select-var">Select Educational Outcome : </label>
+						<select class="form-control" id="map-select-var" onChange="choropleth.updateChoropleth();choropleth.textRemove();">
+							<option value="avg13_literacy1524">Literacy Rate (Age 15-24) </option>
+							<option value="avg13_pri_compt">Primary School Completion Rate (%)</option>
+							<option value="avg13_pri_attain">Attainment Rate (at least Primary School) (%)</option>
+							<option value="avg13_sec_low_attain">Attainment Rate (at least Lower Secondary School) (%)</option>
+							<option value="avg13_sec_up_attain">Attainment Rate (at least Upper Secondary School) (%)</option>
+							<option value="avg13_bac_attain">Attainment Rate (at least Bachelor's Degree) (%)</option>
+							<option value="avg13_mas_attain">Attainment Rate (at least Masters's Degree) (%)</option>
+							<option value="avg13_pri_enroll">Enrollment Rate (Primary School) (%)</option>
+							<option value="avg13_sec_enroll">Enrollment Rate (Secondary School) (%)</option>
+							<option value="avg13_ter_enroll">Enrollment Rate (Tertiary School) (%)</option>
+							<option value="avg13_gov_edu">Government Expenditure on education (% of GDP)</option>
+						</select>
+					</div>
+				</form>
 			</div>
-			<!-- code with ranking as row -->
-
-			<!--<div class="row">-->
-				<!--<div class="col-sm-12" id="ranking"></div>-->
-			<!--</div>-->
-			<!--<div class="row">-->
-				<!--<div class="col-sm-12" id="map"></div>-->
-			<!--</div>-->
-
-			<!-- code with ranking as column -->
 		</div>
 		<div class="container-fluid">
 			<div class="row">
@@ -117,42 +106,57 @@
 	</section>
 
 
+	<!-- adding story 2 -->
+	<section class="section" id="story2">
+		<div class="container" id="story2-container">
+			<h2>
+				Now that we know the differences between different countries, what do we know about differences within the countries?
+				</br>
+				</br>
+				Is there difference between the trends in developed countries compared to developing countries?
+				</h2>
+		</div>
+	</section>
+
+
 	<!------ ATTAINMENT PROFILE PAGE ------->
 	<section class="section" id="profilepage">
 		<div class="container">
-			<h1>There is also substantial variation in educational attainment within countries. </h1>
-			<h4>Use the chart below to explore educational attainment within countries. Notice that in many countries, there is a steep dropoff in enrollment after 5 or 6 years of education.</h4>
-			<!--<p class="placeholder-text">Visualization 3 (within-country comparisons):-->
-				<!--looking at attainment profiles by age group, gender, rural/urban, wealth within a country to-->
-				<!--reveal patterns in who is attending/dropping out of school. There will also be annotations-->
-				<!--that give contextual information on why some countries see certain trends/dropoffs.</p>-->
+			<h4 class="attain-instruct">
+				Use the chart below to explore variation in educational attainment within countries. Notice that in many developing countries, while the trend in developed countries does not change much over the years, there is a steep dropoff in different years for developing countries.
+			</h4>
 			<div class="row">
 				<div class="col-sm-8">
-					<!--<h2>Attainment Profile</h2>-->
-
 					<!-- select the country (note: options added in attainment.js)-->
-					<h4>Select a country</h4>
-					<select class="form-control" id="line-select-country" onChange="attainment.wrangleData();">
-						<option selected value="default">Please select a country</option>
-					</select>
+					<div id="attain-country">
+						<form class="form-inline">
+							<label class="map-dropdown" for="line-select-country">Select a developing country:</label>
+							<select class="form-control" id="line-select-country" onChange="attainment.hideOthers();attainment.wrangleData();">
+								<option selected value="default">Please select a country</option>
+							</select>
+						</form>
+					</div>
+
+					<div id="attain-btn">
+						</br>
 
 					<!--filter for gender, income level or rural/urban divide -->
-					<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>
-					<!-- maybe add the onclick color change to indicate that you have selected this one and unless you change this filter, it should stay filtered-->
-					<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.hideFilter();attainment.showOriginal();">All Population</span>
-					<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.hideFilter();attainment.filterGender();">Gender</span>
-					<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.hideFilter();attainment.filterRural();">Rural/Urban</span>
-					<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.hideFilter();attainment.filterIncome();">Income</span>
-					<span id="clear-btn" class="btn btn-default" onclick="attainment.removeAll();">Clear all</span>
 
-					<!-- bottons for filtering age groups-->
-					<!--<h4 class="btn-age">Select Age Group</h4>-->
-					<!-- how to make this one only show up after you filter? -->
-					<!--<span id="age15-19" class="btn btn-primary btn-age" onclick="attainment.select15();">Age 15-19</span>-->
-					<!--<span id="age20-29" class="btn btn-primary btn-age" onclick="attainment.select20();">Age 20-29 (default)</span>-->
-					<!--<span id="age30-39" class="btn btn-primary btn-age" onclick="attainment.select30();">Age 30-39</span>-->
-					<!--<span id="age40-49" class="btn btn-primary btn-age" onclick="attainment.select40();">Age 40-49</span>-->
-					<!--<span id="clear-age-btn" class="btn btn-default" onclick="attainment.hideAllAge();">Clear all</span>-->
+						<!-- Buttons for attainment_v3.js -->
+						<!--<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>-->
+						<!--<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.chooseAll();">All Population</span>-->
+						<!--<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.chooseGender();">Gender</span>-->
+						<!--<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.chooseUrban();">Rural/Urban</span>-->
+						<!--<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.chooseIncome();">Income</span>-->
+						<!--<span id="clear-btn" class="btn btn-default" onclick="attainment.removeAll();">Clear all</span>-->
+						<!--</div>-->
+
+						<!-- Original buttons for attainment_v2.js -->
+						<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.hideOthers();attainment.showOriginal();">All Population</span>
+						<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.hideOthers();attainment.filterGender();">Gender</span>
+						<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.hideOthers();attainment.filterRural();">Rural/Urban</span>
+						<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.hideOthers();attainment.filterIncome();">Income</span>
+					</div>
 
 
 				</div>
@@ -161,14 +165,29 @@
 			<div class="row">
 				<div class="col-sm-8" id="line-area"></div>
 				<div class="col-sm-4" id="dropout-info">
-					<h3> Why are students dropping out from schools?</h3>
-					<li><strong>Financial Constraints:</strong> <p>Sending the children to school might be too expensive.</p></li>
-					<li><strong>Distance to Schools: </strong><p>Traveling to school might take up too much time. Sometimes it could be dangerous for children, especially girls to walk to a faraway school alone.</p></li>
-					<li><strong>Household's preferences: </strong><p>Parents might have preference for boys to attend schools over girls. Or they could prefer to send kids that they percieved to be smarter and more talented to attend schools.</p></li>
+					<h3 id="dropout-text">
+						Why are students dropping out from schools?
+					</h3>
 					</br>
-					</br>
-					<img class="icon" src="img/female_student.png">
-					<span><img class="icon" src="img/male_student.png"></span>
+					<ul class="icons-ul">
+						<li><i class="icon-li icon-ok"></i><strong>Household's preferences: </strong>
+							<p>Parents might have preference for boys to attend schools over girls. Or they could prefer to send kids that they percieved to be smarter and more talented to attend schools.</p>
+						</li>
+						<li><i class="icon-li icon-ok"></i><strong>Distance to Schools: </strong>
+							<p>Traveling to school might take up too much time. Sometimes it could be dangerous for children, especially girls to walk to a faraway school alone.</p>
+						</li>
+						<li><i class="icon-li icon-ok"></i><strong>Financial Constraints:</strong>
+							<p>Sending the children to school might be too expensive.</p>
+						</li>
+						<li><i class="icon-li icon-ok"></i><strong>Government's Investment in Schools:</strong>
+							<p>Varying public investment in school also affects number of schools available as well as its quality.</p>
+						</li>
+					</ul>
+						</br>
+					<p style="text-align: center">
+					<img class="icon" src="img/female_student.png" align="middle">
+					<span><img class="icon" src="img/male_student.png" align="middle"></span>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -257,12 +276,12 @@
 
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
-	<!--<script src="js/ranking_col.js"></script>-->
 	<script src="js/discrete-scatterplot.js"></script>
 	<!--<script src="js/discrete-scatterplot-v0.js"></script>-->
 	<script src="js/discrete-jitter.js"></script>
 	<!--<script src="js/dist-viz.js"></script>-->
 	<script src="js/attainment_v2.js"></script>
+	<!--<script src="js/attainment_v3.js"></script>-->
 	<script src="js/matrix-viz.js"></script>
 	<script src="js/main_dist.js"></script>
 	<script src="js/main.js"></script>

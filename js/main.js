@@ -3,18 +3,16 @@
 // FULLPAGE parameters
 $(document).ready(function() {
     $('#fullpage').fullpage({
-        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'],
-        sectionsColor: ['whitesmoke', 'white', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage', '7thPage'],
+        sectionsColor: ['whitesmoke', 'whitesmoke', 'white', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
         navigation: true,
         navigationPosition: 'right',
-        navigationTooltips: ['1', '2', '3', '4', '5']
+        navigationTooltips: ['1', '2', '3', '4', '5', '6', '7']
     });
 });
 
 
-
-var choropleth, ranking, attainment;
-
+var choropleth, attainment;
 
 // CHOROPLETH + RANKING DATA
 queue()
@@ -23,7 +21,6 @@ queue()
     .await(createMap);
 
 function createMap(error, map, data){
-
     // projecting the maps
     geoJSON = topojson.feature(map, map.objects.countries).features;
 
@@ -48,7 +45,6 @@ function createMap(error, map, data){
 
     eduData = data;
 
-
     // creating new instances for the other js vis files
     choropleth = new choroplethMap("#map", geoJSON, eduData);
     // ranking = new rankingVis('#ranking', eduData);
@@ -56,8 +52,12 @@ function createMap(error, map, data){
 }
 
 // LINE GRAPH
-d3.csv('data/cleaned/DHS_all.csv', function(data){
+queue()
+    .defer(d3.csv, 'data/cleaned/DHS_all_original.csv')
+    .defer(d3.csv, 'data/cleaned/USAedattain_short.csv')
+    .await(attainData);
 
+function attainData(error, data, usData){
     // destringing data
     data.forEach(function(d){
         d.edyears = +d.edyears;
@@ -105,12 +105,90 @@ d3.csv('data/cleaned/DHS_all.csv', function(data){
 
     allDHS = data;
 
+    // destring US data
+    usData.forEach(function(d){
+        d.edyears = +d.edyears;
+        d.pct15_19 = +d.pct15_19;
+        d.pct15_19_female = +d.pct15_19_female;
+        d.pct15_19_male = +d.pct15_19_male;
+        d.pct15_19_urban = +d.pct15_19_urban;
+        d.pct15_19_rural = +d.pct15_19_rural;
+        d.pct15_19_q1 = +d.pct15_19_q1;
+        d.pct15_19_q2 = +d.pct15_19_q2;
+        d.pct15_19_q3 = +d.pct15_19_q3;
+        d.pct15_19_q4 = +d.pct15_19_q4;
+        d.pct15_19_q5 = +d.pct15_19_q5;
+        d.pct20_29 = +d.pct20_29;
+        d.pct20_29_male = +d.pct20_29_male;
+        d.pct20_29_female = +d.pct20_29_female;
+        d.pct20_29_urban = +d.pct20_29_urban;
+        d.pct20_29_rural = +d.pct20_29_rural;
+        d.pct20_29_q1 = +d.pct20_29_q1;
+        d.pct20_29_q2 = +d.pct20_29_q2;
+        d.pct20_29_q3 = +d.pct20_29_q3;
+        d.pct20_29_q4 = +d.pct20_29_q4;
+        d.pct20_29_q5 = +d.pct20_29_q5;
+        d.pct30_39 = +d.pct30_39;
+        d.pct30_39_male = +d.pct30_39_male;
+        d.pct30_39_female = +d.pct30_39_female;
+        d.pct30_39_urban = +d.pct30_39_urban;
+        d.pct30_39_rural = +d.pct30_39_rural;
+        d.pct30_39_q1 = +d.pct30_39_q1;
+        d.pct30_39_q2 = +d.pct30_39_q2;
+        d.pct30_39_q3 = +d.pct30_39_q3;
+        d.pct30_39_q4 = +d.pct30_39_q4;
+        d.pct30_39_q5 = +d.pct30_39_q5;
+        d.pct40_49 = +d.pct40_49;
+        d.pct40_49_male = +d.pct40_49_male;
+        d.pct40_49_female = +d.pct40_49_female;
+        d.pct40_49_urban = +d.pct40_49_urban;
+        d.pct40_49_rural = +d.pct40_49_rural;
+        d.pct40_49_q1 = +d.pct40_49_q1;
+        d.pct40_49_q2 = +d.pct40_49_q2;
+        d.pct40_49_q3 = +d.pct40_49_q3;
+        d.pct40_49_q4 = +d.pct40_49_q4;
+        d.pct40_49_q5 = +d.pct40_49_q5;
+    });
+
+    console.log(usData);
+
     // creating new instance for the attainment profile vis
-    attainment = new attainmentVis("#line-area", allDHS);
+    attainment = new attainmentVis("#line-area", data, usData);
+};
 
+// queue()
+//     .defer(d3.csv, 'data/cleaned/DHS_all_long_short.csv')
+//     .defer(d3.csv, 'data/cleaned/USAedattain_short.csv')
+//     .await(newAttainData);
+//
+// function newAttainData(error, allDHS, usData){
+//     // destringing data
+//     allDHS.forEach(function(d){
+//         d.edyears = +d.edyears;
+//         d.pct15_19 = +d.pct15_19;
+//         d.pct20_29 = +d.pct20_29;
+//         d.pct30_39 = +d.pct30_39;
+//         d.pct40_49 = +d.pct40_49;
+//     });
+//
+//     // destring US data
+//     usData.forEach(function(d){
+//         d.edyears = +d.edyears;
+//         d.pct20_29 = +d.pct20_29;
+//         d.pct20_29_male = +d.pct20_29_male;
+//         d.pct20_29_female = +d.pct20_29_female;
+//         d.pct20_29_urban = +d.pct20_29_urban;
+//         d.pct20_29_rural = +d.pct20_29_rural;
+//         d.pct20_29_q1 = +d.pct20_29_q1;
+//         d.pct20_29_q2 = +d.pct20_29_q2;
+//         d.pct20_29_q3 = +d.pct20_29_q3;
+//         d.pct20_29_q4 = +d.pct20_29_q4;
+//         d.pct20_29_q5 = +d.pct20_29_q5;
+//     });
+//
+//     attainment = new attainmentVis("#line-area", allDHS, usData);
+// }
 
-
-});
 
 // MATRIX
 var matrix;

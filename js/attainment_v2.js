@@ -6,9 +6,10 @@
  *  @param _data            -- Array with all the education data
  */
 
-attainmentVis = function(_parentElement, _data) {
+attainmentVis = function(_parentElement, _data, _usData) {
     this.parentElement = _parentElement;
     this.data = _data;
+    this.usData = _usData;
 
     this.addDropdown();
     this.initVis();
@@ -46,10 +47,10 @@ attainmentVis.prototype.addDropdown = function() {
 attainmentVis.prototype.initVis = function() {
     var vis = this;
 
-    vis.margin = { bottom: 50, top:60, left:50, right:55 };
+    vis.margin = { bottom: 90, top: 50, left:60, right:20 };
 
     vis.width = 700 - vis.margin.left - vis.margin.right;
-    vis.height = 450 - vis.margin.top - vis.margin.bottom;
+    vis.height = 550 - vis.margin.top - vis.margin.bottom;
 
     vis.svgLine = d3.select('#line-area')
         .append('svg')
@@ -98,160 +99,191 @@ attainmentVis.prototype.initVis = function() {
     vis.addLine20 = vis.svgLine.append('path')
         .attr("class", "line line-20");
 
+    vis.addLineUS = vis.svgLine.append('path')
+        .attr('class', 'line-US');
+
 
     // legends / rect
     var gap = 20;
-    var group = 10;
+    var group = 0;
+    var block = 20;
+
+    var line1 = vis.height+55;
+    var line2 = line1 + gap;
+    var column1 = 20;
+    var column2 = column1 + 200;
+    var column3 = column2 +200;
+
+    vis.legendUS = vis.svgLine.append('circle')
+        .attr('cx', column1)
+        .attr('cy', line1)
+        .attr('r', 5)
+        .attr('class', 'legend legend-US')
+        .style('opacity', 1)
+        .style('fill', '#a5a5a5');
+
+    vis.legendTextUS = vis.svgLine.append('text')
+        .attr('x', 15+column1)
+        .attr('y', 4 + line1)
+        .attr('class', 'legend-text legend-text-US')
+        .style('opacity', 1)
+        .text('Developed Countries');
 
     vis.legend = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', 0)
-        .attr('r', 7)
+        .attr('cx', column2)
+        .attr('cy', line1)
+        .attr('r', 5)
         .attr('class', 'legend')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#663399');
 
     vis.legendText = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 +15)
-        .attr('y', 4)
+        .attr('x', column2 +15)
+        .attr('y', 4+ line1)
         .attr('class', 'legend-text')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('All population');
 
     vis.legendMale = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group+gap)
-        .attr('r', 7)
+        .attr('cx', column2)
+        .attr('cy', line1)
+        .attr('r', 5)
         .attr('class', 'legend legend-gender')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#1d65af');
 
     vis.legendMaleText = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4+ group + gap)
+        .attr('x', column2 +15)
+        .attr('y', 4+ line1)
         .attr('class', 'legend-text legend-gender')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Male Population');
 
     vis.legendFemale = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group +gap*2)
-        .attr('r', 7)
+        .attr('cx', column3)
+        .attr('cy', line1)
+        .attr('r', 5)
         .attr('class', 'legend legend-gender')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#a52731');
 
     vis.legendFemaleText = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4+ group +gap*2)
+        .attr('x', column3 + 15)
+        .attr('y', 4+ line1)
         .attr('class', 'legend-text legend-gender')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Female Population');
 
     vis.legendUrban = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group*2+gap*3)
-        .attr('r', 7)
+        .attr('cx', column2)
+        .attr('cy', line1)
+        .attr('r', 5)
         .attr('class', 'legend legend-urban')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#656565');
 
     vis.legendUrbanText = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4+ group*2 +gap*3)
+        .attr('x', column2 +15)
+        .attr('y', 4+ line1)
         .attr('class', 'legend-text legend-urban')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Urban Population');
 
     vis.legendRural = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group*2 + gap*4)
-        .attr('r', 7)
+        .attr('cx', column3)
+        .attr('cy', line1)
+        .attr('r', 5)
         .attr('class', 'legend legend-urban')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#147f27');
 
     vis.legendRuralText = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4 +group*2 +gap*4)
+        .attr('x', column3 + 15)
+        .attr('y', 4 +line1)
         .attr('class', 'legend-text legend-urban')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Rural Population');
 
     vis.legendQ1 = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group*3+ gap*5)
-        .attr('r', 7)
+        .attr('cx', column2)
+        .attr('cy', line1)
+        .attr('r', 5)
         .attr('class', 'legend legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#08589e');
 
     vis.legendQ1Text = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4 +group*3+gap*5)
+        .attr('x', column2 +15)
+        .attr('y', 4+ line1)
         .attr('class', 'legend-text legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('First Income Quintile');
 
     vis.legendQ2 = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group*3+gap*6)
-        .attr('r', 7)
+        .attr('cx', column3)
+        .attr('cy', line1)
+        .attr('r', 5)
         .attr('class', 'legend legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#2b8cbe');
 
     vis.legendQ2Text = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4 +group*3+gap*6)
+        .attr('x', column3 + 15)
+        .attr('y', 4 +line1)
         .attr('class', 'legend-text legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Second Income Quintile');
 
     vis.legendQ3 = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group*3+gap*7)
-        .attr('r', 7)
+        .attr('cx', column1)
+        .attr('cy', line2)
+        .attr('r', 5)
         .attr('class', 'legend legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#4eb3d3');
 
     vis.legendQ3Text = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4+group*3 +gap*7)
+        .attr('x', column1+ 15)
+        .attr('y', 4+line2)
         .attr('class', 'legend-text legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Third Income Quintile');
 
     vis.legendQ4 = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group*3+gap*8)
-        .attr('r', 7)
+        .attr('cx', column2)
+        .attr('cy', line2)
+        .attr('r', 5)
         .attr('class', 'legend legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#7bccc4');
 
     vis.legendQ4Text = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4+group*3 +gap*8)
+        .attr('x', column2 + 15)
+        .attr('y', 4+line2)
         .attr('class', 'legend-text legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Forth Income Quintile');
 
     vis.legendQ5 = vis.svgLine.append('circle')
-        .attr('cx', vis.width*0.85)
-        .attr('cy', group*3+gap*9)
-        .attr('r', 7)
+        .attr('cx', column3)
+        .attr('cy', line2)
+        .attr('r', 5)
         .attr('class', 'legend legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .style('fill', '#a8ddb5');
 
     vis.legendQ5Text = vis.svgLine.append('text')
-        .attr('x', vis.width*0.85 + 15)
-        .attr('y', 4 +group*3+gap*9)
+        .attr('x', column3 + 15)
+        .attr('y', 4 +line2)
         .attr('class', 'legend-text legend-income')
-        .style('opacity', 0.15)
+        .style('opacity', 0)
         .text('Fifth Income Quintile');
+
+    vis.note = vis.svgLine.append('text')
+        .attr('x', vis.width/3)
+        .attr('y', -25)
+        .attr('class', 'note-hover')
+        .text('HOVER OVER DOTS FOR MORE INFORMATION');
 
 
     vis.wrangleData();
@@ -271,6 +303,7 @@ attainmentVis.prototype.wrangleData = function() {
     // filtering by country
     console.log(vis.data);
     console.log(vis.selectedCountry);
+    console.log(vis.usData);
 
     // NOTE: Not doing average anymore but doing comparison with average of the developed countries
     // creating the var for world average for each age group
@@ -299,16 +332,12 @@ attainmentVis.prototype.wrangleData = function() {
 attainmentVis.prototype.updateLineVis = function() {
     var vis = this;
 
-    // testing variable for selection of age:
-    // console.log(vis.ageLabel);
-    // console.log(vis.selectedAge);
-
     vis.legend.style('opacity', function(){
-        if(vis.selectedCountry=="default") { return 0.15; }
+        if(vis.selectedCountry=="default") { return 0; }
         else { return 1; }
     });
     vis.legendText.style('opacity', function(){
-        if(vis.selectedCountry=="default") { return 0.15; }
+        if(vis.selectedCountry=="default") { return 0; }
         else { return 1; }
     });
 
@@ -321,8 +350,8 @@ attainmentVis.prototype.updateLineVis = function() {
 
 
     // adding Axes
-    vis.addX.transition().duration(1500).call(vis.xAxis);
-    vis.addY.transition().duration(1500).call(vis.yAxis);
+    vis.addX.transition().duration(1000).call(vis.xAxis);
+    vis.addY.transition().duration(1000).call(vis.yAxis);
 
 
     // adding lines
@@ -331,11 +360,26 @@ attainmentVis.prototype.updateLineVis = function() {
         .y(function(d){ return vis.y(d.pct20_29); })
         .curve(d3.curveLinear);
 
-    vis.addLine20.transition().duration(1500)
+    vis.addLine20
+        .transition().duration(1000)
         .attr('d', vis.line20(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
+        });
+
+    vis.lineUS = d3.line()
+        .x(function(d){ return vis.x(d.edyears);})
+        .y(function(d){ return vis.y(d.pct20_29); })
+        .curve(d3.curveLinear);
+
+    vis.addLineUS
+        .transition().duration(1000)
+        .attr('d', vis.line20(vis.usData))
+        .style('stroke-dasharray', ('5,3'))
+        .style('opacity', function(){
+            if(vis.selectedCountry=="default") { return 1; }
+            else { return 0.3; }
         });
 
 
@@ -346,8 +390,9 @@ attainmentVis.prototype.updateLineVis = function() {
     vis.circles20.enter()
         .append('circle')
         .merge(vis.circles20)
+        // .transition().duration(500)
         .attr('class', 'points points20')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -362,23 +407,43 @@ attainmentVis.prototype.updateLineVis = function() {
             return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: All Population </br> Share: " + showShare(d) ;
         });
 
-    vis.circles20.transition().duration(1500);
+    vis.circlesUS = vis.svgLine.selectAll('circle.points-US')
+        .data(vis.usData);
+
+    vis.circlesUS.enter()
+        .append('circle')
+        .merge(vis.circlesUS)
+        .attr('class', 'points-US')
+        .attr('r', 3)
+        .attr('cx', function(d){
+            return vis.x(d.edyears);
+        })
+        .attr('cy', function(d){
+            return vis.y(d.pct20_29);
+        })
+        .style('opacity', function(){
+            if(vis.selectedCountry=="default") { return 1; }
+            else { return 0.3; }
+        })
+        .attr('title', function(d){
+            return "<b> US & Developed Countries</b></br>" + showAge(d) + "</br> Group: All Population </br> Share: " + showShare(d) ;
+        });
 
 
     // exit().remove()
     vis.circles20.exit().remove();
     vis.addLine20.exit().remove();
+    vis.addLineUS.exit().remove();
 
 
     // initializing tool tips
     $('.points').tooltipsy({
-        // alignTo: 'cursor',
         offset: [10, -3],
         css: {
             'padding': '10px',
             'max-width': '200px',
             'color': '#f4f4f4',
-            'background-color': 'rgba(101, 101, 101, .55)',
+            'background-color': 'rgba(101, 101, 101, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -388,7 +453,21 @@ attainmentVis.prototype.updateLineVis = function() {
         }
     });
 
-
+    $('.points-US').tooltipsy({
+        offset: [10, -3],
+        css: {
+            'padding': '10px',
+            'max-width': '200px',
+            'color': '#1c1c1c',
+            'background-color': 'rgba(210, 210, 210, 0.7)',
+            'border': '0.1px solid #656565',
+            'border-radius': '10px',
+            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            'text-shadow': 'none'
+        }
+    });
 
 }
 
@@ -396,31 +475,34 @@ attainmentVis.prototype.updateLineVis = function() {
 attainmentVis.prototype.filterGender = function() {
     var vis = this;
 
-
     // reducing opacity for the all pop linees
-    vis.addLine20.style('opacity', 0.15);
-    vis.circles20.style('opacity', 0.15);
-    vis.legend.style('opacity', 0.15);
-    vis.legendText.style('opacity', 0.15);
+    // vis.addLine20.style('opacity', 0.1);
+    // vis.circles20.style('opacity', 0.1);
+    vis.addLine20.style('opacity', 0);
+    vis.circles20.style('opacity', 0);
+
+    vis.legend.style('opacity', 0);
+    vis.legendText.style('opacity', 0);
+
     vis.legendMale.style('opacity', 1);
     vis.legendFemale.style('opacity', 1);
-    vis.legendRural.style('opacity', 0.15);
-    vis.legendUrban.style('opacity', 0.15);
-    vis.legendQ1.style('opacity', 0.15);
-    vis.legendQ2.style('opacity', 0.15);
-    vis.legendQ3.style('opacity', 0.15);
-    vis.legendQ4.style('opacity', 0.15);
-    vis.legendQ5.style('opacity', 0.15);
+    vis.legendRural.style('opacity', 0);
+    vis.legendUrban.style('opacity', 0);
+    vis.legendQ1.style('opacity', 0);
+    vis.legendQ2.style('opacity', 0);
+    vis.legendQ3.style('opacity', 0);
+    vis.legendQ4.style('opacity', 0);
+    vis.legendQ5.style('opacity', 0);
 
     vis.legendMaleText.style('opacity', 1);
     vis.legendFemaleText.style('opacity', 1);
-    vis.legendRuralText.style('opacity', 0.15);
-    vis.legendUrbanText.style('opacity', 0.15);
-    vis.legendQ1Text.style('opacity', 0.15);
-    vis.legendQ2Text.style('opacity', 0.15);
-    vis.legendQ3Text.style('opacity', 0.15);
-    vis.legendQ4Text.style('opacity', 0.15);
-    vis.legendQ5Text.style('opacity', 0.15);
+    vis.legendRuralText.style('opacity', 0);
+    vis.legendUrbanText.style('opacity', 0);
+    vis.legendQ1Text.style('opacity', 0);
+    vis.legendQ2Text.style('opacity', 0);
+    vis.legendQ3Text.style('opacity', 0);
+    vis.legendQ4Text.style('opacity', 0);
+    vis.legendQ5Text.style('opacity', 0);
 
 
     // creating lines
@@ -462,8 +544,9 @@ attainmentVis.prototype.filterGender = function() {
     vis.circlesMale20.enter()
         .append('circle')
         .merge(vis.circlesMale20)
+        // .transition().duration(500)
         .attr('class', 'points-male points-male20 points')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -475,7 +558,7 @@ attainmentVis.prototype.filterGender = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Male" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Male" + "</br>" + showMale(d) ;
         });
 
     vis.circlesFemale20 = vis.svgLine.selectAll('circle.points-female20')
@@ -484,8 +567,9 @@ attainmentVis.prototype.filterGender = function() {
     vis.circlesFemale20.enter()
         .append('circle')
         .merge(vis.circlesFemale20)
+        // .transition().duration(500)
         .attr('class', 'points-female points-female20 points')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -497,7 +581,7 @@ attainmentVis.prototype.filterGender = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Female" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Female" + "</br>" + showFemale(d) ;
         });
 
 
@@ -508,6 +592,11 @@ attainmentVis.prototype.filterGender = function() {
     vis.circlesMale20.exit().remove();
     vis.circlesFemale20.exit().remove();
 
+    // show!
+    $('.points-female').show();
+    $('.points-male').show();
+
+
     // tooltips
     $('.points-male').tooltipsy({
         offset: [10, -3],
@@ -515,7 +604,7 @@ attainmentVis.prototype.filterGender = function() {
             'padding': '10px',
             'max-width': '200px',
             'color': '#f4f4f4',
-            'background-color': 'rgba(29, 101, 175, .7)',
+            'background-color': 'rgba(29, 101, 175, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -531,7 +620,7 @@ attainmentVis.prototype.filterGender = function() {
             'padding': '10px',
             'max-width': '200px',
             'color': '#f4f4f4',
-            'background-color': 'rgba(165, 39, 49, .7)',
+            'background-color': 'rgba(165, 39, 49, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -547,28 +636,31 @@ attainmentVis.prototype.filterRural = function() {
     var vis = this;
 
     // reducing opacity.
-    vis.addLine20.style('opacity', 0.15);
-    vis.circles20.style('opacity', 0.15);
-    vis.legend.style('opacity', 0.15);
-    vis.legendText.style('opacity', 0.15);
-    vis.legendMale.style('opacity', 0.15);
-    vis.legendFemale.style('opacity', 0.15);
+    // vis.addLine20.style('opacity', 0.1);
+    // vis.circles20.style('opacity', 0.1);
+    vis.addLine20.style('opacity', 0);
+    vis.circles20.style('opacity', 0);
+
+    vis.legend.style('opacity', 0);
+    vis.legendText.style('opacity', 0);
+    vis.legendMale.style('opacity', 0);
+    vis.legendFemale.style('opacity', 0);
     vis.legendRural.style('opacity', 1);
     vis.legendUrban.style('opacity', 1);
-    vis.legendQ1.style('opacity', 0.15);
-    vis.legendQ2.style('opacity', 0.15);
-    vis.legendQ3.style('opacity', 0.15);
-    vis.legendQ4.style('opacity', 0.15);
-    vis.legendQ5.style('opacity', 0.15);
-    vis.legendMaleText.style('opacity', 0.15);
-    vis.legendFemaleText.style('opacity', 0.15);
+    vis.legendQ1.style('opacity', 0);
+    vis.legendQ2.style('opacity', 0);
+    vis.legendQ3.style('opacity', 0);
+    vis.legendQ4.style('opacity', 0);
+    vis.legendQ5.style('opacity', 0);
+    vis.legendMaleText.style('opacity', 0);
+    vis.legendFemaleText.style('opacity', 0);
     vis.legendRuralText.style('opacity', 1);
     vis.legendUrbanText.style('opacity', 1);
-    vis.legendQ1Text.style('opacity', 0.15);
-    vis.legendQ2Text.style('opacity', 0.15);
-    vis.legendQ3Text.style('opacity', 0.15);
-    vis.legendQ4Text.style('opacity', 0.15);
-    vis.legendQ5Text.style('opacity', 0.15);
+    vis.legendQ1Text.style('opacity', 0);
+    vis.legendQ2Text.style('opacity', 0);
+    vis.legendQ3Text.style('opacity', 0);
+    vis.legendQ4Text.style('opacity', 0);
+    vis.legendQ5Text.style('opacity', 0);
 
 
     // adding lines for male and female data
@@ -596,7 +688,8 @@ attainmentVis.prototype.filterRural = function() {
             else { return 1; }
         });
 
-    vis.addRural.transition().duration(1500)
+    vis.addRural
+        .transition().duration(1500)
         .attr('d', vis.lineRural(vis.filteredData))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
@@ -611,8 +704,9 @@ attainmentVis.prototype.filterRural = function() {
     vis.circlesUrban.enter()
         .append('circle')
         .merge(vis.circlesUrban)
+        // .transition().duration(500)
         .attr('class', 'points points-urban')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -624,7 +718,7 @@ attainmentVis.prototype.filterRural = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Urban" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Urban" + "</br>" + showUrban(d) ;
         });
 
     vis.circlesRural = vis.svgLine.selectAll('circle.points-rural')
@@ -633,8 +727,9 @@ attainmentVis.prototype.filterRural = function() {
     vis.circlesRural.enter()
         .append('circle')
         .merge(vis.circlesRural)
+        // .transition().duration(500)
         .attr('class', 'points points-rural')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -646,7 +741,7 @@ attainmentVis.prototype.filterRural = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Rural" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Rural" + "</br>" + showRural(d) ;
         });
 
 
@@ -656,13 +751,19 @@ attainmentVis.prototype.filterRural = function() {
     vis.circlesUrban.exit().remove();
     vis.circlesRural.exit().remove();
 
+    // show!
+    $('.points-urban').show();
+    $('.points-rural').show();
+
+
+    // tool tip
     $('.points-urban').tooltipsy({
         offset: [10, -3],
         css: {
             'padding': '10px',
             'max-width': '200px',
             'color': '#f4f4f4',
-            'background-color': 'rgba(101, 101, 101, .7)',
+            'background-color': 'rgba(101, 101, 101, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -678,7 +779,7 @@ attainmentVis.prototype.filterRural = function() {
             'padding': '10px',
             'max-width': '200px',
             'color': '#f4f4f4',
-            'background-color': 'rgba(20, 127, 39, .7)',
+            'background-color': 'rgba(20, 127, 39, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -694,23 +795,28 @@ attainmentVis.prototype.filterIncome = function() {
     var vis = this;
 
     // removing the previous graph (default)
-    vis.addLine20.style('opacity', 0.15);
-    vis.circles20.style('opacity', 0.15);
-    vis.legend.style('opacity', 0.15);
-    vis.legendText.style('opacity', 0.15);
-    vis.legendMale.style('opacity', 0.15);
-    vis.legendFemale.style('opacity', 0.15);
-    vis.legendRural.style('opacity', 0.15);
-    vis.legendUrban.style('opacity', 0.15);
+
+    // vis.addLine20.style('opacity', 0.1);
+    // vis.circles20.style('opacity', 0.1);
+    vis.addLine20.style('opacity', 0);
+    vis.circles20.style('opacity', 0);
+
+    vis.legend.style('opacity', 0);
+    vis.legendText.style('opacity', 0);
+
+    vis.legendMale.style('opacity', 0);
+    vis.legendFemale.style('opacity', 0);
+    vis.legendRural.style('opacity', 0);
+    vis.legendUrban.style('opacity', 0);
     vis.legendQ1.style('opacity', 1);
     vis.legendQ2.style('opacity', 1);
     vis.legendQ3.style('opacity', 1);
     vis.legendQ4.style('opacity', 1);
     vis.legendQ5.style('opacity', 1);
-    vis.legendMaleText.style('opacity', 0.15);
-    vis.legendFemaleText.style('opacity', 0.15);
-    vis.legendRuralText.style('opacity', 0.15);
-    vis.legendUrbanText.style('opacity', 0.15);
+    vis.legendMaleText.style('opacity', 0);
+    vis.legendFemaleText.style('opacity', 0);
+    vis.legendRuralText.style('opacity', 0);
+    vis.legendUrbanText.style('opacity', 0);
     vis.legendQ1Text.style('opacity', 1);
     vis.legendQ2Text.style('opacity', 1);
     vis.legendQ3Text.style('opacity', 1);
@@ -811,7 +917,7 @@ attainmentVis.prototype.filterIncome = function() {
         .append('circle')
         .merge(vis.circlesQ1)
         .attr('class', 'points-q1 points')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -823,7 +929,7 @@ attainmentVis.prototype.filterIncome = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 1" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 1" + "</br>" + showQ1(d) ;
         });
 
     vis.circlesQ2= vis.svgLine.selectAll('circle.points-q2')
@@ -833,7 +939,7 @@ attainmentVis.prototype.filterIncome = function() {
         .append('circle')
         .merge(vis.circlesQ2)
         .attr('class', 'points-q2 points')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -845,7 +951,7 @@ attainmentVis.prototype.filterIncome = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 2" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 2" + "</br>" + showQ2(d) ;
         });
 
     vis.circlesQ3= vis.svgLine.selectAll('circle.points-q3')
@@ -855,7 +961,7 @@ attainmentVis.prototype.filterIncome = function() {
         .append('circle')
         .merge(vis.circlesQ3)
         .attr('class', 'points-q3 points')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -867,7 +973,7 @@ attainmentVis.prototype.filterIncome = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 3" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 3" + "</br>" + showQ3(d) ;
         });
 
     vis.circlesQ4= vis.svgLine.selectAll('circle.points-q4')
@@ -877,7 +983,7 @@ attainmentVis.prototype.filterIncome = function() {
         .append('circle')
         .merge(vis.circlesQ4)
         .attr('class', 'points-q4 points')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -889,7 +995,7 @@ attainmentVis.prototype.filterIncome = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 4" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 4" + "</br>" + showQ4(d) ;
         });
 
     vis.circlesQ5= vis.svgLine.selectAll('circle.points-q5')
@@ -899,7 +1005,7 @@ attainmentVis.prototype.filterIncome = function() {
         .append('circle')
         .merge(vis.circlesQ5)
         .attr('class', 'points-q5 points')
-        .attr('r', 5)
+        .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
         })
@@ -911,7 +1017,7 @@ attainmentVis.prototype.filterIncome = function() {
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 5" + "</br>" + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 5" + "</br>" + showQ5(d) ;
         });
 
 
@@ -928,14 +1034,21 @@ attainmentVis.prototype.filterIncome = function() {
     vis.circlesQ4.exit().remove();
     vis.circlesQ5.exit().remove();
 
+    // show!
+    $('.points-q1').show();
+    $('.points-q2').show();
+    $('.points-q3').show();
+    $('.points-q4').show();
+    $('.points-q5').show();
 
+    // tooltip
     $('.points-q1').tooltipsy({
         offset: [10, -3],
         css: {
             'padding': '10px',
             'max-width': '200px',
             'color': '#f4f4f4',
-            'background-color': 'rgba(8, 88, 158, .7)',
+            'background-color': 'rgba(8, 88, 158, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -950,7 +1063,7 @@ attainmentVis.prototype.filterIncome = function() {
             'padding': '10px',
             'max-width': '200px',
             'color': '#f4f4f4',
-            'background-color': 'rgba(43, 140, 190, .7)',
+            'background-color': 'rgba(43, 140, 190, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -964,8 +1077,8 @@ attainmentVis.prototype.filterIncome = function() {
         css: {
             'padding': '10px',
             'max-width': '200px',
-            'color': '#737373',
-            'background-color': 'rgba(78, 179, 211, .7)',
+            'color': '#f4f4f4',
+            'background-color': 'rgba(78, 179, 211, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -980,7 +1093,7 @@ attainmentVis.prototype.filterIncome = function() {
             'padding': '10px',
             'max-width': '200px',
             'color': '#737373',
-            'background-color': 'rgba(123, 204, 196, .7)',
+            'background-color': 'rgba(123, 204, 196, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -995,7 +1108,7 @@ attainmentVis.prototype.filterIncome = function() {
             'padding': '10px',
             'max-width': '200px',
             'color': '#737373',
-            'background-color': 'rgba(164, 221, 181, .7)',
+            'background-color': 'rgba(164, 221, 181, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
             '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
@@ -1014,24 +1127,24 @@ attainmentVis.prototype.showOriginal = function(){
 
     vis.legend.style('opacity', 1);
     vis.legendText.style('opacity', 1);
-    vis.legendMale.style('opacity', 0.15);
-    vis.legendFemale.style('opacity', 0.15);
-    vis.legendRural.style('opacity', 0.15);
-    vis.legendUrban.style('opacity', 0.15);
-    vis.legendQ1.style('opacity', 0.15);
-    vis.legendQ2.style('opacity', 0.15);
-    vis.legendQ3.style('opacity', 0.15);
-    vis.legendQ4.style('opacity', 0.15);
-    vis.legendQ5.style('opacity', 0.15);
-    vis.legendMaleText.style('opacity', 0.15);
-    vis.legendFemaleText.style('opacity', 0.15);
-    vis.legendRuralText.style('opacity', 0.15);
-    vis.legendUrbanText.style('opacity', 0.15);
-    vis.legendQ1Text.style('opacity', 0.15);
-    vis.legendQ2Text.style('opacity', 0.15);
-    vis.legendQ3Text.style('opacity', 0.15);
-    vis.legendQ4Text.style('opacity', 0.15);
-    vis.legendQ5Text.style('opacity', 0.15);
+    vis.legendMale.style('opacity', 0);
+    vis.legendFemale.style('opacity', 0);
+    vis.legendRural.style('opacity', 0);
+    vis.legendUrban.style('opacity', 0);
+    vis.legendQ1.style('opacity', 0);
+    vis.legendQ2.style('opacity', 0);
+    vis.legendQ3.style('opacity', 0);
+    vis.legendQ4.style('opacity', 0);
+    vis.legendQ5.style('opacity', 0);
+    vis.legendMaleText.style('opacity', 0);
+    vis.legendFemaleText.style('opacity', 0);
+    vis.legendRuralText.style('opacity', 0);
+    vis.legendUrbanText.style('opacity', 0);
+    vis.legendQ1Text.style('opacity', 0);
+    vis.legendQ2Text.style('opacity', 0);
+    vis.legendQ3Text.style('opacity', 0);
+    vis.legendQ4Text.style('opacity', 0);
+    vis.legendQ5Text.style('opacity', 0);
 
 }
 
@@ -1039,12 +1152,11 @@ attainmentVis.prototype.showOriginal = function(){
  *  Removing all line/dots on the svg
  */
 
-attainmentVis.prototype.removeAll = function(){
-    $('.points').hide();
-    $('.line').hide();
-}
+attainmentVis.prototype.hideOthers = function() {
 
-attainmentVis.prototype.hideFilter = function(){
+    // $('.legend').hide();
+    // $('.legend-text').hide();
+
     $('.line-female').hide();
     $('.line-male').hide();
     $('.line-urban').hide();
@@ -1069,6 +1181,42 @@ attainmentVis.prototype.hideFilter = function(){
 
 function showShare(d){
     return d.pct20_29.toPrecision(3);
+}
+
+function showMale(d){
+    return d.pct20_29_male.toPrecision(3);
+}
+
+function showFemale(d){
+    return d.pct20_29_female.toPrecision(3);
+}
+
+function showUrban(d){
+    return d.pct20_29_urban.toPrecision(3);
+}
+
+function showRural(d) {
+    return d.pct20_29_rural.toPrecision(3);
+}
+
+function showQ1(d){
+    return d.pct20_29_q1.toPrecision(3);
+}
+
+function showQ2(d){
+    return d.pct20_29_q2.toPrecision(3);
+}
+
+function showQ3(d){
+    return d.pct20_29_q3.toPrecision(3);
+}
+
+function showQ4(d){
+    return d.pct20_29_q4.toPrecision(3);
+}
+
+function showQ5(d){
+    return d.pct20_29_q5.toPrecision(3);
 }
 
 function showAge(){ return "Age: 20-29"; }
