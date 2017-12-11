@@ -1153,6 +1153,7 @@ attainmentVis.prototype.showOriginal = function(){
  */
 
 attainmentVis.prototype.hideOthers = function() {
+    var vis= this;
 
     // $('.legend').hide();
     // $('.legend-text').hide();
@@ -1177,6 +1178,26 @@ attainmentVis.prototype.hideOthers = function() {
     $('.points-q4').hide();
     $('.points-q5').hide();
 
+    vis.legend.style('opacity', 1);
+    vis.legendText.style('opacity', 1);
+    vis.legendMale.style('opacity', 0);
+    vis.legendFemale.style('opacity', 0);
+    vis.legendRural.style('opacity', 0);
+    vis.legendUrban.style('opacity', 0);
+    vis.legendQ1.style('opacity', 0);
+    vis.legendQ2.style('opacity', 0);
+    vis.legendQ3.style('opacity', 0);
+    vis.legendQ4.style('opacity', 0);
+    vis.legendQ5.style('opacity', 0);
+    vis.legendMaleText.style('opacity', 0);
+    vis.legendFemaleText.style('opacity', 0);
+    vis.legendRuralText.style('opacity', 0);
+    vis.legendUrbanText.style('opacity', 0);
+    vis.legendQ1Text.style('opacity', 0);
+    vis.legendQ2Text.style('opacity', 0);
+    vis.legendQ3Text.style('opacity', 0);
+    vis.legendQ4Text.style('opacity', 0);
+    vis.legendQ5Text.style('opacity', 0);
 }
 
 function showShare(d){
