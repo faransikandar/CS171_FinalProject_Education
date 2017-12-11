@@ -156,38 +156,6 @@ function attainData(error, data, usData){
     attainment = new attainmentVis("#line-area", data, usData);
 };
 
-// queue()
-//     .defer(d3.csv, 'data/cleaned/DHS_all_long_short.csv')
-//     .defer(d3.csv, 'data/cleaned/USAedattain_short.csv')
-//     .await(newAttainData);
-//
-// function newAttainData(error, allDHS, usData){
-//     // destringing data
-//     allDHS.forEach(function(d){
-//         d.edyears = +d.edyears;
-//         d.pct15_19 = +d.pct15_19;
-//         d.pct20_29 = +d.pct20_29;
-//         d.pct30_39 = +d.pct30_39;
-//         d.pct40_49 = +d.pct40_49;
-//     });
-//
-//     // destring US data
-//     usData.forEach(function(d){
-//         d.edyears = +d.edyears;
-//         d.pct20_29 = +d.pct20_29;
-//         d.pct20_29_male = +d.pct20_29_male;
-//         d.pct20_29_female = +d.pct20_29_female;
-//         d.pct20_29_urban = +d.pct20_29_urban;
-//         d.pct20_29_rural = +d.pct20_29_rural;
-//         d.pct20_29_q1 = +d.pct20_29_q1;
-//         d.pct20_29_q2 = +d.pct20_29_q2;
-//         d.pct20_29_q3 = +d.pct20_29_q3;
-//         d.pct20_29_q4 = +d.pct20_29_q4;
-//         d.pct20_29_q5 = +d.pct20_29_q5;
-//     });
-//
-//     attainment = new attainmentVis("#line-area", allDHS, usData);
-// }
 
 
 // MATRIX
