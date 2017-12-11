@@ -10,6 +10,7 @@ Matrix = function(_parentElement, _reg1Data) {
     this.displayData = [];
 
     this.yvar = "value";
+    this.sortNum;
 
     this.initVis();
 };
@@ -23,6 +24,8 @@ Matrix.prototype.initVis = function() {
     vis.height = 430 - vis.margin.top - vis.margin.bottom;
 
     vis.gridSize = Math.floor(vis.width / 53);
+    vis.col_number=47;
+    vis.row_number=11;
     vis.legendElementWidth = vis.gridSize*2;
     vis.buckets = 10;
     vis.colors = ['#67001f','#b2182b','#d6604d','#f4a582','#fddbc7','#d1e5f0','#92c5de','#4393c3','#2166ac','#053061'];
@@ -46,6 +49,10 @@ Matrix.prototype.initVis = function() {
         .attr('x', 5)
         .attr('y', 230)
         .attr("class", "tooltip-matrix");
+
+    // Sort
+    vis.rowSortOrder=false;
+    vis.colSortOrder=false;
 
     vis.wrangleData();
 };
@@ -94,7 +101,7 @@ Matrix.prototype.updateVis = function() {
         .attr("y", function(d, i) { return (d.var - 1) * vis.gridSize})
         .attr("rx", 4)
         .attr("ry", 4)
-        .attr("class", "code bordered")
+        .attr("class",  function(d){return "code cell bordered cr"+(d.var-1)+" cc"+(d.code-1);})
         .attr("width", vis.gridSize)
         .attr("height", vis.gridSize)
         .style("fill", vis.colors[0])
@@ -228,7 +235,9 @@ Matrix.prototype.updateVis = function() {
         .attr("y", function(d, i){ return i * vis.gridSize })
         .style("text-anchor", "end")
         .attr("transform", "translate(-6," + vis.gridSize / 1.5 + ")")
-        .attr("class", function (d,i) { return "varLabel mono r"+i;} ) ;
+        .attr("class", function (d,i) { return "varLabel mono r"+i;} )
+        .on("click", function(d,i) {vis.rowSortOrder=!vis.rowSortOrder;
+        sortbylabel("r",i, vis.rowSortOrder); d3.select("#order").property("selectedIndex", 1).node().focus();;});
 
     vis.countryLabels = vis.svg.selectAll(".countryLabel")
         .data(vis.countries)
@@ -238,7 +247,59 @@ Matrix.prototype.updateVis = function() {
         .attr("y", function(d, i){ return i * vis.gridSize})
         .style("text-anchor", "start")
         .attr("transform", "translate("+vis.gridSize/2 + ",-6) rotate (-90)")
-        .attr("class",  function (d,i) { return "countryLabel mono c"+i;} );
+        .attr("class",  function (d,i) { return "countryLabel mono c"+i;} )
+        .on("click", function(d,i) {vis.colSortOrder=!vis.colSortOrder;
+        sortbylabel("c",i,vis.colSortOrder);d3.select("#order").property("selectedIndex", 1).node().focus();;})
+    ;
+
+
+
+// Change ordering of cells
+
+    function sortbylabel(rORc,i,sortOrder){
+        var t = vis.svg.transition().duration(3000);
+        var log2r=[];
+        var sorted; // sorted is zero-based index
+        d3.selectAll(".c"+rORc+i)
+            .filter(function(ce){
+                log2r.push(ce[vis.yvar]);
+            });
+
+        console.log(log2r);
+
+        if(rORc=="r"){ // sort by country
+            sorted=d3.range(vis.col_number).sort(function(a,b){ if(sortOrder){ return log2r[b]-log2r[a];}else{ return log2r[a]-log2r[b];}});
+            console.log(sorted);
+            t.selectAll(".cell")
+                .attr("x", function(d) { return sorted.indexOf(d.code-1) * vis.gridSize; })
+            ;
+            t.selectAll(".countryLabel")
+                .attr("y", function (d, i) { return sorted.indexOf(i) * vis.gridSize; })
+            ;
+        }else if(rORc=="c") { // sort by var
+            sorted=d3.range(vis.row_number).sort(function(a,b){
+                if(sortOrder){
+                    return log2r[b]-log2r[a];
+                }
+                else{
+                    return log2r[a]-log2r[b];
+                }
+            });
+            console.log(sorted);
+            t.selectAll(".cell")
+                .attr("y", function(d) { return sorted.indexOf(d.var-1) * vis.gridSize; })
+            ;
+            t.selectAll(".varLabel")
+                .attr("y", function (d, i) { return sorted.indexOf(i) * vis.gridSize; })
+            ;
+        }
+    }
+
+
+    //
+
+
+
 
 
 }
