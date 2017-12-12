@@ -7,14 +7,11 @@ body {
 .bigger {
     font-size:130%;
 }
-
-
 #intropage {
     background-image: url(../img/student_standing_30.png);
     background-size: cover;
     padding: 0;
 }
-
 #intropage-container h1 {
     letter-spacing: 10px;
     font-size: 80px;
@@ -23,7 +20,6 @@ body {
     text-align: center;
     padding-top: 20%;
 }
-
 #intropage-container h2 {
     letter-spacing: 4px;
     font-size: 30px;
@@ -32,7 +28,6 @@ body {
     text-align: center;
     padding-bottom: 20%;
 }
-
 #story1 h2 {
     letter-spacing: 4px;
     font-size: 30px;
@@ -42,8 +37,6 @@ body {
     padding-bottom: 20%;
     line-height: 180%;
 }
-
-
 #story2 h2 {
     letter-spacing: 4px;
     font-size: 30px;
@@ -57,7 +50,6 @@ body {
 #mappage h1 {
     padding: 5px;
 }
-
 img {
     height:650px;
     margin-left: 30px;
@@ -66,11 +58,6 @@ h2 {
     letter-spacing: 3px;
 }
 
-<<<<<<< HEAD
-/*********************/
-/* FULLPAGE */
-/*********************/
-=======
 #conclusion h2 {
     letter-spacing: 4px;
     font-size: 30px;
@@ -85,11 +72,9 @@ h2 {
 }
 
 
+/*********************/
 /* FULLPAGE */
-
-
-
->>>>>>> master
+/*********************/
 #fp-nav ul li a span {
     background: whitesmoke;
 }
@@ -338,8 +323,6 @@ div.btn-group {
 }
 
 
-
-
 /***********************/
 /* ATTAINMENT PROFILE */
 /***********************/
@@ -547,9 +530,12 @@ img.icon {
     font-size: 10px;
 }
 
-/* distribution vis */
 
-<<<<<<< HEAD
+/***********************/
+/*      MATRIX VIZ     */
+/***********************/
+
+
 rect.bordered {
     stroke: white;
     stroke-width:2px;
@@ -562,54 +548,6 @@ text.mono {
     font-size: 8pt;
     font-family: Avenir;
     fill: #aaa;
-=======
-.y_axis_scatter line {
-    stroke: transparent;
-}
-
-.y_axis_scatter path {
-    stroke: transparent;
-}
-
-.y_axis_scatter text {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.y_axis_scatter label {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.x_axis_scatter line {
-    stroke: gray;
-}
-
-.x_axis_scatter path {
-    stroke: gray;
-}
-
-.x_axis_scatter text {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.x_axis_scatter label {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
->>>>>>> master
 }
 
 text.mono {
@@ -621,6 +559,16 @@ text.mono {
     font-family: Avenir;
     font-size: 9px;
 }
+
+#selectedY{
+    font-family: Avenir;
+    margin-top: 100px;
+}
+
+#selected-var-label {
+    font-family: Avenir;
+    margin-left: 20px;
+}
 .varLabel:hover {
     font-weight: bold;
     cursor: pointer;
@@ -630,6 +578,15 @@ text.mono {
     font-weight: bold;
     cursor: pointer;
     fill: #4C4545;
+}
+.selectSection {
+    margin: 20px 0;
+}
+.filterType {
+    color: #999;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-left: 40px;
 }
 .matrix-subtext,
 .matrix-instruct {
@@ -646,7 +603,6 @@ text.mono {
     font-size: 14px;
     margin-top: 40px;
     margin-left: 40px;
-    letter-spacing: 1px;
 }
 text.text-highlight {
     fill: #4C4545;
