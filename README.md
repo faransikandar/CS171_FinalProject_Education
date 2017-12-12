@@ -6,6 +6,6 @@
 
 **Special Thanks To:**
 
-- Johana Beyer, CS171 Head Instructor
+- Johanna Beyer, CS171 Head Instructor
 - Fritz Lekschas, CS171 Design Advisor
 - Charlene Hwang, CS171 Section Leader
