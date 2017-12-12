@@ -8,6 +8,13 @@ body {
     font-size:130%;
 }
 
+
+#intropage {
+    background-image: url(../img/student_standing_30.png);
+    background-size: cover;
+    padding: 0;
+}
+
 #intropage-container h1 {
     letter-spacing: 10px;
     font-size: 80px;
@@ -58,6 +65,20 @@ img {
 .placeholder-text {
     font-size: 20px;
 }
+
+#conclusion h2 {
+    letter-spacing: 4px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+#conclusion h2 {
+    padding-bottom: 5%;
+}
+
 
 /* FULLPAGE */
 
@@ -455,12 +476,6 @@ input {
 
 
 /* FULLPAGE */
-
-#intropage {
-    background-image: url(../img/student_standing_30.png);
-    background-size: cover;
-    padding: 0;
-}
 
 #fp-nav ul li a span {
     background: black;
