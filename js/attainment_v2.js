@@ -47,10 +47,10 @@ attainmentVis.prototype.addDropdown = function() {
 attainmentVis.prototype.initVis = function() {
     var vis = this;
 
-    vis.margin = { bottom: 90, top: 50, left:60, right:20 };
+    vis.margin = { bottom: 90, top: 70, left:60, right:20 };
 
     vis.width = 700 - vis.margin.left - vis.margin.right;
-    vis.height = 550 - vis.margin.top - vis.margin.bottom;
+    vis.height = 600- vis.margin.top - vis.margin.bottom;
 
     vis.svgLine = d3.select('#line-area')
         .append('svg')
@@ -90,7 +90,7 @@ attainmentVis.prototype.initVis = function() {
 
     vis.yLabel = d3.select('#svg-line').append('text')
         .text("Share of Population")
-        .attr('x', -50)
+        .attr('x', -80)
         .attr('y', vis.margin.left-35)
         .attr('class', 'y-label');
 
@@ -105,8 +105,6 @@ attainmentVis.prototype.initVis = function() {
 
     // legends / rect
     var gap = 20;
-    var group = 0;
-    var block = 20;
 
     var line1 = vis.height+55;
     var line2 = line1 + gap;
@@ -127,7 +125,7 @@ attainmentVis.prototype.initVis = function() {
         .attr('y', 4 + line1)
         .attr('class', 'legend-text legend-text-US')
         .style('opacity', 1)
-        .text('Developed Countries');
+        .text('US and Developed Countries');
 
     vis.legend = vis.svgLine.append('circle')
         .attr('cx', column2)
@@ -311,15 +309,25 @@ attainmentVis.prototype.wrangleData = function() {
 
     // selecting the data to be used for the line graph
     if(vis.selectedCountry == "default") {
-        vis.filteredData = vis.data; //need to change this to the world average for each education year
+        vis.newData = vis.data; //need to change this to the world average for each education year
     } else {
-        vis.filteredData = vis.data.filter(function(d){
+        vis.newData = vis.data.filter(function(d){
             if(vis.selectedCountry == d.country) return true;
             else return false;
         })
     };
 
+    vis.filteredData = vis.newData.filter(function(d){
+        if(d.edyears!=0) return true;
+        else return false;
+    });
+
     console.log(vis.filteredData);
+
+    vis.newUsData = vis.usData.filter(function(d){
+        if(d.edyears!=0) return true;
+        else return false;
+    });
 
     vis.updateLineVis();
 }
@@ -375,7 +383,7 @@ attainmentVis.prototype.updateLineVis = function() {
 
     vis.addLineUS
         .transition().duration(1000)
-        .attr('d', vis.line20(vis.usData))
+        .attr('d', vis.line20(vis.newUsData))
         .style('stroke-dasharray', ('5,3'))
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 1; }
@@ -399,16 +407,18 @@ attainmentVis.prototype.updateLineVis = function() {
         .attr('cy', function(d){
             return vis.y(d.pct20_29);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title', function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: All Population </br> Share: " + showShare(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showShare(d) ;
         });
 
     vis.circlesUS = vis.svgLine.selectAll('circle.points-US')
-        .data(vis.usData);
+        .data(vis.newUsData);
 
     vis.circlesUS.enter()
         .append('circle')
@@ -421,14 +431,15 @@ attainmentVis.prototype.updateLineVis = function() {
         .attr('cy', function(d){
             return vis.y(d.pct20_29);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 1; }
             else { return 0.3; }
         })
         .attr('title', function(d){
-            return "<b> US & Developed Countries</b></br>" + showAge(d) + "</br> Group: All Population </br> Share: " + showShare(d) ;
+            return "<b> US & Developed Countries</b></br>Years in School: "+ d.edyears +"</br>Share: " + showShare(d) ;
         });
-
 
     // exit().remove()
     vis.circles20.exit().remove();
@@ -446,9 +457,9 @@ attainmentVis.prototype.updateLineVis = function() {
             'background-color': 'rgba(101, 101, 101, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -462,9 +473,9 @@ attainmentVis.prototype.updateLineVis = function() {
             'background-color': 'rgba(210, 210, 210, 0.7)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -517,10 +528,10 @@ attainmentVis.prototype.filterGender = function() {
         .curve(d3.curveLinear);
 
     vis.addMale20 = vis.svgLine.append('path')
-        .attr("class", "line-male line-male20 line-20 line");
+        .attr("class", "line-male line");
 
     vis.addFemale20 = vis.svgLine.append('path')
-        .attr("class", "line-female line-female20 line-20 line");
+        .attr("class", "line-female line");
 
     vis.addMale20.transition().duration(1500)
         .attr('d', vis.lineMale20(vis.filteredData))
@@ -538,14 +549,14 @@ attainmentVis.prototype.filterGender = function() {
 
 
     // adding points
-    vis.circlesMale20 = vis.svgLine.selectAll('circle.points-male20')
+    vis.circlesMale20 = vis.svgLine.selectAll('circle.points-male')
         .data(vis.filteredData);
 
     vis.circlesMale20.enter()
         .append('circle')
         .merge(vis.circlesMale20)
         // .transition().duration(500)
-        .attr('class', 'points-male points-male20 points')
+        .attr('class', 'points-male points')
         .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
@@ -553,22 +564,24 @@ attainmentVis.prototype.filterGender = function() {
         .attr('cy', function(d){
             return vis.y(d.pct20_29_male);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Male" + "</br>" + showMale(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showMale(d) ;
         });
 
-    vis.circlesFemale20 = vis.svgLine.selectAll('circle.points-female20')
+    vis.circlesFemale20 = vis.svgLine.selectAll('circle.points-female')
         .data(vis.filteredData);
 
     vis.circlesFemale20.enter()
         .append('circle')
         .merge(vis.circlesFemale20)
         // .transition().duration(500)
-        .attr('class', 'points-female points-female20 points')
+        .attr('class', 'points-female points')
         .attr('r', 3)
         .attr('cx', function(d){
             return vis.x(d.edyears);
@@ -576,12 +589,14 @@ attainmentVis.prototype.filterGender = function() {
         .attr('cy', function(d){
             return vis.y(d.pct20_29_female);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Female" + "</br>" + showFemale(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showFemale(d) ;
         });
 
 
@@ -607,9 +622,9 @@ attainmentVis.prototype.filterGender = function() {
             'background-color': 'rgba(29, 101, 175, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -623,9 +638,9 @@ attainmentVis.prototype.filterGender = function() {
             'background-color': 'rgba(165, 39, 49, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -713,12 +728,14 @@ attainmentVis.prototype.filterRural = function() {
         .attr('cy', function(d){
             return vis.y(d.pct20_29_urban);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Urban" + "</br>" + showUrban(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showUrban(d) ;
         });
 
     vis.circlesRural = vis.svgLine.selectAll('circle.points-rural')
@@ -736,12 +753,14 @@ attainmentVis.prototype.filterRural = function() {
         .attr('cy', function(d){
             return vis.y(d.pct20_29_rural);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Rural" + "</br>" + showRural(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showRural(d) ;
         });
 
 
@@ -766,9 +785,9 @@ attainmentVis.prototype.filterRural = function() {
             'background-color': 'rgba(101, 101, 101, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -782,9 +801,9 @@ attainmentVis.prototype.filterRural = function() {
             'background-color': 'rgba(20, 127, 39, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -924,12 +943,14 @@ attainmentVis.prototype.filterIncome = function() {
         .attr('cy', function(d){
             return vis.y(d[vis.selectedQ1Age]);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 1" + "</br>" + showQ1(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showQ1(d) ;
         });
 
     vis.circlesQ2= vis.svgLine.selectAll('circle.points-q2')
@@ -946,12 +967,14 @@ attainmentVis.prototype.filterIncome = function() {
         .attr('cy', function(d){
             return vis.y(d[vis.selectedQ2Age]);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 2" + "</br>" + showQ2(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showQ2(d) ;
         });
 
     vis.circlesQ3= vis.svgLine.selectAll('circle.points-q3')
@@ -968,12 +991,14 @@ attainmentVis.prototype.filterIncome = function() {
         .attr('cy', function(d){
             return vis.y(d[vis.selectedQ3Age]);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 3" + "</br>" + showQ3(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showQ3(d) ;
         });
 
     vis.circlesQ4= vis.svgLine.selectAll('circle.points-q4')
@@ -990,12 +1015,14 @@ attainmentVis.prototype.filterIncome = function() {
         .attr('cy', function(d){
             return vis.y(d[vis.selectedQ4Age]);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 4" + "</br>" + showQ4(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showQ4(d) ;
         });
 
     vis.circlesQ5= vis.svgLine.selectAll('circle.points-q5')
@@ -1012,12 +1039,14 @@ attainmentVis.prototype.filterIncome = function() {
         .attr('cy', function(d){
             return vis.y(d[vis.selectedQ5Age]);
         })
+        .on('mouseover', attainMouseOver)
+        .on('mouseout', attainMouseOut)
         .style('opacity', function(){
             if(vis.selectedCountry=="default") { return 0; }
             else { return 1; }
         })
         .attr('title',function(d){
-            return "<b>" + vis.selectedCountry + "</b>"+ "</br>" + showAge(d) + "</br> Group: Income Quintile 5" + "</br>" + showQ5(d) ;
+            return "<b>" + vis.selectedCountry + "</b></br>Years in School: "+ d.edyears +"</br>Share: " + showQ5(d) ;
         });
 
 
@@ -1051,9 +1080,9 @@ attainmentVis.prototype.filterIncome = function() {
             'background-color': 'rgba(8, 88, 158, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -1066,9 +1095,9 @@ attainmentVis.prototype.filterIncome = function() {
             'background-color': 'rgba(43, 140, 190, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -1081,9 +1110,9 @@ attainmentVis.prototype.filterIncome = function() {
             'background-color': 'rgba(78, 179, 211, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -1096,9 +1125,9 @@ attainmentVis.prototype.filterIncome = function() {
             'background-color': 'rgba(123, 204, 196, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -1111,9 +1140,9 @@ attainmentVis.prototype.filterIncome = function() {
             'background-color': 'rgba(164, 221, 181, 1)',
             'border': '0.1px solid #656565',
             'border-radius': '10px',
-            '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-            'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+            '-moz-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            '-webkit-box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
+            'box-shadow': '0 0 10px rgba(100, 100, 100, .5)',
             'text-shadow': 'none'
         }
     });
@@ -1240,4 +1269,12 @@ function showQ5(d){
     return d.pct20_29_q5.toPrecision(3);
 }
 
-function showAge(){ return "Age: 20-29"; }
+function attainMouseOver(d){
+    d3.select(this).transition().duration(50)
+        .attr("r", 6);
+}
+
+function attainMouseOut(d){
+    d3.select(this).transition().duration(50)
+        .attr("r", 3);
+}

@@ -24,10 +24,10 @@ choroplethMap.prototype.initVis = function() {
     var vis = this;
 
     // * Creating svg
-    vis.width = 1300;
+    vis.width = 1250;
     vis.height = 600;
 
-    vis.mapWidth = 950;
+    vis.mapWidth = 880;
 
     vis.svgMap = d3.select("#map").append("svg")
         .attr("width", vis.width)
@@ -36,7 +36,7 @@ choroplethMap.prototype.initVis = function() {
         .attr("id", "svg-map");
 
     vis.addInstruction = d3.select("#svg-map").append('text')
-        .attr('x', vis.mapWidth/2)
+        .attr('x', vis.mapWidth/2+40)
         .attr('y', vis.height-25)
         .attr('class', 'map-instruction')
         .text("HOVER OVER EACH COUNTRY FOR MORE INFORMATION.");
@@ -51,7 +51,7 @@ choroplethMap.prototype.initVis = function() {
     // * Generate maps and project it on to svg
         // initiating map projection
         vis.projection = d3.geoMercator()
-            .translate([vis.width*0.35, vis.height * 2 / 3])
+            .translate([vis.width*0.34, vis.height * 2 / 3])
             .scale([155]);
 
         // creating geopath for the maps
@@ -220,7 +220,7 @@ choroplethMap.prototype.updateChoropleth = function() {
 // RANKINGS //
 
 /*
- *  Initialize Vis
+ *  Initialize Ranking
  */
 
 choroplethMap.prototype.initRank = function() {
@@ -228,46 +228,46 @@ choroplethMap.prototype.initRank = function() {
     console.log(vis.eduData);
 
     vis.boxTop = vis.svgMap.append("rect")
-        .attr('x', vis.mapWidth+20)
-        .attr('y', 0)
+        .attr('x', vis.mapWidth+50)
+        .attr('y', 20)
         .attr('class', 'background-box')
-        .attr('height', vis.height/2 - 110)
-        .attr('width', 280);
+        .attr('height', vis.height/2 - 120)
+        .attr('width', 235);
 
     vis.boxBottom = vis.svgMap.append("rect")
-        .attr('x', vis.mapWidth+20)
-        .attr('y', vis.height/2 - 50)
+        .attr('x', vis.mapWidth+50)
+        .attr('y', vis.height/2 - 70)
         .attr('class', 'background-box')
-        .attr('height', vis.height/2 - 110)
-        .attr('width', 280);
+        .attr('height', vis.height/2 - 120)
+        .attr('width', 235);
 
     vis.addTopTitle = vis.svgMap.append("text")
-        .attr("x", vis.mapWidth + 45)
-        .attr("y", 35)
+        .attr("x", vis.mapWidth + 90)
+        .attr("y", 58)
         .attr("class", "rank-title")
-        .text("Top 5 countries");
+        .text("TOP 5 COUNTRIES");
 
     vis.addBottomTitle = vis.svgMap.append("text")
-        .attr("x", vis.mapWidth + 45)
-        .attr("y", vis.height/2 -15)
+        .attr("x", vis.mapWidth + 68)
+        .attr("y", vis.height/2 -32)
         .attr("class", "rank-title")
-        .text("Bottom 5 countries");
+        .text("BOTTOM 5 COUNTRIES");
 
     vis.addNote = vis.svgMap
         .append('text')
-            .attr('x', vis.mapWidth +30)
+            .attr('x', vis.mapWidth +50)
             .attr('y', vis.height*0.8)
             .attr('class', 'rank-note')
             .text("NOTE:")
         .append('tspan')
             .text("1 - The ranking is based on available data.")
-            .attr('x', vis.mapWidth + 53).attr('y', vis.height*0.8 +20)
+            .attr('x', vis.mapWidth + 55).attr('y', vis.height*0.8 +20)
         .append('tspan')
             .text("2 - Grey areas indicate no date available.")
-            .attr('x', vis.mapWidth + 53).attr('y', vis.height*0.8 +35)
+            .attr('x', vis.mapWidth + 55).attr('y', vis.height*0.8 +35)
         .append('tspan')
             .text("3 - Enrollment rate shown is gross enrollment, which ")
-            .attr('x', vis.mapWidth +53).attr('y', vis.height*0.8 +50)
+            .attr('x', vis.mapWidth +55).attr('y', vis.height*0.8 +50)
         .append('tspan')
             .text("include people who may have repeated a grade.")
             .attr('x', vis.mapWidth +68).attr('y', vis.height*0.8 +63);
@@ -330,7 +330,7 @@ choroplethMap.prototype.wrangleRankData = function() {
 choroplethMap.prototype.updateRank = function() {
     var vis = this;
 
-    vis.rankGap = 25;
+    vis.rankGap = 23;
 
     vis.addTop5 = d3.select("#svg-map")
         .append('text')
@@ -349,19 +349,19 @@ choroplethMap.prototype.updateRank = function() {
     // .transition()
     // .duration(1000)
         .text(function(){ return "1. " + vis.filteredTop[0].countryname; })
-        .attr("x", vis.mapWidth + 65).attr("y", 40 + vis.rankGap*1 )
+        .attr("x", vis.mapWidth + 85).attr("y", 65 + vis.rankGap*1 )
         .append('tspan')
         .text(function(){ return "2. " + vis.filteredTop[1].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", 40 + vis.rankGap*2)
+        .attr('x', vis.mapWidth + 85).attr("y", 65 + vis.rankGap*2)
         .append('tspan')
         .text(function(){ return "3. " + vis.filteredTop[2].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", 40 + vis.rankGap*3)
+        .attr('x', vis.mapWidth + 85).attr("y", 65 + vis.rankGap*3)
         .append('tspan')
         .text(function(){ return "4. " + vis.filteredTop[3].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", 40 + vis.rankGap*4)
+        .attr('x', vis.mapWidth + 85).attr("y", 65 + vis.rankGap*4)
         .append('tspan')
         .text(function(){ return "5. " + vis.filteredTop[4].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", 40 + vis.rankGap*5);
+        .attr('x', vis.mapWidth + 85).attr("y", 65 + vis.rankGap*5);
 
     vis.addBottom5
     // .data(vis.filteredBottom).enter()
@@ -369,19 +369,19 @@ choroplethMap.prototype.updateRank = function() {
     // .transition()
     // .duration(1500)
         .text(function(){ return "1. " + vis.filteredBottom[0].countryname; })
-        .attr("x", vis.mapWidth + 65).attr("y", vis.height/2 -10 + vis.rankGap*1)
+        .attr("x", vis.mapWidth + 85).attr("y", vis.height/2 -25 + vis.rankGap*1)
         .append('tspan')
         .text(function(){ return "2. " + vis.filteredBottom[1].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", vis.height/2 -10 + vis.rankGap*2)
+        .attr('x', vis.mapWidth + 85).attr("y", vis.height/2 -25 + vis.rankGap*2)
         .append('tspan')
         .text(function(){ return "3. " + vis.filteredBottom[2].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", vis.height/2 -10 + vis.rankGap*3)
+        .attr('x', vis.mapWidth + 85).attr("y", vis.height/2 -25 + vis.rankGap*3)
         .append('tspan')
         .text(function(){ return "4. " + vis.filteredBottom[3].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", vis.height/2 -10 + vis.rankGap*4)
+        .attr('x', vis.mapWidth + 85).attr("y", vis.height/2 -25 + vis.rankGap*4)
         .append('tspan')
         .text(function(){ return "5. " + vis.filteredBottom[4].countryname; })
-        .attr('x', vis.mapWidth + 65).attr("y", vis.height/2 -10 + vis.rankGap*5);
+        .attr('x', vis.mapWidth + 85).attr("y", vis.height/2 -25 + vis.rankGap*5);
 
 
 }
