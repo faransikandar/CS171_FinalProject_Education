@@ -49,14 +49,23 @@ body {
 
 #mappage h1 {
     padding: 5px;
+    padding-left: 0px;
 }
+
 img {
     height:650px;
     margin-left: 30px;
 }
+
 h2 {
     letter-spacing: 3px;
 }
+
+
+/*********************/
+/* FULLPAGE */
+/*********************/
+
 
 #conclusion h2 {
     letter-spacing: 4px;
@@ -73,26 +82,11 @@ h2 {
 
 
 /*********************/
-/* FULLPAGE */
+/*     FULLPAGE      */
 /*********************/
+
 #fp-nav ul li a span {
-    background: whitesmoke;
-}
-
-#prevention {
-    font-size: 25px;
-}
-
-#link {
-    font-weight: bold;
-}
-
-#question {
-    font-weight: bold;
-}
-
-.quiz-reason {
-    text-align: right;
+    background: black;
 }
 
 img.icon-ref {
@@ -105,7 +99,7 @@ img.icon-ref {
     vertical-align: middle;
 }
 section {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 
@@ -152,7 +146,8 @@ section {
 }
 
 .map-dropdown {
-    font-size: 15px;
+    font-size: 13px;
+    color: grey;
     font-weight: lighter;
 }
 
@@ -330,8 +325,8 @@ div.btn-group {
 /* default figure (no filter) */
 
 .attain-instruct {
-    font-size: 18px;
-    /*text-align: center;*/
+    font-size: 14px;
+    color: #777777;
     line-height: 130%;
 }
 
@@ -348,7 +343,8 @@ div.btn-group {
 }
 
 #dropout-text {
-    text-align: center;
+    letter-spacing: 2px;
+    line-height: 120%;
 }
 
 #attain-btn {
@@ -582,12 +578,6 @@ text.mono {
 .selectSection {
     margin: 20px 0;
 }
-.filterType {
-    color: #999;
-    font-size: 13px;
-    margin-top: 5px;
-    margin-left: 40px;
-}
 .matrix-subtext,
 .matrix-instruct {
     color: #777777;
@@ -627,9 +617,3 @@ div.tooltip {
     fill: #4C4545;
 }
 
-
-/* FULLPAGE */
-
-#fp-nav ul li a span {
-    background: black;
-}
