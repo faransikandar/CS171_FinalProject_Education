@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/jquery.fullPage.css">
+	<link rel="stylesheet" href="css/style_gaew.css">
 	<!--<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">-->
 
 	<!-- should combine the stylesheets -->
@@ -44,7 +45,7 @@
 	<section class="section" id="mappage">
 		<!--<div class="container-fluid">-->
 		<div class="container">
-			<h1>Educational outcomes vary drastically around the world. </h1>
+			<h3> EDUCATIONAL OUTCOME VARY DRASTICALLY AROUND THE WORLD.</h3>
 			<!--<h4>This is a multi-layered problem of access, quality, and incentives to attain education.</h4>-->
 			<div class="row">
 				<form class="form-inline">
@@ -112,11 +113,12 @@
 	<!------ ATTAINMENT PROFILE PAGE ------->
 	<section class="section" id="profilepage">
 		<div class="container">
-			<h4 class="attain-instruct">
+			<h3>WHAT ARE FACTORS THAT IMPACT EDUCATION ATTAINMENT IN DEVELOPING COUNTRIES?</h3>
+			<p class="attain-instruct">
 				Use the chart below to explore variation in educational attainment within countries. Notice that in many developing countries, while the trend in developed countries does not change much over the years, there is a steep dropoff in different years for developing countries.
-			</h4>
+			</p>
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-sm-7">
 					<!-- select the country (note: options added in attainment.js)-->
 					<div id="attain-country">
 						<form class="form-inline">
@@ -127,10 +129,36 @@
 						</form>
 					</div>
 
+					<!--<div id="attain-btn">-->
+						<!--</br>-->
+
+					<!--&lt;!&ndash;filter for gender, income level or rural/urban divide &ndash;&gt;-->
+
+						<!--&lt;!&ndash; Buttons for attainment_v3.js &ndash;&gt;-->
+						<!--&lt;!&ndash;<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>&ndash;&gt;-->
+						<!--&lt;!&ndash;<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.chooseAll();">All Population</span>&ndash;&gt;-->
+						<!--&lt;!&ndash;<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.chooseGender();">Gender</span>&ndash;&gt;-->
+						<!--&lt;!&ndash;<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.chooseUrban();">Rural/Urban</span>&ndash;&gt;-->
+						<!--&lt;!&ndash;<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.chooseIncome();">Income</span>&ndash;&gt;-->
+						<!--&lt;!&ndash;<span id="clear-btn" class="btn btn-default" onclick="attainment.removeAll();">Clear all</span>&ndash;&gt;-->
+						<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+						<!--&lt;!&ndash; Original buttons for attainment_v2.js &ndash;&gt;-->
+						<!--<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.hideOthers();attainment.showOriginal();">All Population</span>-->
+						<!--<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.hideOthers();attainment.filterGender();">Gender</span>-->
+						<!--<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.hideOthers();attainment.filterRural();">Rural/Urban</span>-->
+						<!--<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.hideOthers();attainment.filterIncome();">Income</span>-->
+					<!--</div>-->
+
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-7" id="line-area">
 					<div id="attain-btn">
 						</br>
 
-					<!--filter for gender, income level or rural/urban divide -->
+						<!--filter for gender, income level or rural/urban divide -->
 
 						<!-- Buttons for attainment_v3.js -->
 						<!--<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>-->
@@ -147,16 +175,11 @@
 						<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.hideOthers();attainment.filterRural();">Rural/Urban</span>
 						<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.hideOthers();attainment.filterIncome();">Income</span>
 					</div>
-
 				</div>
-				<div class="col-sm-4"></div>
-			</div>
-			<div class="row">
-				<div class="col-sm-8" id="line-area"></div>
-				<div class="col-sm-4" id="dropout-info">
-					<h3 id="dropout-text">
+				<div class="col-sm-5" id="dropout-info">
+					<h4 id="dropout-text">
 						Why are students dropping out from schools?
-					</h3>
+					</h4>
 					</br>
 					<ul class="icons-ul">
 						<li><i class="icon-li icon-ok"></i><strong>Household's preferences: </strong>

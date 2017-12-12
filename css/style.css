@@ -49,14 +49,23 @@ body {
 
 #mappage h1 {
     padding: 5px;
+    padding-left: 0px;
 }
+
 img {
     height:650px;
     margin-left: 30px;
 }
+
 h2 {
     letter-spacing: 3px;
 }
+
+
+/*********************/
+/* FULLPAGE */
+/*********************/
+
 
 #conclusion h2 {
     letter-spacing: 4px;
@@ -137,7 +146,8 @@ section {
 }
 
 .map-dropdown {
-    font-size: 15px;
+    font-size: 13px;
+    color: grey;
     font-weight: lighter;
 }
 
@@ -315,8 +325,8 @@ div.btn-group {
 /* default figure (no filter) */
 
 .attain-instruct {
-    font-size: 18px;
-    /*text-align: center;*/
+    font-size: 14px;
+    color: #777777;
     line-height: 130%;
 }
 
@@ -333,7 +343,8 @@ div.btn-group {
 }
 
 #dropout-text {
-    text-align: center;
+    letter-spacing: 2px;
+    line-height: 120%;
 }
 
 #attain-btn {

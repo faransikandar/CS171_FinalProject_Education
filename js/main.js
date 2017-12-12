@@ -3,11 +3,11 @@
 // FULLPAGE parameters
 $(document).ready(function() {
     $('#fullpage').fullpage({
-        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage', '7thPage', '8thPage'],
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage', '7thPage', '8thPage', '9thPage'],
         sectionsColor: ['whitesmoke', 'whitesmoke', 'white', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke', 'whitesmoke'],
         navigation: true,
         navigationPosition: 'right',
-        navigationTooltips: ['1', '2', '3', '4', '5', '6', '7', '8']
+        navigationTooltips: ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     });
 });
 
@@ -38,7 +38,6 @@ function createMap(error, map, data){
         d.avg13_sec_teacher = +d.avg13_sec_teacher;
         d.avg13_bac_attain = +d.avg13_bac_attain;
         d.avg13_mas_attain = +d.avg13_mas_attain;
-        // d.avg13_doc_attain = +d.avg13_doc_attain;
         d.avg13_ter_enroll = +d.avg13_ter_enroll;
         d.avg13_gov_edu = +d.avg13_gov_edu;
     });
@@ -61,16 +60,6 @@ function attainData(error, data, usData){
     // destringing data
     data.forEach(function(d){
         d.edyears = +d.edyears;
-        d.pct15_19 = +d.pct15_19;
-        d.pct15_19_female = +d.pct15_19_female;
-        d.pct15_19_male = +d.pct15_19_male;
-        d.pct15_19_urban = +d.pct15_19_urban;
-        d.pct15_19_rural = +d.pct15_19_rural;
-        d.pct15_19_q1 = +d.pct15_19_q1;
-        d.pct15_19_q2 = +d.pct15_19_q2;
-        d.pct15_19_q3 = +d.pct15_19_q3;
-        d.pct15_19_q4 = +d.pct15_19_q4;
-        d.pct15_19_q5 = +d.pct15_19_q5;
         d.pct20_29 = +d.pct20_29;
         d.pct20_29_male = +d.pct20_29_male;
         d.pct20_29_female = +d.pct20_29_female;
@@ -81,26 +70,7 @@ function attainData(error, data, usData){
         d.pct20_29_q3 = +d.pct20_29_q3;
         d.pct20_29_q4 = +d.pct20_29_q4;
         d.pct20_29_q5 = +d.pct20_29_q5;
-        d.pct30_39 = +d.pct30_39;
-        d.pct30_39_male = +d.pct30_39_male;
-        d.pct30_39_female = +d.pct30_39_female;
-        d.pct30_39_urban = +d.pct30_39_urban;
-        d.pct30_39_rural = +d.pct30_39_rural;
-        d.pct30_39_q1 = +d.pct30_39_q1;
-        d.pct30_39_q2 = +d.pct30_39_q2;
-        d.pct30_39_q3 = +d.pct30_39_q3;
-        d.pct30_39_q4 = +d.pct30_39_q4;
-        d.pct30_39_q5 = +d.pct30_39_q5;
-        d.pct40_49 = +d.pct40_49;
-        d.pct40_49_male = +d.pct40_49_male;
-        d.pct40_49_female = +d.pct40_49_female;
-        d.pct40_49_urban = +d.pct40_49_urban;
-        d.pct40_49_rural = +d.pct40_49_rural;
-        d.pct40_49_q1 = +d.pct40_49_q1;
-        d.pct40_49_q2 = +d.pct40_49_q2;
-        d.pct40_49_q3 = +d.pct40_49_q3;
-        d.pct40_49_q4 = +d.pct40_49_q4;
-        d.pct40_49_q5 = +d.pct40_49_q5;
+
     });
 
     allDHS = data;
@@ -108,16 +78,6 @@ function attainData(error, data, usData){
     // destring US data
     usData.forEach(function(d){
         d.edyears = +d.edyears;
-        d.pct15_19 = +d.pct15_19;
-        d.pct15_19_female = +d.pct15_19_female;
-        d.pct15_19_male = +d.pct15_19_male;
-        d.pct15_19_urban = +d.pct15_19_urban;
-        d.pct15_19_rural = +d.pct15_19_rural;
-        d.pct15_19_q1 = +d.pct15_19_q1;
-        d.pct15_19_q2 = +d.pct15_19_q2;
-        d.pct15_19_q3 = +d.pct15_19_q3;
-        d.pct15_19_q4 = +d.pct15_19_q4;
-        d.pct15_19_q5 = +d.pct15_19_q5;
         d.pct20_29 = +d.pct20_29;
         d.pct20_29_male = +d.pct20_29_male;
         d.pct20_29_female = +d.pct20_29_female;
@@ -128,26 +88,7 @@ function attainData(error, data, usData){
         d.pct20_29_q3 = +d.pct20_29_q3;
         d.pct20_29_q4 = +d.pct20_29_q4;
         d.pct20_29_q5 = +d.pct20_29_q5;
-        d.pct30_39 = +d.pct30_39;
-        d.pct30_39_male = +d.pct30_39_male;
-        d.pct30_39_female = +d.pct30_39_female;
-        d.pct30_39_urban = +d.pct30_39_urban;
-        d.pct30_39_rural = +d.pct30_39_rural;
-        d.pct30_39_q1 = +d.pct30_39_q1;
-        d.pct30_39_q2 = +d.pct30_39_q2;
-        d.pct30_39_q3 = +d.pct30_39_q3;
-        d.pct30_39_q4 = +d.pct30_39_q4;
-        d.pct30_39_q5 = +d.pct30_39_q5;
-        d.pct40_49 = +d.pct40_49;
-        d.pct40_49_male = +d.pct40_49_male;
-        d.pct40_49_female = +d.pct40_49_female;
-        d.pct40_49_urban = +d.pct40_49_urban;
-        d.pct40_49_rural = +d.pct40_49_rural;
-        d.pct40_49_q1 = +d.pct40_49_q1;
-        d.pct40_49_q2 = +d.pct40_49_q2;
-        d.pct40_49_q3 = +d.pct40_49_q3;
-        d.pct40_49_q4 = +d.pct40_49_q4;
-        d.pct40_49_q5 = +d.pct40_49_q5;
+
     });
 
     console.log(usData);
@@ -220,10 +161,6 @@ $(".btn-group > a").click(function(){
     $(this).siblings().removeClass("active");
     //$(this).parent().parent().siblings().children().children().not(this).removeClass("active");
 });
-
-
-
-
 
 
 

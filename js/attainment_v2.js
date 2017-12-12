@@ -49,8 +49,8 @@ attainmentVis.prototype.initVis = function() {
 
     vis.margin = { bottom: 90, top: 70, left:60, right:20 };
 
-    vis.width = 700 - vis.margin.left - vis.margin.right;
-    vis.height = 600- vis.margin.top - vis.margin.bottom;
+    vis.width = 630 - vis.margin.left - vis.margin.right;
+    vis.height = 500- vis.margin.top - vis.margin.bottom;
 
     vis.svgLine = d3.select('#line-area')
         .append('svg')
@@ -555,7 +555,6 @@ attainmentVis.prototype.filterGender = function() {
     vis.circlesMale20.enter()
         .append('circle')
         .merge(vis.circlesMale20)
-        // .transition().duration(500)
         .attr('class', 'points-male points')
         .attr('r', 3)
         .attr('cx', function(d){
