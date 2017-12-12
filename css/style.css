@@ -8,24 +8,24 @@ body {
     font-size:130%;
 }
 #intropage {
-    background-image: url(../img/student_standing_30.png);
+    background-image: url(../img/student_standing_30.jpg);
     background-size: cover;
     padding: 0;
 }
 #intropage-container h1 {
     letter-spacing: 10px;
-    font-size: 80px;
+    font-size: 60px;
     font-weight: bold;
     color: black;
-    text-align: center;
-    padding-top: 20%;
+    text-align: left;
+    padding-top: 30%;
 }
 #intropage-container h2 {
     letter-spacing: 4px;
     font-size: 30px;
     font-weight: bold;
     color: black;
-    text-align: center;
+    text-align: left;
     padding-bottom: 20%;
 }
 #story1 h2 {
@@ -45,6 +45,12 @@ body {
     text-align: center;
     padding-bottom: 20%;
     line-height: 180%;
+}
+
+#conclusionimage{
+    height:350px;
+    margin-left: 30px;
+    opacity: 0.7;
 }
 
 #mappage h1 {
