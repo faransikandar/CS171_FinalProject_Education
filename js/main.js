@@ -189,6 +189,76 @@ function attainData(error, data, usData){
 //     attainment = new attainmentVis("#line-area", allDHS, usData);
 // }
 
+// DISTRIBUTION
+var distViz;
+
+// load data
+queue()
+    .defer(d3.csv, "data/cleaned/avg_edyears25_35.csv")
+    .await(function(error, data) {
+
+        distViz = new DistViz("discrete-scatterplot", data);
+    });
+
+var view1 = $("#view1");
+var view2 = $("#view2");
+var view3 = $("#view3");
+
+var dist_triggers = [view1, view2, view3];
+
+dist_triggers.forEach(function(trigger) {
+    trigger.click(function() {
+        console.log(trigger);
+        var yvar = trigger.text();
+        if (yvar=="Default") {
+            d3.select("#discrete-scatterplot").selectAll(".distLines").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectAfrica").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectAsia").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectAmericas").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectEurope").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-legend").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-legend2").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-instruct").remove();
+            distViz.updateVis();
+        }
+        if (yvar=="General region") {
+            d3.select("#discrete-scatterplot").selectAll(".monoLines").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectAfrica").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectAsia").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectAmericas").remove();
+            d3.select("#discrete-scatterplot").selectAll(".rectEurope").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-legend").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-legend2").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-instruct").remove();
+            distViz.updateVis2();
+        }
+        if (yvar=="Stacked region") {
+            d3.select("#discrete-scatterplot").selectAll(".distLines").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-legend2").remove();
+            d3.select("#discrete-scatterplot").selectAll(".monoLines").remove();
+            d3.select("#discrete-scatterplot").selectAll(".dist-instruct").remove();
+            distViz.updateVis3();
+        }
+        /*if (distViz != null) {
+            distViz.updateVis();
+        }*/
+        return false;
+    });
+});
+
+
+$(".btn-group > a").click(function(){
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+    //$(this).parent().parent().siblings().children().children().not(this).removeClass("active");
+});
+
+
+
+
+
+
+
 
 // MATRIX
 var matrix;

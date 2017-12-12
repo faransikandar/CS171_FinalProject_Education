@@ -9,9 +9,6 @@ Matrix = function(_parentElement, _reg1Data) {
     this.reg1Data = _reg1Data;
     this.displayData = [];
 
-    this.yvar = "value";
-    this.sortNum;
-
     this.initVis();
 };
 
@@ -80,11 +77,6 @@ Matrix.prototype.wrangleData = function() {
 Matrix.prototype.updateVis = function() {
     var vis = this;
 
-    //vis.yvar = d3.select("#value").property("value");
-
-    //vis.yvar = d3.select('input[name="enroll-outcome"]:checked').property("value");
-    console.log(vis.yvar);
-
     vis.cards = vis.svg.selectAll(".code")
         .data(vis.displayData, function(d) { return d.var+':'+d.code});
 
@@ -108,7 +100,7 @@ Matrix.prototype.updateVis = function() {
         .merge(vis.cards)
         .transition()
         .duration(1000)
-        .style("fill", function(d) { return vis.colorScale(d[vis.yvar])})
+        .style("fill", function(d) { return vis.colorScale(d.value2)})
         .style("opacity",1);
 
     function highlightCell() {
@@ -127,74 +119,74 @@ Matrix.prototype.updateVis = function() {
                 return ci===(vis.dataH.code-1);
             });
         vis.tooltip.text(function(d) {
-            if(vis.dataH[vis.yvar]>0) {
+            if(vis.dataH.value2>0) {
                 if (vis.dataH.var === 1) {
-                    return "In " + vis.dataH.DHS + ", " + "being in the bottom 40% of the wealth distribution is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "being in the bottom 40% of the wealth distribution is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 2) {
-                    return "In " + vis.dataH.DHS + ", " + "one additional sibling is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "one additional sibling is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 3) {
-                    return "In " + vis.dataH.DHS + ", " + "one additional household member is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "one additional household member is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 4) {
-                    return "In " + vis.dataH.DHS + ", " + "being female is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "being female is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 5) {
-                    return "In " + vis.dataH.DHS + ", " + "being the firstborn child is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "being the firstborn child is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 6) {
-                    return "In " + vis.dataH.DHS + ", " + "living in an urban area is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "living in an urban area is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 7) {
-                    return "In " + vis.dataH.DHS + ", " + "having married parents is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having married parents is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 8) {
-                    return "In " + vis.dataH.DHS + ", " + "having an employed household head is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having an employed household head is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 9) {
-                    return "In " + vis.dataH.DHS + ", " + "having a mother who completed high school is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having a mother who completed high school is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 10) {
-                    return "In " + vis.dataH.DHS + ", " + "having a father who completed high school is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having a father who completed high school is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 11) {
-                    return "In " + vis.dataH.DHS + ", " + "a 100% increase in the share of the local community that completed high school is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% increase in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "a 100% increase in the share of the local community that completed high school is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% increase in the likelihood of enrollment.";
                 }
             }
             else {
                 if (vis.dataH.var === 1) {
-                    return "In " + vis.dataH.DHS + ", " + "being in the bottom 40% of the wealth distribution is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "being in the bottom 40% of the wealth distribution is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 2) {
-                    return "In " + vis.dataH.DHS + ", " + "one additional sibling is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "one additional sibling is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 3) {
-                    return "In " + vis.dataH.DHS + ", " + "one additional household member is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "one additional household member is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 4) {
-                    return "In " + vis.dataH.DHS + ", " + "being female is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "being female is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 5) {
-                    return "In " + vis.dataH.DHS + ", " + "being the firstborn child is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "being the firstborn child is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 6) {
-                    return "In " + vis.dataH.DHS + ", " + "living in an urban area is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "living in an urban area is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 7) {
-                    return "In " + vis.dataH.DHS + ", " + "having married parents is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having married parents is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 8) {
-                    return "In " + vis.dataH.DHS + ", " + "having an employed household head is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having an employed household head is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 9) {
-                    return "In " + vis.dataH.DHS + ", " + "having a mother who completed high school is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having a mother who completed high school is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 10) {
-                    return "In " + vis.dataH.DHS + ", " + "having a father who completed high school is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "having a father who completed high school is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
                 if (vis.dataH.var === 11) {
-                    return "In " + vis.dataH.DHS + ", " + "a 100% increase in the share of the local community that completed high school is associated with a " + d3.format(".2f")(vis.dataH[vis.yvar]) + "% decrease in the likelihood of enrollment.";
+                    return "In " + vis.dataH.DHS + ", " + "a 100% increase in the share of the local community that completed high school is associated with a " + d3.format(".2f")(vis.dataH.value2) + "% decrease in the likelihood of enrollment.";
                 }
             }
         }).style("opacity",1);
@@ -237,7 +229,7 @@ Matrix.prototype.updateVis = function() {
         .attr("transform", "translate(-6," + vis.gridSize / 1.5 + ")")
         .attr("class", function (d,i) { return "varLabel mono r"+i;} )
         .on("click", function(d,i) {vis.rowSortOrder=!vis.rowSortOrder;
-        sortbylabel("r",i, vis.rowSortOrder); d3.select("#order").property("selectedIndex", 1).node().focus();;});
+            sortbylabel("r",i, vis.rowSortOrder); d3.select("#order").property("selectedIndex", 1).node().focus();;});
 
     vis.countryLabels = vis.svg.selectAll(".countryLabel")
         .data(vis.countries)
@@ -249,7 +241,7 @@ Matrix.prototype.updateVis = function() {
         .attr("transform", "translate("+vis.gridSize/2 + ",-6) rotate (-90)")
         .attr("class",  function (d,i) { return "countryLabel mono c"+i;} )
         .on("click", function(d,i) {vis.colSortOrder=!vis.colSortOrder;
-        sortbylabel("c",i,vis.colSortOrder);d3.select("#order").property("selectedIndex", 1).node().focus();;})
+            sortbylabel("c",i,vis.colSortOrder);d3.select("#order").property("selectedIndex", 1).node().focus();;})
     ;
 
 
@@ -262,7 +254,7 @@ Matrix.prototype.updateVis = function() {
         var sorted; // sorted is zero-based index
         d3.selectAll(".c"+rORc+i)
             .filter(function(ce){
-                log2r.push(ce[vis.yvar]);
+                log2r.push(ce.value2);
             });
 
         console.log(log2r);

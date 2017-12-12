@@ -16,8 +16,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
 
 	<!-- should combine the stylesheets -->
-	<link rel="stylesheet" href="css/style_dist.css">
-	<link rel="stylesheet" href="css/style_matrix.css">
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -79,47 +77,22 @@
 
 	<!------ DISTRIBUTION PAGE ------->
 	<section class="section" id="distributionpage">
-		<div class="container">
-			<h1>There are a variety of factors that affect educational attainment.</h1>
-			<h4>Where do you think your country lies in the global distribution over the years?</h4>
-			<!--<p class="placeholder-text">Visualization 2 (cross-country comparisons): looking at global distribution in educational-->
-				<!--indicators (plus comparisons by gender and wealth).The user will be able to guess based on their priors-->
-				<!--where their selected country might be in the distribution. Then, we will show them-->
-				<!--the true position</p>-->
-			<!--<img class="storyboard" src="img/Storyboard2.jpg">-->
-		</div>
-		<div class="row">
-			<div class="row">
-				<div id="discrete-scatterplot-controls"></div>
-				<div class="col-sm-2"></div>
-				<div class="col-sm-5">
-					<form class="form-inline">
-						<div class="form-group">
-							<div id="col-sm-2"></div>
-							<label for="rankingType">Display Regions:</label>
-							<select class="form-control" id="ranking-type">
-								<option value="All Regions">All Regions</option>
-								<option value="Overall Saturation">Overall Saturation</option>
-								<option value="Africa">Africa</option>
-								<option value="Americas">Americas</option>
-								<option value="Asia">Asia</option>
-								<option value="Europe">Europe</option>
-							</select>
-
-							<!-- Activity IV -->
-							<!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
-						</div>
-					</form>
-					<div class = "scatterplot-controls"></div>
-					<!--<form class="scatterplot-controls">-->
-						<!--<label><input type="checkbox" name="mode" value="collisiondetection">Collision Detection</label>-->
-					<!--</form>-->
+		<div class="container-fluid">
+			<h2>HOW DOES EDUCATIONAL ATTAINMENT VARY ACROSS COUNTRIES & TIME?</h2>
+			<div class="col-xs-24 col-sm-6 dist-subtext">The global distribution of years of education has changed
+				significantly since 1950. Generally, there has been an upward trend in educational attainment
+				with time, but some regions and countries have lagged behind.
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12" id="discrete-scatterplot"></div>
+		</div>
+		<div class="col-xs-20 col-sm-5 float-right">
+			<div class="filterType">Select view:</div>
+			<div class="btn-group" role="group" >
+				<a class="btn btn-secondary wide active" id="view1">Default</a>
+				<a class="btn btn-secondary wide" id="view2">General region</a>
+				<a class="btn btn-secondary wide" id="view3">Stacked region</a>
 			</div>
 		</div>
+		<div class="col-sm-12" id="discrete-scatterplot"></div>
 	</section>
 
 
@@ -214,39 +187,32 @@
 	<!------ PREDICTION PAGE ------->
 	<section class="section" id="predictionpage">
 		<div class="container-fluid">
-		<h3 class="matrix-title">WHAT DETERMINES WHETHER A CHILD GOES TO SCHOOL IN A COUNTRY?</h3>
-		<div class="matrix-subtext col-xs-24 col-sm-6"> There may be many factors that influence whether a child in a given country
-			attends school or not. The matrix below looks at the relative effect of 11 such factors on enrollment in secondary
-			and higher education using nationally representative survey data in each country. Hover over the cells for more detail. <br><br>
-		</div>
-		<div class="col-xs-20 col-sm-5 float-right">
-			<div class="filterType">Outcome variable:</div>
-			<div class="btn-group" role="group" >
-				<a class="btn btn-secondary wide active" id="value">Enrollment in secondary school</a>
-				<a class="btn btn-secondary wide" id="value2">Enrollment in higher education</a>
+			<h3 class="matrix-title">WHAT DETERMINES ENROLLMENT IN HIGHER EDUCATION IN A COUNTRY?</h3>
+			<div class="matrix-subtext col-xs-24 col-sm-6"> There may be many factors that influence whether an individual in a given country
+				enrolls in higher education or not. The matrix below looks at the relative effect of 11 such factors using nationally
+				representative survey data in each country. <br><br>
+				<div class="matrix-instruct"> Hover over the cells for more detail. Use the variable and country labels to sort the cells.</div>
+			</div>
+			<form class="form-inline">
+				<select class="form-control" id="order" style="visibility: hidden">
+					<option value="value">Secondary</option>
+					<option value="value2">Tertiary</option>
+				</select>
+			</form>
+			<div id="chart"></div>
+			<div class="matrix-explain col-xs-20 col-sm-5">
+				In many developing countries,
+				costs -- either direct educational costs or opportunity costs from foregone earnings -- are often issues that prevent
+				children from attending school. The matrix shows that being poor (being in the bottom 40% of the country's wealth distribution)
+				is the single most defining factor in whether an individual obtains higher education or not. <br>
+			</div>
+			<div class="matrix-explain col-xs-20 col-sm-5">
+				Parent and community education seem to play an important role in influencing enrollment in many
+				countries in the sample. Higher educational attainment may reflect greater value placed on education within the
+				household or community, which is likely to affect whether or not a child attends school.
+				<br>
 			</div>
 		</div>
-		<form class="form-inline">
-			<select class="form-control" id="order" style="visibility: hidden">
-				<option value="value">Secondary</option>
-				<option value="value2">Tertiary</option>
-			</select>
-		</form>
-		<div id="chart"></div>
-		<div id="dataset-picker"></div>
-		<div class="matrix-explain col-xs-20 col-sm-5">
-			In many developing countries,
-			costs -- either direct educational costs or opportunity costs from foregone earnings -- are often issues that prevent
-			children from attending school. The matrix shows that being poor (being in the bottom 40% of the country's wealth distribution)
-			is the single most defining factor in whether a child is enrolled or not. <br>
-		</div>
-		<div class="matrix-explain col-xs-20 col-sm-5">
-			In addition, parent and community education seem to play an important role in influencing enrollment in many
-			countries in the sample. Higher educational attainment may reflect greater value placed on education within the
-			household or community, which is likely to be affect whether or not a child attends school.
-			 <br>
-		</div>
-	</div>
 	</section>
 
 	<!------ CONCLUSION PAGE ------->
@@ -316,15 +282,10 @@
 
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
-	<!--<script src="js/discrete-scatterplot.js"></script>-->
-	<!--<script src="js/discrete-scatterplot-all.js"></script>-->
-	<script src="js/discrete-scatterplot-v0.js"></script>
-	<script src="js/discrete-jitter.js"></script>
-	<!--<script src="js/dist-viz.js"></script>-->
+	<script src="js/distribution.js"></script>
 	<script src="js/attainment_v2.js"></script>
 	<!--<script src="js/attainment_v3.js"></script>-->
 	<script src="js/matrix-viz.js"></script>
-	<!--<script src="js/main_dist.js"></script>-->
 	<script src="js/main.js"></script>
 
 </body>

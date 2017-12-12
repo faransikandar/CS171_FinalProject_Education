@@ -1,43 +1,3 @@
-.y_axis_scatter line {
-    stroke: transparent;
-}
-
-.y_axis_scatter path {
-    stroke: transparent;
-}
-
-.y_axis_scatter text {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.y_axis_scatter label {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.x_axis_scatter line {
-    stroke: gray;
-}
-
-.x_axis_scatter path {
-    stroke: gray;
-}
-
-.x_axis_scatter text {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
-.x_axis_scatter label {
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-}
-
 body {
     font-family: Avenir;
     font-size: 11px;
@@ -92,13 +52,13 @@ img {
     height:650px;
     margin-left: 30px;
 }
-
-.placeholder-text {
-    font-size: 20px;
+h2 {
+    letter-spacing: 3px;
 }
 
+/*********************/
 /* FULLPAGE */
-
+/*********************/
 #fp-nav ul li a span {
     background: whitesmoke;
 }
@@ -119,7 +79,6 @@ img {
     text-align: right;
 }
 
-
 img.icon-ref {
     width: auto;
     height: 120px;
@@ -127,7 +86,6 @@ img.icon-ref {
     right: 5px;
     padding:5px;
 }
-
 section {
     margin-bottom: 25px;
 }
@@ -207,10 +165,136 @@ section {
     ry: 20px;
 }
 
+/*********************/
+/*    DIST VIZ       */
+/*********************/
+.dist-subtext {
+    color: #777777;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.dist-yAxis line {
+    stroke: transparent;
+}
+.dist-yAxis path {
+    stroke: transparent;
+}
+.dist-yAxis text {
+    font-size: 12px;
+    font-family: Avenir;
+    letter-spacing: 1px;
+    color: gray;
+}
+.dist-xAxis line {
+    stroke: gray;
+}
+.dist-xAxis path {
+    stroke: gray;
+}
+.dist-xAxis text {
+    font-size: 12px;
+    font-family: Avenir;
+    letter-spacing: 1px;
+    color: gray;
+}
+.dist-label {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: gray;
+}
+.dist-legend, .dist-legend2 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: gray;
+}
+div.dist-tooltip {
+    width: 130px;
+    height: 45px;
+    padding: 5px;
+    position: absolute;
+    text-align: left;
+    color: white;
+    font-size: 11px;
+    font-family: Avenir;
+    background-color: #34495E;
+    border: 1px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+.btn-group>a {
+    font-size: 12px;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--colorMedium);
+    border-color: #ddd;
+    border-width: 1px;
+    background-color: #f0f0f0;
+    padding: 3px 10px;
+    margin: 0 4px 4px 4px;
+    border-radius: 12px !important;
+}
+.btn-group>a:hover {
+    color: var(--colorDark);
+}
+a.active, a:active {
+    background-color: #cdcdcd;
+    box-shadow: none;
+    color: var(--colorDark);
+    outline: none;
+}
+div.btn-group {
+    display: inline-block;
+    margin-left: 150px;
+}
+*:focus {
+    outline: none !important;
+    outline: 0  !important;
+}
+.selectSection {
+    margin: 20px 0;
+}
+.filterType {
+    color: #999;
+    font-size: 13px;
+    margin-top: 30px;
+    margin-left: 150px;
+}
+.rectAfrica, .reg-Africa {
+    fill: #66c2a5;
+    opacity: 1;
+}
+.rectAmericas, .reg-Americas {
+    fill: #ffd92f;
+    opacity: 1;
+}
+.rectAsia, .reg-Asia {
+    fill: #8da0cb;
+    opacity: 1;
+}
+.rectEurope, .reg-Europe {
+    fill: #fc8d62;
+    opacity: 1;
+}
+.monoLines {
+    fill: #2b8cbe;
+    opacity: 1;
+}
+.dist-legend2-label:hover,
+.dist-legend2:hover{
+    cursor: pointer;
+}
+.dist-instruct {
+    font-size: 10px;
+    fill: #BDC3C7;
+    font-style: italic;
+}
+
+
 
 
 /***********************/
-/* ATTAINMEENT PROFILE */
+/* ATTAINMENT PROFILE */
 /***********************/
 
 /* default figure (no filter) */
@@ -418,28 +502,77 @@ img.icon {
 
 /* distribution vis */
 
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
+rect.bordered {
+    stroke: white;
+    stroke-width:2px;
 }
 
-.dot {
-    stroke: #000;
-    stroke-opacity: .7;
-    fill-opacity: .7;
+h3.matrix-title {
+    letter-spacing: 4px;
+}
+text.mono {
+    font-size: 8pt;
+    font-family: Avenir;
+    fill: #aaa;
 }
 
-#controls {
+text.mono {
+    font-size: 8pt;
+    font-family: Avenir;
+}
+
+.cell-text{
+    font-family: Avenir;
+    font-size: 9px;
+}
+.varLabel:hover {
+    font-weight: bold;
+    cursor: pointer;
+    fill: #4C4545;
+}
+.countryLabel:hover {
+    font-weight: bold;
+    cursor: pointer;
+    fill: #4C4545;
+}
+.matrix-subtext,
+.matrix-instruct {
+    color: #777777;
     font-size: 14px;
-    position: absolute;
-    top: 120px;
-    left: 810px;
+    letter-spacing: 1px;
 }
-
-input {
-    margin: 4px 4px 0;
+.matrix-instruct {
+    font-size: 12px;
+    font-style: italic;
+}
+.matrix-explain{
+    color: #777777;
+    font-size: 14px;
+    margin-top: 40px;
+    margin-left: 40px;
+    letter-spacing: 1px;
+}
+text.text-highlight {
+    fill: #4C4545;
+    font-weight: bold;
+}
+div.tooltip {
+    width: 110px;
+    height: 45px;
+    padding: 5px;
+    position: absolute;
+    text-align: left;
+    color: white;
+    font-size: 11px;
+    font-family: Avenir;
+    background-color: #34495E;
+    border: 1px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+.tooltip-matrix {
+    font-size: 9pt;
+    fill: #4C4545;
 }
 
 
