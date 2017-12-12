@@ -2,7 +2,7 @@
 ## By Lydia Kim, Gaew Lertsuridej, and Faran Sikandar
 ## Data Viz Final Project - WWBDD (What Would a Benevolent Designer Do?)
 
-**Project Website:** https://fsikandar.github.io/CS171_FinalProject/
+**Project Website:** https://fsikandar.github.io/CS171_FinalProject_Education/
 
 **Special Thanks To:**
 
