@@ -51,6 +51,7 @@ body {
     color: black;
     text-align: center;
     padding-bottom: 20%;
+    line-height: 180%;
 }
 
 #mappage h1 {
@@ -111,12 +112,22 @@ img.icon-ref {
     position: absolute;
     right: 5px;
     padding:5px;
+    align-content: center;
+    vertical-align: middle;
 }
 
 section {
     margin-bottom: 25px;
 }
 
+
+/*******************/
+/*     END PAGE   */
+/*******************/
+
+#endpage p li {
+    font-size: 10px;
+}
 
 /*********************/
 /*     CHOROPLETH   */
@@ -254,7 +265,7 @@ img.icon {
 }
 
 .y-label {
-    font-size: 13px;
+    font-size: 11.5px;
     fill: grey;
     transform: rotate(-90deg);
     text-anchor: end;
@@ -262,7 +273,7 @@ img.icon {
 }
 
 .x-label {
-    font-size: 13px;
+    font-size: 11.5px;
     fill: grey;
     text-anchor: end;
     opacity: 0.5;

@@ -47,10 +47,10 @@ attainmentVis.prototype.addDropdown = function() {
 attainmentVis.prototype.initVis = function() {
     var vis = this;
 
-    vis.margin = { bottom: 90, top: 50, left:60, right:20 };
+    vis.margin = { bottom: 90, top: 70, left:60, right:20 };
 
     vis.width = 700 - vis.margin.left - vis.margin.right;
-    vis.height = 550 - vis.margin.top - vis.margin.bottom;
+    vis.height = 600- vis.margin.top - vis.margin.bottom;
 
     vis.svgLine = d3.select('#line-area')
         .append('svg')
@@ -90,7 +90,7 @@ attainmentVis.prototype.initVis = function() {
 
     vis.yLabel = d3.select('#svg-line').append('text')
         .text("Share of Population")
-        .attr('x', -50)
+        .attr('x', -80)
         .attr('y', vis.margin.left-35)
         .attr('class', 'y-label');
 
@@ -125,7 +125,7 @@ attainmentVis.prototype.initVis = function() {
         .attr('y', 4 + line1)
         .attr('class', 'legend-text legend-text-US')
         .style('opacity', 1)
-        .text('Developed Countries');
+        .text('US and Developed Countries');
 
     vis.legend = vis.svgLine.append('circle')
         .attr('cx', column2)

@@ -231,14 +231,14 @@ choroplethMap.prototype.initRank = function() {
         .attr('x', vis.mapWidth+50)
         .attr('y', 20)
         .attr('class', 'background-box')
-        .attr('height', vis.height/2 - 110)
+        .attr('height', vis.height/2 - 120)
         .attr('width', 235);
 
     vis.boxBottom = vis.svgMap.append("rect")
         .attr('x', vis.mapWidth+50)
         .attr('y', vis.height/2 - 70)
         .attr('class', 'background-box')
-        .attr('height', vis.height/2 - 110)
+        .attr('height', vis.height/2 - 120)
         .attr('width', 235);
 
     vis.addTopTitle = vis.svgMap.append("text")
@@ -255,19 +255,19 @@ choroplethMap.prototype.initRank = function() {
 
     vis.addNote = vis.svgMap
         .append('text')
-            .attr('x', vis.mapWidth +35)
+            .attr('x', vis.mapWidth +50)
             .attr('y', vis.height*0.8)
             .attr('class', 'rank-note')
             .text("NOTE:")
         .append('tspan')
             .text("1 - The ranking is based on available data.")
-            .attr('x', vis.mapWidth + 53).attr('y', vis.height*0.8 +20)
+            .attr('x', vis.mapWidth + 55).attr('y', vis.height*0.8 +20)
         .append('tspan')
             .text("2 - Grey areas indicate no date available.")
-            .attr('x', vis.mapWidth + 53).attr('y', vis.height*0.8 +35)
+            .attr('x', vis.mapWidth + 55).attr('y', vis.height*0.8 +35)
         .append('tspan')
             .text("3 - Enrollment rate shown is gross enrollment, which ")
-            .attr('x', vis.mapWidth +53).attr('y', vis.height*0.8 +50)
+            .attr('x', vis.mapWidth +55).attr('y', vis.height*0.8 +50)
         .append('tspan')
             .text("include people who may have repeated a grade.")
             .attr('x', vis.mapWidth +68).attr('y', vis.height*0.8 +63);
