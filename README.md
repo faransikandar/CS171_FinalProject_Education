@@ -3,6 +3,7 @@
 ## Data Viz Final Project - WWBDD (What Would a Benevolent Designer Do?)
 
 **Project Website:** https://fsikandar.github.io/CS171_FinalProject_Education/
+**Screencast:** https://www.youtube.com/watch?v=4820Ri180zk
 
 The code is included in the css, js, and html files. Libraries are listed under "lib." The "archive" folder includes older versions of code.
 
