@@ -203,3 +203,9 @@ $(".btn-group > a").click(function(){
     $(this).siblings().removeClass("active");
     //$(this).parent().parent().siblings().children().children().not(this).removeClass("active");
 });
+
+$(".btn-group2 > span").click(function(){
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+    //$(this).parent().parent().siblings().children().children().not(this).removeClass("active");
+});
