@@ -582,12 +582,6 @@ text.mono {
 .selectSection {
     margin: 20px 0;
 }
-.filterType {
-    color: #999;
-    font-size: 13px;
-    margin-top: 5px;
-    margin-left: 40px;
-}
 .matrix-subtext,
 .matrix-instruct {
     color: #777777;
