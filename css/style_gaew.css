@@ -1,12 +1,5 @@
-#mappage h3 {
-    font-size: 29px;
-    letter-spacing:3px;
-    padding-bottom: 20px;
-}
-
 #mappage label {
     margin-left: 15px;
-    /*padding-left: 15px;*/
 }
 .icons-ul {
     fill: dimgrey;

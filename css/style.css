@@ -3,7 +3,6 @@ body {
     font-size: 11px;
     background: white;
 }
-
 .bigger {
     font-size:130%;
 }
@@ -13,15 +12,15 @@ body {
     padding: 0;
 }
 #intropage-container h1 {
-    letter-spacing: 10px;
-    font-size: 60px;
+    letter-spacing: 5px;
+    font-size: 50px;
     font-weight: bold;
     color: black;
     text-align: left;
-    padding-top: 30%;
+    padding-top: 25%;
 }
 #intropage-container h2 {
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     font-size: 30px;
     font-weight: bold;
     color: black;
@@ -44,6 +43,14 @@ body {
     color: black;
     text-align: center;
     padding-bottom: 20%;
+    line-height: 180%;
+}
+#story2 h3 {
+    letter-spacing: 4px;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    padding-bottom: 2%;
     line-height: 180%;
 }
 
@@ -75,23 +82,6 @@ h2 {
 }
 
 
-/*********************/
-/* FULLPAGE */
-/*********************/
-
-
-#conclusion h2 {
-    letter-spacing: 4px;
-    font-size: 30px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    padding-bottom: 5%;
-}
-
-#conclusion h2 {
-    padding-bottom: 5%;
-}
 
 
 /*********************/
@@ -116,18 +106,10 @@ section {
 }
 
 
-/*******************/
-/*     END PAGE   */
-/*******************/
-
-#endpage p li {
-    font-size: 10px;
-}
 
 /*********************/
 /*     CHOROPLETH   */
 /*********************/
-
 .map {
     fill: #ededed;
     stroke: #cecece;
@@ -136,6 +118,13 @@ section {
 
 .map:hover{
     opacity: 0.65;
+}
+#mappage label {
+    margin-left: 15px;
+}
+.icons-ul {
+    fill: dimgrey;
+    letter-spacing: 1px;
 }
 
 #map {
@@ -205,9 +194,16 @@ section {
     ry: 17px;
 }
 
+
+
 /*********************/
 /*    DIST VIZ       */
 /*********************/
+h3 {
+    letter-spacing: 4px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
 .dist-subtext {
     color: #777777;
     font-size: 14px;
@@ -274,10 +270,11 @@ div.dist-tooltip {
     margin: 0 4px 4px 4px;
     border-radius: 12px !important;
 }
+
 .btn-group>a:hover {
     color: var(--colorDark);
 }
-a.active, a:active {
+.btn-group>a.active, .btn-group>a:active {
     background-color: #cdcdcd;
     box-shadow: none;
     color: var(--colorDark);
@@ -297,7 +294,7 @@ div.btn-group {
 .filterType {
     color: #999;
     font-size: 13px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: 150px;
 }
 .rectAfrica, .reg-Africa {
@@ -305,7 +302,7 @@ div.btn-group {
     opacity: 1;
 }
 .rectAmericas, .reg-Americas {
-    fill: #ffd92f;
+    fill: #F9BF3B;
     opacity: 1;
 }
 .rectAsia, .reg-Asia {
@@ -331,18 +328,19 @@ div.btn-group {
 }
 
 
+
 /***********************/
 /* ATTAINMENT PROFILE */
 /***********************/
 
 /* default figure (no filter) */
 
-.attain-instruct {
-    font-size: 14px;
+.attain-subtext {
     color: #777777;
-    line-height: 130%;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
-
 .line {
     stroke: #663399;
     stroke-width: 2px;
@@ -358,12 +356,34 @@ div.btn-group {
 #dropout-text {
     letter-spacing: 2px;
     line-height: 120%;
+    font-size: 16px;
 }
 
 #attain-btn {
     align: middle;
 }
+.btn-group2>span {
+    font-size: 12px;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--colorMedium);
+    border-color: #afc6ab;
+    border-width: 1px;
+    background-color: #c4d8c0;
+    padding: 3px 10px;
+    margin: 0 4px 4px 4px;
+    border-radius: 12px !important;
+}
 
+.btn-group2>span:hover {
+    color: var(--colorDark);
+}
+.btn-group2>span.active, .btn-group2>span:active{
+    background-color: #8aa385;
+    box-shadow: none;
+    color: var(--colorDark);
+    outline: none;
+}
 li {
     font-size: 15px;
 }
@@ -538,6 +558,10 @@ img.icon {
     opacity: 0.7;
     font-size: 10px;
 }
+.ptext {
+    font-size:13px;
+    padding-right:15px;
+}
 
 
 /***********************/
@@ -600,12 +624,14 @@ text.mono {
 .matrix-instruct {
     font-size: 12px;
     font-style: italic;
+    color: #A9A9A9;
 }
 .matrix-explain{
     color: #777777;
-    font-size: 14px;
-    margin-top: 40px;
-    margin-left: 40px;
+    font-size: 13px;
+    margin-top: 12px;
+    padding-left: 30px;
+    letter-spacing: 1px;
 }
 text.text-highlight {
     fill: #4C4545;
@@ -630,3 +656,29 @@ div.tooltip {
     fill: #4C4545;
 }
 
+
+/*********************/
+/* CONCLUSION PAGE */
+/*********************/
+
+
+#conclusion h2 {
+    letter-spacing: 4px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+#conclusion h2 {
+    padding-bottom: 5%;
+}
+
+/*******************/
+/*     END PAGE   */
+/*******************/
+
+#endpage p li {
+    font-size: 10px;
+}

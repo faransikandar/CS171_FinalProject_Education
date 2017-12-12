@@ -16,9 +16,9 @@ Matrix.prototype.initVis = function() {
     var vis = this;
 
     // specify globals
-    vis.margin = { top: 150, right: 0, bottom: 50, left: 250 };
+    vis.margin = { top: 135, right: 0, bottom: 50, left: 184 };
     vis.width = 1300 - vis.margin.left - vis.margin.right;
-    vis.height = 430 - vis.margin.top - vis.margin.bottom;
+    vis.height = 450 - vis.margin.top - vis.margin.bottom;
 
     vis.gridSize = Math.floor(vis.width / 53);
     vis.col_number=47;
@@ -44,7 +44,7 @@ Matrix.prototype.initVis = function() {
     // Tooltip
     vis.tooltip = vis.svg.append("text")
         .attr('x', 5)
-        .attr('y', 230)
+        .attr('y', 250)
         .attr("class", "tooltip-matrix");
 
     // Sort
@@ -203,8 +203,8 @@ Matrix.prototype.updateVis = function() {
         .attr("class", "legend");
 
     vis.legend_g.append("rect")
-        .attr("x", function(d, i) { return vis.legendElementWidth * i + 475})
-        .attr("y", vis.height +13)
+        .attr("x", function(d, i) { return vis.legendElementWidth * i + 520})
+        .attr("y", vis.height +12)
         .attr("width", vis.legendElementWidth)
         .attr("height", vis.gridSize / 2)
         .style("fill", function(d, i) { return vis.colors[i]})
@@ -213,8 +213,8 @@ Matrix.prototype.updateVis = function() {
     vis.legend_g.append("text")
         .attr("class", "mono")
         .text(function(d) { return d})
-        .attr("x", function(d, i) { return vis.legendElementWidth * i + 475})
-        .attr("y", vis.height + vis.gridSize + 13);
+        .attr("x", function(d, i) { return vis.legendElementWidth * i + 520})
+        .attr("y", vis.height + vis.gridSize + 12);
 
     vis.legend.exit().remove();
 

@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/jquery.fullPage.css">
-	<link rel="stylesheet" href="css/style_gaew.css">
 	<!--<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">-->
 
 	<!-- should combine the stylesheets -->
@@ -45,7 +44,7 @@
 	<section class="section" id="mappage">
 		<!--<div class="container-fluid">-->
 		<div class="container">
-			<h3> EDUCATIONAL OUTCOME VARY DRASTICALLY AROUND THE WORLD.</h3>
+			<h3 class="choro-title"> EDUCATIONAL OUTCOMES VARY DRASTICALLY AROUND THE WORLD</h3>
 			<!--<h4>This is a multi-layered problem of access, quality, and incentives to attain education.</h4>-->
 			<div class="row">
 				<form class="form-inline">
@@ -78,12 +77,13 @@
 
 	<!------ DISTRIBUTION PAGE ------->
 	<section class="section" id="distributionpage">
-		<div class="container-fluid">
-			<h2>HOW DOES EDUCATIONAL ATTAINMENT VARY ACROSS COUNTRIES & TIME?</h2>
-			<div class="col-xs-24 col-sm-6 dist-subtext">The global distribution of years of education has changed
+		<div class="container">
+			<h3>HOW DOES EDUCATIONAL ATTAINMENT VARY ACROSS COUNTRIES & TIME?</h3>
+			<div class="col-xs-36 col-sm-9 dist-subtext">The global distribution of years of education has changed
 				significantly since 1950. Generally, there has been an upward trend in educational attainment
-				with time, but some regions and countries have lagged behind.
-				</div>
+				with time, but some regions and countries have lagged behind. The visualization below shows
+				educational attainment for individuals aged 25-35 in 146 countries from 1950 to 2010.
+			</div>
 		</div>
 		<div class="col-xs-20 col-sm-5 float-right">
 			<div class="filterType">Select view:</div>
@@ -100,12 +100,17 @@
 	<!-- adding story 2 -->
 	<section class="section" id="story2">
 		<div class="container" id="story2-container">
-			<h2>
-				Now that we know the differences between different countries, what do we know about differences within the countries?
+			<h3 class="trans-text">
+				Differences in educational attainment across regions have persisted over the years. </br>
+				Many of the countries lagging behind today are developing countries. </h3>
 				</br>
 				</br>
+<<<<<<< Updated upstream
 				Are there differences between the trends in developed countries compared to developing countries?
 				</h2>
+=======
+			<h2>What drives these differences?</h2>
+>>>>>>> Stashed changes
 		</div>
 	</section>
 
@@ -113,10 +118,14 @@
 	<!------ ATTAINMENT PROFILE PAGE ------->
 	<section class="section" id="profilepage">
 		<div class="container">
-			<h3>WHAT ARE FACTORS THAT IMPACT EDUCATION ATTAINMENT IN DEVELOPING COUNTRIES?</h3>
-			<p class="attain-instruct">
-				Use the chart below to explore variation in educational attainment within countries. Notice that in many developing countries, while the trend in developed countries does not change much over the years, there is a steep dropoff in different years for developing countries.
-			</p>
+			<h3>HOW DOES EDUCATIONAL ATTAINMENT DIFFER WITHIN A COUNTRY?</h3>
+			<div class="col-xs-44 col-sm-11 attain-subtext">
+				An educational attainment profile shows the share of individuals 20-29 years old in a country who have
+				completed a given grade. Most developed countries exhibit a similar profile, particularly for grades 1-12.
+				However, many developing countries exhibit steep dropoffs, which sometimes become starker by
+				different gender, area, and income breakdowns. Use the visualization below to explore these trends for
+				different developing countries.
+			</div>
 			<div class="row">
 				<div class="col-sm-7">
 					<!-- select the country (note: options added in attainment.js)-->
@@ -124,32 +133,10 @@
 						<form class="form-inline">
 							<label class="map-dropdown" for="line-select-country">Select a developing country:</label>
 							<select class="form-control" id="line-select-country" onChange="attainment.hideOthers();attainment.wrangleData();">
-								<option selected value="default">Please select a country</option>
+								<option selected value="default">Select a country</option>
 							</select>
 						</form>
 					</div>
-
-					<!--<div id="attain-btn">-->
-						<!--</br>-->
-
-					<!--&lt;!&ndash;filter for gender, income level or rural/urban divide &ndash;&gt;-->
-
-						<!--&lt;!&ndash; Buttons for attainment_v3.js &ndash;&gt;-->
-						<!--&lt;!&ndash;<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>&ndash;&gt;-->
-						<!--&lt;!&ndash;<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.chooseAll();">All Population</span>&ndash;&gt;-->
-						<!--&lt;!&ndash;<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.chooseGender();">Gender</span>&ndash;&gt;-->
-						<!--&lt;!&ndash;<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.chooseUrban();">Rural/Urban</span>&ndash;&gt;-->
-						<!--&lt;!&ndash;<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.chooseIncome();">Income</span>&ndash;&gt;-->
-						<!--&lt;!&ndash;<span id="clear-btn" class="btn btn-default" onclick="attainment.removeAll();">Clear all</span>&ndash;&gt;-->
-						<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-						<!--&lt;!&ndash; Original buttons for attainment_v2.js &ndash;&gt;-->
-						<!--<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.hideOthers();attainment.showOriginal();">All Population</span>-->
-						<!--<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.hideOthers();attainment.filterGender();">Gender</span>-->
-						<!--<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.hideOthers();attainment.filterRural();">Rural/Urban</span>-->
-						<!--<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.hideOthers();attainment.filterIncome();">Income</span>-->
-					<!--</div>-->
-
 				</div>
 				<div class="col-sm-5"></div>
 			</div>
@@ -157,29 +144,13 @@
 				<div class="col-sm-7" id="line-area">
 					<div id="attain-btn">
 						</br>
-
-						<!--filter for gender, income level or rural/urban divide -->
-
-						<!-- Buttons for attainment_v3.js -->
-						<!--<h4 class="btn-filter">Within a country, how are the attainment level different?</h4>-->
-						<!--<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.chooseAll();">All Population</span>-->
-						<!--<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.chooseGender();">Gender</span>-->
-						<!--<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.chooseUrban();">Rural/Urban</span>-->
-						<!--<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.chooseIncome();">Income</span>-->
-						<!--<span id="clear-btn" class="btn btn-default" onclick="attainment.removeAll();">Clear all</span>-->
-						<!--</div>-->
-
-						<!-- Original buttons for attainment_v2.js -->
-						<span id="default-btn" class="btn btn-success btn-filter" value="nofilter" onclick="attainment.hideOthers();attainment.showOriginal();">All Population</span>
-						<span id="gender-btn" class="btn btn-success btn-filter" value="gender" onclick="attainment.hideOthers();attainment.filterGender();">Gender</span>
-						<span id="rural-btn" class="btn btn-success btn-filter" value="rural" onclick="attainment.hideOthers();attainment.filterRural();">Rural/Urban</span>
-						<span id="income-btn" class="btn btn-success btn-filter" value="income" onclick="attainment.hideOthers();attainment.filterIncome();">Income</span>
+						<div class="btn-group2" role="group" >
+							<span id="default-btn" class="btn btn-secondary btn-filter active" value="nofilter" onclick="attainment.hideOthers();attainment.showOriginal();">All Population</span>
+							<span id="gender-btn" class="btn btn-secondary btn-filter" value="gender" onclick="attainment.hideOthers();attainment.filterGender();">Gender</span>
+							<span id="rural-btn" class="btn btn-secondary btn-filter" value="rural" onclick="attainment.hideOthers();attainment.filterRural();">Rural/Urban</span>
+							<span id="income-btn" class="btn btn-secondary btn-filter" value="income" onclick="attainment.hideOthers();attainment.filterIncome();">Income</span>
+						</div>
 					</div>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 				</div>
 				<div class="col-sm-5" id="dropout-info">
 					<h4 id="dropout-text">
@@ -187,17 +158,20 @@
 					</h4>
 					</br>
 					<ul class="icons-ul">
-						<li><i class="icon-li icon-ok"></i><strong>Household's preferences: </strong>
-							<p>Parents might have preference for boys to attend schools over girls. Or they could prefer to send kids that they percieved to be smarter and more talented to attend schools.</p>
+						<li><i class="icon-li icon-ok"></i><strong>Household preferences: </strong>
+							<p class="ptext">Parents might have a stronger preference for their sons to attend school.
+								Or they may prefer more schooling for children they perceive to be smarter or more talented.</p>
 						</li>
-						<li><i class="icon-li icon-ok"></i><strong>Distance to Schools: </strong>
-							<p>Traveling to school might take up too much time. Sometimes it could be dangerous for children, especially girls to walk to a faraway school alone.</p>
+						<li><i class="icon-li icon-ok"></i><strong>Distance to school: </strong>
+							<p class="ptext">Traveling to school is often physically and financially burdensome, particularly for younger children and girls.</p>
 						</li>
-						<li><i class="icon-li icon-ok"></i><strong>Financial Constraints:</strong>
-							<p>Sending the children to school might be too expensive.</p>
+						<li><i class="icon-li icon-ok"></i><strong>Financial constraints:</strong>
+							<p class="ptext">Education comes with all sorts of costs. Direct costs may be incurred in the form of
+								textbooks and uniforms. Time at school also means time spent away from the workforce, which presents
+								opportunity costs. </p>
 						</li>
-						<li><i class="icon-li icon-ok"></i><strong>Government's Investment in Schools:</strong>
-							<p>Varying public investment in school also affects number of schools available as well as its quality.</p>
+						<li><i class="icon-li icon-ok"></i><strong>Government investment in education:</strong>
+							<p class="ptext">Varying public investment in education affects the supply of schools and teachers and the quality of education.</p>
 						</li>
 					</ul>
 						</br>
@@ -213,9 +187,9 @@
 
 	<!------ PREDICTION PAGE ------->
 	<section class="section" id="predictionpage">
-		<div class="container-fluid">
+		<div class="container">
 			<h3 class="matrix-title">WHAT DETERMINES ENROLLMENT IN HIGHER EDUCATION IN A COUNTRY?</h3>
-			<div class="matrix-subtext col-xs-24 col-sm-6"> There may be many factors that influence whether an individual in a given country
+			<div class="matrix-subtext col-xs-36 col-sm-9"> There may be many factors that influence whether an individual in a given country
 				enrolls in higher education or not. The matrix below looks at the relative effect of 11 such factors using nationally
 				representative survey data in each country. <br><br>
 				<div class="matrix-instruct"> Hover over the cells for more detail. Use the variable and country labels to sort the cells.</div>
@@ -227,13 +201,13 @@
 				</select>
 			</form>
 			<div id="chart"></div>
-			<div class="matrix-explain col-xs-20 col-sm-5">
+			<div class="matrix-explain col-xs-24 col-sm-6">
 				In many developing countries,
 				costs -- either direct educational costs or opportunity costs from foregone earnings -- are often issues that prevent
 				children from attending school. The matrix shows that being poor (being in the bottom 40% of the country's wealth distribution)
 				is the single most defining factor in whether an individual obtains higher education or not. <br>
 			</div>
-			<div class="matrix-explain col-xs-20 col-sm-5">
+			<div class="matrix-explain col-xs-24 col-sm-6">
 				Parent and community education seem to play an important role in influencing enrollment in many
 				countries in the sample. Higher educational attainment may reflect greater value placed on education within the
 				household or community, which is likely to affect whether or not a child attends school.
@@ -339,7 +313,7 @@
 	<!-- Choropleth and second visualization -->
 	<script src="js/choropleth.js"></script>
 	<script src="js/distribution.js"></script>
-	<script src="js/attainment_v2.js"></script>
+	<script src="js/attainment_v4.js"></script>
 	<script src="js/matrix-viz.js"></script>
 	<script src="js/main.js"></script>
 
