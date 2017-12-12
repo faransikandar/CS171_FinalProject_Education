@@ -48,9 +48,16 @@ body {
 }
 
 #conclusionimage{
-    height:350px;
+    height:400px;
     margin-left: 30px;
+    margin-top: 0px;
     opacity: 0.7;
+}
+
+.conclusion-text {
+    color: #777777;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 #mappage h1 {
