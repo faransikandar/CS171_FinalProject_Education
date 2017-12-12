@@ -6,6 +6,7 @@ DistViz = function(_parentElement, _data) {
     this.dataAsia = [];
     this.dataAmericas = [];
     this.dataEurope = [];
+
     this.initVis();
 };
 
@@ -42,8 +43,13 @@ DistViz.prototype.initVis = function() {
     // specify globals
     vis.margin = {top: 70, right: 20, bottom: 80, left: 300};
     vis.width = 1300 - vis.margin.left - vis.margin.right;
+<<<<<<< Updated upstream
     vis.height = 500 - vis.margin.top - vis.margin.bottom;
     vis.padding = 0; // separation b/w nodes
+=======
+    vis.height = 600 - vis.margin.top - vis.margin.bottom;
+    vis.padding = 1; // separation b/w nodes
+>>>>>>> Stashed changes
 
     // Tooltip
     vis.tooltip = d3.select("#discrete-scatterplot")
