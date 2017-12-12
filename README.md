@@ -1,4 +1,4 @@
-# CS171 Final Project
+# CS171 Final Project - Education in Another's Shoes
 ## By Lydia Kim, Gaew Lertsuridej, and Faran Sikandar
 ## Data Viz Final Project - WWBDD (What Would a Benevolent Designer Do?)
 
