@@ -73,26 +73,11 @@ h2 {
 
 
 /*********************/
-/* FULLPAGE */
+/*     FULLPAGE      */
 /*********************/
+
 #fp-nav ul li a span {
-    background: whitesmoke;
-}
-
-#prevention {
-    font-size: 25px;
-}
-
-#link {
-    font-weight: bold;
-}
-
-#question {
-    font-weight: bold;
-}
-
-.quiz-reason {
-    text-align: right;
+    background: black;
 }
 
 img.icon-ref {
@@ -105,7 +90,7 @@ img.icon-ref {
     vertical-align: middle;
 }
 section {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 
@@ -621,9 +606,3 @@ div.tooltip {
     fill: #4C4545;
 }
 
-
-/* FULLPAGE */
-
-#fp-nav ul li a span {
-    background: black;
-}
